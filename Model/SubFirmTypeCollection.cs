@@ -26,7 +26,7 @@ namespace Lab_3
             SubFirmType temp = new SubFirmType(isMain, name);
             SubFirmType type = FirstOrDefault(temp);
 
-            if (type == null)
+            if (type as object == null)
             {
                 type = temp;
                 _instance._subFirmTypes.Add(type);
