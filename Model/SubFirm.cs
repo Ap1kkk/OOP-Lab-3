@@ -41,8 +41,8 @@ namespace Lab_3
 
         public bool IsContactExists(Contact contact)
         {
-            Contact result = _contacts.FirstOrDefault(current => current == contact);
-            return result != null;
+            Contact result = _contacts.FirstOrDefault(current => current.Type == contact.Type);
+            return result != null as object;
         }
 
         public bool IsEqualType(SubFirmType subFirmType)

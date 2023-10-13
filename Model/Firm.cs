@@ -74,6 +74,7 @@ namespace Lab_3
                 return subFirm;
             }
             subFirm = new SubFirm(subFirmType, name, bossName, officialBossName, phoneNumber, email);
+            _subFirms.Add(subFirm);
             return subFirm;
         }
 
