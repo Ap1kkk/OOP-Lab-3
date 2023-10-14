@@ -52,6 +52,13 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Expressions\EqualsExpression.cs" />
+    <Compile Include="Main\Expressions\ILogicalExpression.cs" />
+    <Compile Include="Main\Expressions\IntFieldExpression.cs" />
+    <Compile Include="Main\Expressions\NotEqualsExpression.cs" />
+    <Compile Include="Main\Fields\Field.cs" />
+    <Compile Include="Main\Fields\NameField.cs" />
+    <Compile Include="Main\FirmView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -78,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lab-3.csproj">
+      <Project>{4d1e38e2-52c5-4b7a-a17f-0d0679dd806c}</Project>
+      <Name>Lab-3</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
