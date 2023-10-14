@@ -11,7 +11,7 @@ namespace Tests
     [TestClass()]
     public class FirmTests
     {
-        FirmFactory _firmFactory = new FirmFactory();
+        FirmFactory _firmFactory = FirmFactory.Instance;
 
         #region FieldsForContacts
         private Contact _contact_c_1 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
