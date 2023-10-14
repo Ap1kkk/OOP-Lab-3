@@ -47,11 +47,7 @@ namespace Lab_3.Tests
             foreach (var userField in _firmFactory.UserFields)
             {
                 string fieldValue = null;
-
-                Assert.ThrowsException<ArgumentException>( () =>
-                {
-                    fieldValue = createdFirm.GetField(userField.Key);
-                });
+                fieldValue = createdFirm.GetField(userField.Key);
                 Assert.IsNotNull(fieldValue);
             }
 
