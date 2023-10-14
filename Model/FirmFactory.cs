@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Lab_3
 {
@@ -11,7 +12,12 @@ namespace Lab_3
     {
         public static FirmFactory Instance { get; private set; } = null;
 
-        private List<string> _userFields = new List<string>() { "field1", "field2", "field3", "field4", "field5", };
+        public readonly string FieldName1 = "field1";
+        public readonly string FieldName2 = "field2";
+        public readonly string FieldName3 = "field3";
+        public readonly string FieldName4 = "field4";
+        public readonly string FieldName5 = "field5";
+        public readonly Dictionary<string, string> UserFields = new Dictionary<string, string>();
         private const string MainFirmName = "Main Firm";
 
         public FirmFactory()
@@ -22,6 +28,11 @@ namespace Lab_3
             }
 
             Instance = this;
+            UserFields.Add(FieldName1, "");
+            UserFields.Add(FieldName2, "");
+            UserFields.Add(FieldName3, "");
+            UserFields.Add(FieldName4, "");
+            UserFields.Add(FieldName5, "");
         }
 
         public Firm Create(string country, string region,
@@ -39,16 +50,10 @@ namespace Lab_3
 
         public void FillUserFields(Firm firm)
         {
-            int userFieldsAmount = int.Parse(ConfigurationManager.AppSettings["userFieldsAmount"]);
-            for (int i = 1; i <= userFieldsAmount; i++)
+            foreach (var pair in UserFields)
             {
-                string fieldName = ConfigurationManager.AppSettings[$"userFieldName{i}"];
-                if(fieldName == null)
-                {
-                    throw new InvalidOperationException($"User field 'userFieldName{i}' does not exists in config");
-                }
-                
-                firm.AddField(fieldName);
+                firm.AddField(pair.Key);
+                firm.SetField(pair.Key, pair.Value);
             }
         }
     }

@@ -11,46 +11,55 @@ namespace Tests
     [TestClass()]
     public class FirmTests
     {
+        FirmFactory _firmFactory = new FirmFactory();
+
         #region FieldsForContacts
-        private Firm _firm_c_1 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
         private Contact _contact_c_1 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
-        private Firm _firm_c_2 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
         private Contact _contact_c_2 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
-        private Firm _firm_c_3 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private SubFirm _subFirm_c_3 = new SubFirm(new SubFirmType(false, ""), "", "", "", "", "");
         private Contact _contact_c_3 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
         #endregion
 
-        #region FieldsForFields
-        private Firm _firm_f_1 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private Firm _firm_f_2 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private Firm _firm_f_3 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private Firm _firm_f_4 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private Firm _firm_f_5 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        private Firm _firm_f_6 = new Firm("", "", "", "", "", "", "", "", new DateTime(), "", "", "");
-        #endregion
 
         #region Contacts
         [TestMethod()]
         public void IsContactExistsTestFalse()
         {
-            bool isExists = _firm_c_1.IsContactExists(_contact_c_1);
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            bool isExists = firm.IsContactExists(_contact_c_1);
             Assert.IsFalse(isExists);
         }
         [TestMethod()]
         public void IsContactExistsTestMain()
         {
-            _firm_c_2.AddContact(_contact_c_2.Type, _contact_c_2.Description, _contact_c_2.Information, _contact_c_2.BeginDate, _contact_c_2.EndDate);
-            bool isExists = _firm_c_2.IsContactExists(_contact_c_2);
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+
+            firm.AddContact(_contact_c_2.Type, _contact_c_2.Description, _contact_c_2.Information, _contact_c_2.BeginDate, _contact_c_2.EndDate);
+            bool isExists = firm.IsContactExists(_contact_c_2);
             Assert.IsTrue(isExists);
+        }
+        [TestMethod()]
+        public void AddContactTestMain()
+        {
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+
+            Contact addedContact = firm.AddContact(_contact_c_2.Type, _contact_c_2.Description, _contact_c_2.Information, _contact_c_2.BeginDate, _contact_c_2.EndDate);
+            Assert.AreNotSame(_contact_c_2, addedContact);
+            Assert.IsTrue(firm.IsContactExists(addedContact));
+            Assert.IsNotNull(firm.GetContact(_contact_c_2));
+
+            Assert.IsTrue(addedContact == _contact_c_2);
+            
         }
         [TestMethod()]
         public void IsContactExistsTestNotMain()
         {
-            _firm_c_3.AddSubFirm(_subFirm_c_3.Type, _subFirm_c_3.Name, _subFirm_c_3.BossName, _subFirm_c_3.OfficialBossName, _subFirm_c_3.PhoneNumber, _subFirm_c_3.Email);
-            _firm_c_3.AddContactToSubFirm(_subFirm_c_3.Type, _contact_c_3.Type, _contact_c_3.Description, _contact_c_3.Information, _contact_c_3.BeginDate, _contact_c_3.EndDate);
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            SubFirm subFirm = new SubFirm(new SubFirmType(false, ""), "", "", "", "", "");
 
-            bool isExists = _firm_c_3.IsContactExists(_contact_c_3);
+            firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
+            firm.AddContactToSubFirm(subFirm.Type, _contact_c_3.Type, _contact_c_3.Description, _contact_c_3.Information, _contact_c_3.BeginDate, _contact_c_3.EndDate);
+
+            bool isExists = firm.IsContactExists(_contact_c_3);
             Assert.IsTrue(isExists);
         }
         #endregion
@@ -59,55 +68,48 @@ namespace Tests
         [TestMethod()]
         public void GetFieldTestException()
         {
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.ThrowsException<ArgumentException>((Action)(() =>
             {
-                _firm_f_1.GetField("test");
-            });
-        }
-        [TestMethod()]
-        public void GetFieldTestAdd()
-        {
-            const string fieldName = "test";
-            _firm_f_2.AddField(fieldName);
-            string value = _firm_f_2.GetField(fieldName);
-            Assert.AreEqual("", "");
-        }
+                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
 
+                firm.GetField("test");
+            }));
+        }
 
         [TestMethod()]
         public void SetFieldTest()
         {
-            const string fieldName = "test";
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
             const string value = "value";
-            _firm_f_3.AddField(fieldName);
-            _firm_f_3.SetField(fieldName, value);
-            string getValue = _firm_f_3.GetField(fieldName);
+            firm.SetField(_firmFactory.FieldName1, value);
+            string getValue = firm.GetField(_firmFactory.FieldName1);
             Assert.AreEqual(value, getValue);
         }
         [TestMethod()]
         public void SetFieldTestException()
         {
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.ThrowsException<ArgumentException>((Action)(() =>
             {
+                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
                 const string fieldName = "test";
                 const string value = "value";
-                _firm_f_3.SetField(fieldName, value);
-            });
+                firm.SetField(fieldName, value);
+            }));
         }
 
 
         [TestMethod()]
         public void RenameFieldTest()
         {
-            const string oldFieldName = "test";
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+
             const string newFieldName = "testNew";
             const string value = "value";
-            _firm_f_4.AddField(oldFieldName);
-            _firm_f_4.SetField(oldFieldName, value);
+            firm.SetField(_firmFactory.FieldName1, value);
 
-            _firm_f_4.RenameField(oldFieldName, newFieldName);
+            firm.RenameField(_firmFactory.FieldName1, newFieldName);
 
-            string getValue = _firm_f_4.GetField(newFieldName);
+            string getValue = firm.GetField(newFieldName);
             Assert.AreEqual(value, getValue);
         }
         [TestMethod()]
@@ -115,10 +117,12 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
+                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+
                 const string oldFieldName = "test";
                 const string newFieldName = "testNew";
 
-                _firm_f_5.RenameField(oldFieldName, newFieldName);
+                firm.RenameField(oldFieldName, newFieldName);
             });
         }
         [TestMethod()]
@@ -126,15 +130,21 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                const string oldFieldName = "test";
-                const string newFieldName = "testNew";
+                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
 
-                _firm_f_6.AddField(oldFieldName);
-                _firm_f_6.AddField(newFieldName);
-
-                _firm_f_6.RenameField(oldFieldName, newFieldName);
+                firm.RenameField(_firmFactory.FieldName1, _firmFactory.FieldName2);
             });
         }
         #endregion
+
+        [TestMethod()]
+        public void AddSubFirmTest()
+        {
+            SubFirm subFirm = new SubFirm(new SubFirmType(false, ""), "", "", "", "", "");
+
+            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            SubFirm createdSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
+            Assert.IsNotNull(createdSubFirm);
+        }
     }
 }

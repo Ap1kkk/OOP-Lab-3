@@ -29,20 +29,31 @@ namespace Lab_3
             Email = email;
         }
 
-        public void AddContact(ContactType contactType, string description, 
+        public Contact AddContact(ContactType contactType, string description, 
             string information, DateTime beginDate, DateTime endDate)
         {
             Contact contact = new Contact(contactType, description, information, beginDate, endDate);
-            if(!IsContactExists(contact))
+            return AddContact(contact);
+        }
+
+        public Contact AddContact(Contact contact)
+        {
+            Contact addedContact = contact;
+            if (!IsContactExists(contact))
             {
-                _contacts.Add(contact);
+                addedContact = contact.Clone();
+                _contacts.Add(addedContact);
             }
+            return addedContact;
+        }
+        public Contact GetContact(Contact contact)
+        {
+            return _contacts.FirstOrDefault(current => current == contact);
         }
 
         public bool IsContactExists(Contact contact)
-        {
-            Contact result = _contacts.FirstOrDefault(current => current.Type == contact.Type);
-            return result != null as object;
+        { 
+            return GetContact(contact) != null as object;
         }
 
         public bool IsEqualType(SubFirmType subFirmType)

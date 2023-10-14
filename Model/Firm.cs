@@ -41,23 +41,43 @@ namespace Lab_3
             Main = new SubFirm(new SubFirmType(true, name), name, bossName, officialBossName, phoneNumber, email);
         }
 
-        public void AddContact(ContactType contactType, string description,
+        public Contact AddContact(ContactType contactType, string description,
             string information, DateTime beginDate, DateTime endDate)
         {
-            Main.AddContact(contactType, description, information, beginDate, endDate);
+            return Main.AddContact(contactType, description, information, beginDate, endDate);
         }
-        public void AddContactToSubFirm(SubFirmType subFirmType, ContactType contactType, string description,
+        public Contact AddContact(Contact contact)
+        {
+            return Main.AddContact(contact);
+        }
+        public Contact AddContactToSubFirm(SubFirmType subFirmType, ContactType contactType, string description,
             string information, DateTime beginDate, DateTime endDate)
+        {
+            Contact contact = new Contact(contactType, description, information, beginDate, endDate);
+            return AddContactToSubFirm(subFirmType, contact);
+        }
+        public Contact AddContactToSubFirm(SubFirmType subFirmType, Contact contact)
         {
             SubFirm subFirm = _subFirms.FirstOrDefault(current => current.Type == subFirmType);
             if (subFirm == null)
             {
                 throw new ArgumentException("Sub firm with given type does't exists");
             }
-
-            subFirm.AddContact(contactType, description, information, beginDate, endDate);
+            return subFirm.AddContact(contact);
         }
-
+        public Contact GetContact(Contact contact)
+        {
+            return Main.GetContact(contact);
+        }
+        public Contact GetSubFirmContact(SubFirmType subFirmType, Contact contact)
+        {
+            SubFirm subFirm = _subFirms.FirstOrDefault(current => current.Type == subFirmType);
+            if (subFirm == null)
+            {
+                throw new ArgumentException("Sub firm with given type does't exists");
+            }
+            return subFirm.GetContact(contact);
+        }
         public bool IsContactExists(Contact contact)
         {
             SubFirm subFirm = _subFirms.FirstOrDefault(current => current.IsContactExists(contact));

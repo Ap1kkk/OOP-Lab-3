@@ -7,21 +7,53 @@ using System.Threading.Tasks;
 
 namespace Lab_3
 {
-    public class SubFirmTypeCollection : IEnumerable
+    public class SubFirmTypeCollection : IEnumerator<SubFirmType>, IEnumerable
     {
         public int Count => _subFirmTypes.Count;
 
-        private static SubFirmTypeCollection _instance = null;
+        public SubFirmType Current
+        {
+            get
+            {
+                if (_index < 0) throw new InvalidOperationException("Enumerator ended");
+                return _subFirmTypes[_index];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                if (_index < 0) throw new InvalidOperationException("Enumerator ended");
+                return _subFirmTypes[_index];
+            }
+        }
+
+        private int _index = -1;
+
         private readonly List<SubFirmType> _subFirmTypes = new List<SubFirmType>();
 
         public SubFirmTypeCollection()
         {
-            if(_instance == null)
-            {
-                _instance = this;
-            }
+
         }
-        public static SubFirmType Get(bool isMain, string name)
+        public IEnumerator GetEnumerator() => _subFirmTypes.GetEnumerator();
+
+        public void Dispose()
+        {
+            _index = -1;
+        }
+
+        public bool MoveNext()
+        {
+            _index++;
+            return _index > 0 && _index < _subFirmTypes.Count;
+        }
+
+        public void Reset()
+        {
+            _index = 0;   
+        }
+        public SubFirmType Add(bool isMain, string name)
         {
             SubFirmType temp = new SubFirmType(isMain, name);
             SubFirmType type = FirstOrDefault(temp);
@@ -29,26 +61,24 @@ namespace Lab_3
             if (type as object == null)
             {
                 type = temp;
-                _instance._subFirmTypes.Add(type);
+                _subFirmTypes.Add(type);
             }
             return type;
         }
-        public static SubFirmType Get(SubFirmType type)
+        public SubFirmType Add(SubFirmType type)
         {
-            return Get(type.IsMain, type.Name);
+            return Add(type.IsMain, type.Name);
         }
 
-        public static void Clear()
+        public void Clear()
         {
-            _instance._subFirmTypes.Clear();
+            _subFirmTypes.Clear();
         }
-        public IEnumerator GetEnumerator() => _subFirmTypes.GetEnumerator();
 
-        private static SubFirmType FirstOrDefault(SubFirmType type)
+        private SubFirmType FirstOrDefault(SubFirmType type)
         {
-            return _instance._subFirmTypes
+            return _subFirmTypes
                 .FirstOrDefault(current => current.Name == type.Name && current.IsMain == type.IsMain);
         }
-
     }
 }

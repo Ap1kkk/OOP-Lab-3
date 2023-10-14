@@ -10,18 +10,13 @@ namespace Lab_3
     public class ContactTypeCollection
     {
         public int Count => _contactTypes.Count;
-        private static ContactTypeCollection _instance = null;
         private List<ContactType> _contactTypes = new List<ContactType>();
 
         public ContactTypeCollection()
         {
-            if( _instance == null )
-            {
-                _instance = this;
-            }
         }
 
-        public static ContactType Get(string name, string note)
+        public ContactType Add(string name, string note)
         {
             ContactType temp = new ContactType(name, note);
             ContactType type = FirstOrDefault(temp);
@@ -29,23 +24,23 @@ namespace Lab_3
             if(type == null)
             {
                 type = temp;
-                _instance._contactTypes.Add(type);
+                _contactTypes.Add(type);
             }
             return type;
         }
-        public static ContactType Get(ContactType type)
+        public ContactType Add(ContactType type)
         {
-            return Get(type.Name, type.Note);
+            return Add(type.Name, type.Note);
         }
 
-        public static void Clear()
+        public void Clear()
         {
-            _instance._contactTypes.Clear();
+            _contactTypes.Clear();
         }
 
-        private static ContactType FirstOrDefault(ContactType type)
+        private ContactType FirstOrDefault(ContactType type)
         {
-            return _instance._contactTypes
+            return _contactTypes
                 .FirstOrDefault(current => current.Name == type.Name && current.Note == type.Note);
         }
     }
