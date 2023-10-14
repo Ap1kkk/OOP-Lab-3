@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Lab4\Lab4.csproj" />
     <ProjectReference Include="..\..\Lab-3.csproj" />
   </ItemGroup>
 
