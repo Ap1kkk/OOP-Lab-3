@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    public abstract class IntFieldExpression
-    { 
-        
+    public interface IDateFieldExpression : ILogicalExpression<DateTime>
+    {
     }
 }

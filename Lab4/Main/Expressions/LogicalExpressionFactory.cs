@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    public class ContainsExpression : ILogicalExpression<string>
+    public static class LogicalExpressionFactory
     {
-        public bool Compare(Field<string> left, Field<string> right)
+        public static T Create<T, U>() where T : ILogicalExpression<U>, new() where U : IComparable
         {
-            return left.Value.Contains(right.Value);
+            return new T();
         }
     }
 }

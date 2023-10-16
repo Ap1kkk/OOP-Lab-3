@@ -2,7 +2,6 @@
 using Lab4.Main.Expressions;
 using Lab4.Main.Rules;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +9,19 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Fields
 {
-    public class NameField : Field<string>
+    public class RegionField : Field<string>
     {
-        public NameField(Firm relatedFirm) : base(relatedFirm)
+        public RegionField(Firm relatedFirm) : base(relatedFirm)
         {
         }
 
-        public override string Value => Firm.Name;
-
         public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new NameRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
+            new RegionRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
+        public override string Value => Firm.Region;
 
         public override Field<string> Clone()
         {
-            return new NameField(Firm);
+            return new RegionField(Firm);
         }
     }
 }

@@ -52,13 +52,36 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Expressions\ContainsExpression.cs" />
+    <Compile Include="Main\Expressions\IDateFieldExpression.cs" />
     <Compile Include="Main\Expressions\EqualsExpression.cs" />
+    <Compile Include="Main\Expressions\GreaterEqualsExpression.cs" />
+    <Compile Include="Main\Expressions\GreaterExpression.cs" />
     <Compile Include="Main\Expressions\ILogicalExpression.cs" />
-    <Compile Include="Main\Expressions\IntFieldExpression.cs" />
+    <Compile Include="Main\Expressions\IIntFieldExpression.cs" />
+    <Compile Include="Main\Expressions\LessEqualsExpression.cs" />
+    <Compile Include="Main\Expressions\LessExpression.cs" />
+    <Compile Include="Main\Expressions\LogicalExpressionEnum.cs" />
+    <Compile Include="Main\Expressions\LogicalExpressionFactory.cs" />
+    <Compile Include="Main\Expressions\NotContainsExpression.cs" />
     <Compile Include="Main\Expressions\NotEqualsExpression.cs" />
+    <Compile Include="Main\Expressions\IStringFieldExpression.cs" />
+    <Compile Include="Main\Fields\ContactsAmountField.cs" />
+    <Compile Include="Main\Fields\EnterDateField.cs" />
     <Compile Include="Main\Fields\Field.cs" />
     <Compile Include="Main\Fields\NameField.cs" />
+    <Compile Include="Main\Fields\PostIndexField.cs" />
+    <Compile Include="Main\Fields\RegionField.cs" />
+    <Compile Include="Main\Fields\StreetField.cs" />
+    <Compile Include="Main\Fields\TownField.cs" />
+    <Compile Include="Main\Fields\WebsiteUrlField.cs" />
     <Compile Include="Main\FirmView.cs" />
+    <Compile Include="Main\Rules\FilterRule.cs" />
+    <Compile Include="Main\Rules\IFilterRule.cs" />
+    <Compile Include="Main\Rules\NameRule.cs" />
+    <Compile Include="Main\Rules\PostIndexRule.cs" />
+    <Compile Include="Main\Rules\RegionRule.cs" />
+    <Compile Include="Main\Rules\TownRule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">

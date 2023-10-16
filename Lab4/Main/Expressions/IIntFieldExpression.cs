@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    public interface ILogicalExpression<T> where T : IComparable
+    public interface IIntFieldExpression : ILogicalExpression<int>
     {
-        bool Compare(Field<T> left, Field<T> right);
     }
 }

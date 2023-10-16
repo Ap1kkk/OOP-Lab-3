@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    internal class NotContainsExpression
+    public class NotContainsExpression : ILogicalExpression<string>
     {
+        public bool Compare(Field<string> left, Field<string> right)
+        {
+            return left.Value.Contains(right.Value);
+        }
     }
 }

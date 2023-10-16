@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    internal class GreaterExpression
+    public class GreaterExpression<T> : ILogicalExpression<T> where T : IComparable
     {
+        public bool Compare(Field<T> left, Field<T> right)
+        {
+            return left.Value.CompareTo(right.Value) > 0;
+        }
     }
 }

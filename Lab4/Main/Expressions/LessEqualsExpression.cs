@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Expressions
 {
-    public class LessEqualsExpression : ILogicalExpression
+    public class LessEqualsExpression<T> : ILogicalExpression<T> where T : IComparable
     {
-        public bool Compare<T>(T left, T right) where T : Field<T>
+        public bool Compare(Field<T> left, Field<T> right)
         {
-            return left.Value <= right.Value;
+            return left.Value.CompareTo(right.Value) <= 0;
         }
     }
 }
