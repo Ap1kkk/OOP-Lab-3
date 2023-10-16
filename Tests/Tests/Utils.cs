@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace Tests
 {
-    public class Utils
+    public static class Utils
     {
-        private static FirmFactory _firmFactory = new FirmFactory();
+        public static FirmFactory FirmFactory { get; } = new FirmFactory();
         public static Firm DefaultFirm()
         {
-            return _firmFactory.Create("country", "region", "town", "street", 
+            return FirmFactory.Create("country", "region", "town", "street", 
                 "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
+        }
+        public static SubFirm DefaultSubFirm()
+        {
+            return new SubFirm(new SubFirmType(false, "name"), "name", "bossName", "officialBossName", "phoneNumber", "email");
         }
     }
 }

@@ -25,7 +25,8 @@ namespace Lab4.Main.Fields.Tests
         [TestMethod()]
         public void CloneTest()
         {
-            //Assert.Fail();
+            PostIndexField postIndexField = new PostIndexField(Utils.DefaultFirm());
+            Assert.AreNotSame(postIndexField, postIndexField.Clone());
         }
     }
 }

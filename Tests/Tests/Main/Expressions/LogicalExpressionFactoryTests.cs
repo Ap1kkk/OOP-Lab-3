@@ -15,7 +15,7 @@ namespace Lab4.Main.Expressions.Tests
         public void CreateTest()
         {
             var expression = LogicalExpressionFactory.Create<EqualsExpression<int>, int>();
-            Assert.Fail();
+            Assert.IsNotNull(expression);
         }
     }
 }

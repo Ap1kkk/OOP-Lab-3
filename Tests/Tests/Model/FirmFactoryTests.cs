@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Tests;
 
 namespace Lab_3.Tests
 {
     [TestClass()]
     public class FirmFactoryTests
     {
-        private FirmFactory _firmFactory = new FirmFactory();
         [TestMethod()]
         public void CreateTest()
         {
@@ -28,7 +28,7 @@ namespace Lab_3.Tests
             const string officialBossName = "officialBossName";
             const string phoneNumber = "phoneNumber";
 
-            Firm createdFirm = _firmFactory.Create(country, region, town, street, postIndex, email, websiteUrl,
+            Firm createdFirm = Utils.FirmFactory.Create(country, region, town, street, postIndex, email, websiteUrl,
                 enterDate, bossName, officialBossName, phoneNumber);
 
 
@@ -44,7 +44,7 @@ namespace Lab_3.Tests
             Assert.IsTrue(createdFirm.Main.OfficialBossName == officialBossName);
             Assert.IsTrue(createdFirm.Main.PhoneNumber == phoneNumber);
 
-            foreach (var userField in _firmFactory.UserFields)
+            foreach (var userField in Utils.FirmFactory.UserFields)
             {
                 string fieldValue = null;
                 fieldValue = createdFirm.GetField(userField.Key);

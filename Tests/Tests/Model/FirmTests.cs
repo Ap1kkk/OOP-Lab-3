@@ -11,8 +11,6 @@ namespace Tests
     [TestClass()]
     public class FirmTests
     {
-        FirmFactory _firmFactory = FirmFactory.Instance;
-
         #region FieldsForContacts
         private Contact _contact_c_1 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
         private Contact _contact_c_2 = new Contact(new ContactType("", ""), "", "", new DateTime(), new DateTime());
@@ -24,14 +22,14 @@ namespace Tests
         [TestMethod()]
         public void IsContactExistsTestFalse()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
             bool isExists = firm.IsContactExists(_contact_c_1);
             Assert.IsFalse(isExists);
         }
         [TestMethod()]
         public void IsContactExistsTestMain()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
 
             firm.AddContact(_contact_c_2.Type, _contact_c_2.Description, _contact_c_2.Information, _contact_c_2.BeginDate, _contact_c_2.EndDate);
             bool isExists = firm.IsContactExists(_contact_c_2);
@@ -40,7 +38,7 @@ namespace Tests
         [TestMethod()]
         public void AddContactTestMain()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
 
             Contact addedContact = firm.AddContact(_contact_c_2.Type, _contact_c_2.Description, _contact_c_2.Information, _contact_c_2.BeginDate, _contact_c_2.EndDate);
             Assert.AreNotSame(_contact_c_2, addedContact);
@@ -53,8 +51,8 @@ namespace Tests
         [TestMethod()]
         public void IsContactExistsTestNotMain()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
-            SubFirm subFirm = new SubFirm(new SubFirmType(false, ""), "", "", "", "", "");
+            Firm firm = Utils.DefaultFirm();
+            SubFirm subFirm = Utils.DefaultSubFirm();
 
             firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
             firm.AddContactToSubFirm(subFirm.Type, _contact_c_3.Type, _contact_c_3.Description, _contact_c_3.Information, _contact_c_3.BeginDate, _contact_c_3.EndDate);
@@ -70,7 +68,7 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>((Action)(() =>
             {
-                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+                Firm firm = Utils.DefaultFirm();
 
                 firm.GetField("test");
             }));
@@ -79,10 +77,10 @@ namespace Tests
         [TestMethod()]
         public void SetFieldTest()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
             const string value = "value";
-            firm.SetField(_firmFactory.FieldName1, value);
-            string getValue = firm.GetField(_firmFactory.FieldName1);
+            firm.SetField(Utils.FirmFactory.FieldName1, value);
+            string getValue = firm.GetField(Utils.FirmFactory.FieldName1);
             Assert.AreEqual(value, getValue);
         }
         [TestMethod()]
@@ -90,7 +88,7 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>((Action)(() =>
             {
-                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+                Firm firm = Utils.DefaultFirm();
                 const string fieldName = "test";
                 const string value = "value";
                 firm.SetField(fieldName, value);
@@ -101,13 +99,13 @@ namespace Tests
         [TestMethod()]
         public void RenameFieldTest()
         {
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
 
             const string newFieldName = "testNew";
             const string value = "value";
-            firm.SetField(_firmFactory.FieldName1, value);
+            firm.SetField(Utils.FirmFactory.FieldName1, value);
 
-            firm.RenameField(_firmFactory.FieldName1, newFieldName);
+            firm.RenameField(Utils.FirmFactory.FieldName1, newFieldName);
 
             string getValue = firm.GetField(newFieldName);
             Assert.AreEqual(value, getValue);
@@ -117,7 +115,7 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+                Firm firm = Utils.DefaultFirm();
 
                 const string oldFieldName = "test";
                 const string newFieldName = "testNew";
@@ -130,9 +128,9 @@ namespace Tests
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+                Firm firm = Utils.DefaultFirm();
 
-                firm.RenameField(_firmFactory.FieldName1, _firmFactory.FieldName2);
+                firm.RenameField(Utils.FirmFactory.FieldName1, Utils.FirmFactory.FieldName2);
             });
         }
         #endregion
@@ -140,9 +138,9 @@ namespace Tests
         [TestMethod()]
         public void AddSubFirmTest()
         {
-            SubFirm subFirm = new SubFirm(new SubFirmType(false, ""), "", "", "", "", "");
+            SubFirm subFirm = Utils.DefaultSubFirm();
 
-            Firm firm = _firmFactory.Create("", "", "", "", "", "", "", new DateTime(), "", "", "");
+            Firm firm = Utils.DefaultFirm();
             SubFirm createdSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
             Assert.IsNotNull(createdSubFirm);
         }
