@@ -14,11 +14,14 @@ namespace Lab4.Main.Fields
         public WebsiteUrlField(Firm relatedFirm) : base(relatedFirm)
         {
         }
+        public override string Value
+        {
+            get { return Firm.WebsiteUrl; }
+            set { Firm.WebsiteUrl = value; }
+        }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
             new WebsiteUrlRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
-        public override string Value => Firm.WebsiteUrl;
 
         public override Field<string> Clone()
         {

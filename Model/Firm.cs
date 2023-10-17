@@ -8,20 +8,152 @@ namespace Lab_3
 {
     public class Firm
     {
-        public string Name { get; private set; }
-        public string Country { get; private set; }
-        public string Region { get; private set; }
-        public string Town { get; private set; }
-        public string Street { get; private set; }
-        public string PostIndex { get; private set; }
-        public string Email { get; private set; }
-        public string WebsiteUrl { get; private set; }
-        public DateTime EnterDate { get; private set; }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set 
+            {
+                if(value  == null)
+                    throw new ArgumentNullException("value");
+                _name = value;
+            }
+        }
+        public string Country
+        {
+            get
+            {
+                return _country;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _country = value;
+            }
+        }
+        public string Region
+        {
+            get
+            {
+                return _region;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _region = value;
+            }
+        }
+        public string Town
+        {
+            get
+            {
+                return _town;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _town = value;
+            }
+        }
+        public string Street
+        {
+            get
+            {
+                return _street;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _street = value;
+            }
+        }
+        public string PostIndex
+        {
+            get
+            {
+                return _postIndex;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _postIndex = value;
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _email = value;
+            }
+        }
+        public string WebsiteUrl
+        {
+            get
+            {
+                return _websiteUrl;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _websiteUrl = value;
+            }
+        }
+        public DateTime EnterDate
+        {
+            get
+            {
+                return _enterDate;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _enterDate = value;
+            }
+        }
+        public int ContactsAmount
+        {
+            get
+            {
+                int count = Main.ContactsAmount;
+                foreach (var subfirm in _subFirms)
+                {
+                    count += subfirm.ContactsAmount;
+                }
+                return count;
+            }
+        }
 
         public SubFirm Main { get; private set; }
+        public Dictionary<string, string> UserFields => _userFields;
+        public List<SubFirm> SubFirms => _subFirms;
 
-        private List<SubFirm> _subFirms = new List<SubFirm>();
+        private string _name;
+        private string _country;
+        private string _region;
+        private string _town;
+        private string _street;
+        private string _postIndex;
+        private string _email;
+        private string _websiteUrl;
+        private DateTime _enterDate;
+
         private readonly Dictionary<string, string> _userFields = new Dictionary<string, string>();
+        private readonly List<SubFirm> _subFirms = new List<SubFirm>();
 
         public Firm(string name, string country, string region,
             string town, string street, string postIndex, string email,

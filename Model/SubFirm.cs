@@ -8,14 +8,81 @@ namespace Lab_3
 {
     public class SubFirm
     {
-        public string Name { get; private set; }
-        public string BossName { get; private set; }
-        public string OfficialBossName { get; private set; }
-        public string PhoneNumber { get; private set; }
-        public string Email { get; private set; }
         public SubFirmType Type { get; private set; }
-        public int CountContacts => _contacts.Count;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _name = value;
+            }
+        }
+        public string BossName
+        {
+            get
+            {
+                return _bossName;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _bossName = value;
+            }
+        }
+        public string OfficialBossName
+        {
+            get
+            {
+                return _officialBossName;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _officialBossName = value;
+            }
+        }
+        public string PhoneNumber
+        {
+            get
+            {
+                return _phoneNumber;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _phoneNumber = value;
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _email = value;
+            }
+        }
+        public int ContactsAmount => _contacts.Count;
 
+        private string _name;
+        private string _bossName;
+        private string _officialBossName;
+        private string _phoneNumber;
+        private string _email;
+
+        public List<Contact> Contacts => _contacts;
         private List<Contact> _contacts = new List<Contact>();
 
         public SubFirm(SubFirmType subFirmType, string name, string bossName, 

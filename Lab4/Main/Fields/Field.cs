@@ -12,8 +12,10 @@ namespace Lab4.Main
 {
     public abstract class Field<T> where T : IComparable
     {
-        public abstract IFilterRule<ILogicalExpression<T>, Field<T>, T> FilterRule { get; }
-        public abstract T Value { get; }
+        public abstract T Value { get; set; }
+        protected readonly Dictionary<Type, ILogicalExpression<T>> FilterExpressions = new Dictionary<Type, ILogicalExpression<T>>();
+
+        protected abstract IFilterRule<ILogicalExpression<T>, Field<T>, T> FilterRule { get; }
         protected Firm Firm;
 
         public Field(Firm relatedFirm)
@@ -24,5 +26,40 @@ namespace Lab4.Main
         }
 
         public abstract Field<T> Clone();
+
+        public void AddRule(ILogicalExpression<T> filterExpression)
+        {
+            if(filterExpression == null)
+                throw new ArgumentNullException(nameof(filterExpression));
+
+            if (FilterExpressions.ContainsKey(filterExpression.GetType()))
+                return;
+
+            FilterExpressions.Add(filterExpression.GetType(), filterExpression);
+        }
+        public void ClearRules()
+        {
+            FilterExpressions.Clear();
+        }
+        public void RemoveRule(ILogicalExpression<T> filterExpression)
+        {
+            if (filterExpression == null)
+                throw new ArgumentNullException(nameof(filterExpression));
+
+            if(!FilterExpressions.ContainsKey(filterExpression.GetType()))
+                throw new ArgumentException(nameof(filterExpression));
+
+            FilterExpressions.Remove(filterExpression.GetType());
+        }
+
+        public bool GetFilterResult(Field<T> comparable)
+        {
+            bool result = true;
+            foreach (var filterExpression in FilterExpressions.Values)
+            {
+                result = result && filterExpression.Compare(this, comparable);
+            }
+            return result;
+        }
     }
 }

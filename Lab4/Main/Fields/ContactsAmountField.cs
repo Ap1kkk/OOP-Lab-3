@@ -15,9 +15,13 @@ namespace Lab4.Main.Fields
         {
         }
 
-        public override int Value => Firm.Main.CountContacts;
+        public override int Value
+        {
+            get { return Firm.Main.ContactsAmount; }
+            set { throw new InvalidOperationException("Cannot change CountContacts value"); }
+        }
 
-        public override IFilterRule<ILogicalExpression<int>, Field<int>, int> FilterRule =>
+        protected override IFilterRule<ILogicalExpression<int>, Field<int>, int> FilterRule =>
             new ContactsAmountRule(this) as IFilterRule<ILogicalExpression<int>, Field<int>, int>;
 
         public override Field<int> Clone()

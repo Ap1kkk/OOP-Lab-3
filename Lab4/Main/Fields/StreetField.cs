@@ -15,10 +15,14 @@ namespace Lab4.Main.Fields
         {
         }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new StreetRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
+        public override string Value
+        {
+            get { return Firm.Street; }
+            set { Firm.Street = value; }
+        }
 
-        public override string Value => Firm.Street;
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
+            new StreetRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
 
         public override Field<string> Clone()
         {

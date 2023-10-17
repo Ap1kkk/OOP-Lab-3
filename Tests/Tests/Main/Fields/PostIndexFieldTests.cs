@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tests;
+using Lab4.Main.Expressions;
 
 namespace Lab4.Main.Fields.Tests
 {

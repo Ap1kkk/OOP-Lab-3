@@ -16,11 +16,14 @@ namespace Lab4.Main.Fields
         {
             _fieldName = fieldName;
         }
+        public override string Value
+        {
+            get { return Firm.GetField(_fieldName); }
+            set { Firm.SetField(_fieldName, value); }
+        }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
             new UserFieldRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
-        public override string Value => Firm.GetField(_fieldName);
 
         public override Field<string> Clone()
         {

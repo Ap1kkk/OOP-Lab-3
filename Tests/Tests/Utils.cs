@@ -19,5 +19,13 @@ namespace Tests
         {
             return new SubFirm(new SubFirmType(false, "name"), "name", "bossName", "officialBossName", "phoneNumber", "email");
         }
+        public static ContactType ContactType()
+        {
+            return new ContactType("name", "note");
+        }
+        public static Contact DefaultContact()
+        {
+            return new Contact(ContactType(), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2));
+        }
     }
 }

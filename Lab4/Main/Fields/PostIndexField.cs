@@ -15,9 +15,13 @@ namespace Lab4.Main.Fields
         {
         }
 
-        public override string Value => Firm.PostIndex;
+        public override string Value
+        {
+            get { return Firm.PostIndex; }
+            set { Firm.PostIndex = value; }
+        }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule => 
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule => 
             new PostIndexRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
 
         public override Field<string> Clone()

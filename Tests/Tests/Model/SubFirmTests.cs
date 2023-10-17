@@ -21,5 +21,17 @@ namespace Tests
 
             Assert.IsTrue(isSameType);
         }
+
+        [TestMethod()]
+        public void AddContact()
+        {
+            Contact contact = Utils.DefaultContact();
+            SubFirm subFirm = Utils.DefaultSubFirm();
+
+            Contact addedContact = subFirm.AddContact(contact);
+            Assert.IsNotNull(addedContact);
+            Assert.AreNotSame(contact, addedContact);
+            Assert.IsTrue(subFirm.IsContactExists(contact));
+        }
     }
 }

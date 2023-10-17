@@ -15,9 +15,13 @@ namespace Lab4.Main.Fields
         {
         }
 
-        public override DateTime Value => Firm.EnterDate;
+        public override DateTime Value
+        {
+            get { return Firm.EnterDate; }
+            set { Firm.EnterDate = value; }
+        }
 
-        public override IFilterRule<ILogicalExpression<DateTime>, Field<DateTime>, DateTime> FilterRule
+        protected override IFilterRule<ILogicalExpression<DateTime>, Field<DateTime>, DateTime> FilterRule
             => new EnterDateRule(this) as IFilterRule<ILogicalExpression<DateTime>, Field<DateTime>, DateTime>;
 
         public override Field<DateTime> Clone()

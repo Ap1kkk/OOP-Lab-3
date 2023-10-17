@@ -104,6 +104,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Lab4.Main.FirmView.datasource" />
+    <None Include="Properties\DataSources\Lab_3.Contact.datasource" />
+    <None Include="Properties\DataSources\Lab_3.ContactType.datasource" />
+    <None Include="Properties\DataSources\Lab_3.ContactTypeCollection.datasource" />
+    <None Include="Properties\DataSources\Lab_3.Firm.datasource" />
+    <None Include="Properties\DataSources\Lab_3.FirmFactory.datasource" />
+    <None Include="Properties\DataSources\Lab_3.MainForm.datasource" />
+    <None Include="Properties\DataSources\Lab_3.SubFirm.datasource" />
+    <None Include="Properties\DataSources\Lab_3.SubFirmType.datasource" />
+    <None Include="Properties\DataSources\Lab_3.SubFirmTypeCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

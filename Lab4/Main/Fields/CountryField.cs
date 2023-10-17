@@ -15,10 +15,14 @@ namespace Lab4.Main.Fields
         {
         }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new CountryRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
+        public override string Value
+        {
+            get { return Firm.Country; }
+            set { Firm.Country = value; }
+        }
 
-        public override string Value => Firm.Country;
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
+            new CountryRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
 
         public override Field<string> Clone()
         {

@@ -14,10 +14,14 @@ namespace Lab4.Main.Fields
         public TownField(Firm relatedFirm) : base(relatedFirm)
         {
         }
+        public override string Value
+        {
+            get { return Firm.Town; }
+            set { Firm.Town = value; }
+        }
 
-        public override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
+        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
             new TownRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-        public override string Value => Firm.Town;
 
         public override Field<string> Clone()
         {

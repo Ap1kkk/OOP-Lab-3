@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Lab4
         [STAThread]
         static void Main()
         {
+            FirmFactory firmFactory = new FirmFactory();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
