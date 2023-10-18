@@ -14,7 +14,7 @@ namespace Lab4
 {
     public partial class MainForm : Form
     {
-        
+        private FilterForm _filterForm = new FilterForm();
         public MainForm()
         {
             InitializeComponent();
@@ -40,6 +40,11 @@ namespace Lab4
                 firmView.DisplaySubFirms(SubFirmsTableLayout);
                 firmView.DisplayContacts(ContactsTableLayout);
             }
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _filterForm.ShowDialog();   
         }
     }
 }

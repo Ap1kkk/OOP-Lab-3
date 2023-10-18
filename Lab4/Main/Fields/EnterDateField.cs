@@ -21,9 +21,6 @@ namespace Lab4.Main.Fields
             set { Firm.EnterDate = value; }
         }
 
-        protected override IFilterRule<ILogicalExpression<DateTime>, Field<DateTime>, DateTime> FilterRule
-            => new EnterDateRule(this) as IFilterRule<ILogicalExpression<DateTime>, Field<DateTime>, DateTime>;
-
         public override Field<DateTime> Clone()
         {
             return new EnterDateField(Firm);

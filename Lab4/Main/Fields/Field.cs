@@ -14,8 +14,6 @@ namespace Lab4.Main
     {
         public abstract T Value { get; set; }
         protected readonly Dictionary<Type, ILogicalExpression<T>> FilterExpressions = new Dictionary<Type, ILogicalExpression<T>>();
-
-        protected abstract IFilterRule<ILogicalExpression<T>, Field<T>, T> FilterRule { get; }
         protected Firm Firm;
 
         public Field(Firm relatedFirm)

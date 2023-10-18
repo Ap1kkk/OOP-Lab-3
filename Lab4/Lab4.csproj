@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilterForm.Designer.cs">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,7 @@
     <Compile Include="Main\Fields\TownField.cs" />
     <Compile Include="Main\Fields\UserField.cs" />
     <Compile Include="Main\Fields\WebsiteUrlField.cs" />
+    <Compile Include="Main\FirmFilter.cs" />
     <Compile Include="Main\FirmView.cs" />
     <Compile Include="Main\Rules\ContactsAmountRule.cs" />
     <Compile Include="Main\Rules\CountryRule.cs" />
@@ -92,6 +99,9 @@
     <Compile Include="Main\Rules\WebsiteUrlRule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

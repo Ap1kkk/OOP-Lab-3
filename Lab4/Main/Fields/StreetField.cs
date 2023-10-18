@@ -21,9 +21,6 @@ namespace Lab4.Main.Fields
             set { Firm.Street = value; }
         }
 
-        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new StreetRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
         public override Field<string> Clone()
         {
             return new StreetField(Firm);

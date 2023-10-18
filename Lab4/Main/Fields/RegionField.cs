@@ -21,9 +21,6 @@ namespace Lab4.Main.Fields
             set { Firm.Region = value; }
         }
 
-        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new RegionRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
         public override Field<string> Clone()
         {
             return new RegionField(Firm);

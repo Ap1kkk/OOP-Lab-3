@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tests;
 
-namespace Tests
+namespace Lab_3.Tests
 {
     [TestClass()]
     public class FirmTests
@@ -46,7 +47,7 @@ namespace Tests
             Assert.IsNotNull(firm.GetContact(_contact_c_2));
 
             Assert.IsTrue(addedContact == _contact_c_2);
-            
+
         }
         [TestMethod()]
         public void IsContactExistsTestNotMain()
@@ -143,6 +144,34 @@ namespace Tests
             Firm firm = Utils.DefaultFirm();
             SubFirm createdSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
             Assert.IsNotNull(createdSubFirm);
+        }
+        [TestMethod()]
+        public void AddContactTest()
+        {
+            Firm firm = Utils.DefaultFirm();
+            Contact contact = Utils.DefaultContact();
+            Contact addedContact = firm.AddContact(contact);
+            Assert.IsNotNull(addedContact);
+            Assert.AreNotSame(contact, addedContact);
+            Assert.IsTrue(firm.Main.IsContactExists(contact));
+
+        }
+
+        [TestMethod()]
+        public void AddContactToSubFirmTest()
+        {
+            Firm firm = Utils.DefaultFirm();
+            SubFirm subFirm = Utils.DefaultSubFirm();
+            Contact contact = Utils.DefaultContact();
+
+            firm.AddSubFirm(subFirm.Type, subFirm.Name, subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
+            Contact addedContact = firm.AddContactToSubFirm(subFirm.Type, contact);
+            Assert.IsNotNull(addedContact);
+            Assert.AreNotSame(contact, addedContact);
+            SubFirm addedSubFirm = firm.GetSubFirm(subFirm.Type);
+            Assert.IsNotNull(addedSubFirm);
+            Assert.IsTrue(addedSubFirm.IsContactExists(contact));
+            Assert.IsNotNull(firm.GetSubFirmContact(subFirm.Type, contact));
         }
     }
 }

@@ -21,9 +21,6 @@ namespace Lab4.Main.Fields
             set { throw new InvalidOperationException("Cannot change CountContacts value"); }
         }
 
-        protected override IFilterRule<ILogicalExpression<int>, Field<int>, int> FilterRule =>
-            new ContactsAmountRule(this) as IFilterRule<ILogicalExpression<int>, Field<int>, int>;
-
         public override Field<int> Clone()
         {
             return new ContactsAmountField(Firm);

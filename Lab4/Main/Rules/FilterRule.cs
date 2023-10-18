@@ -21,7 +21,7 @@ namespace Lab4.Main.Rules
             
         public bool FirmRespond(L expression, F comparable)
         {
-            throw new NotImplementedException();
+            return expression.Compare(Field, comparable);
         }
     }
 }

@@ -110,7 +110,8 @@ namespace Lab4.Main
         private TextBox CreateTextBox(string textValue)
         {
             Font font = new Font("Microsoft Sans Serif", 14);
-            return new TextBox() { Text = textValue, Dock = DockStyle.Fill, TextAlign = HorizontalAlignment.Center, Font = font };
+            return new TextBox() { Text = textValue, Dock = DockStyle.Fill, TextAlign = HorizontalAlignment.Center, Font = font};
+
         }
         private TableLayoutPanel CreateUserFieldsView()
         {

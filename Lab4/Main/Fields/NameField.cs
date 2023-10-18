@@ -22,9 +22,6 @@ namespace Lab4.Main.Fields
             set { Firm.Name = value; }
         }
 
-        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new NameRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
         public override Field<string> Clone()
         {
             return new NameField(Firm);

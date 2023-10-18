@@ -22,9 +22,6 @@ namespace Lab4.Main.Fields
             set { Firm.SetField(_fieldName, value); }
         }
 
-        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new UserFieldRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
         public override Field<string> Clone()
         {
             return new UserField(Firm, _fieldName);

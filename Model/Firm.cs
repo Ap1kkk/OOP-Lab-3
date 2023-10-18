@@ -230,6 +230,12 @@ namespace Lab_3
             return subFirm;
         }
 
+        public SubFirm GetSubFirm(SubFirmType subFirmType)
+        {
+            SubFirm subFirm = _subFirms.FirstOrDefault(current => current.IsEqualType(subFirmType));
+            return subFirm;
+        }
+
         public void AddField(string fieldName)
         {
             if(_userFields.ContainsKey(fieldName))

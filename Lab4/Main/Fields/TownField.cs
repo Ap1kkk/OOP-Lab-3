@@ -20,9 +20,6 @@ namespace Lab4.Main.Fields
             set { Firm.Town = value; }
         }
 
-        protected override IFilterRule<ILogicalExpression<string>, Field<string>, string> FilterRule =>
-            new TownRule(this) as IFilterRule<ILogicalExpression<string>, Field<string>, string>;
-
         public override Field<string> Clone()
         {
             return new TownField(Firm);
