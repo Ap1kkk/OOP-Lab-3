@@ -18,33 +18,43 @@ namespace Lab4
         public MainForm()
         {
             InitializeComponent();
+
+            AddFirmColumns();
+
             Firm firm = FirmFactory.Instance.Create("name", "country", "region", "town", "street",
                 "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
 
             firm.AddContact(new Contact(new ContactType("name", "note"), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));
             firm.SetField("field1", "vallues");
+            firm.SetField("field2", "vallues");
+            firm.SetField("field3", "vallues");
+            firm.SetField("field4", "vallues");
+
+
 
             FirmView firmView = new FirmView(firm);
-            firmView.DisplayFirm(FirmTableLayout);
-            firmView.DisplaySubFirms(SubFirmsTableLayout);
-            firmView.DisplayContacts(ContactsTableLayout);
-
-            for (int i = 0; i < 5; i++)
-            {
-                firmView.DisplayFirm(FirmTableLayout);
-                firmView.DisplaySubFirms(SubFirmsTableLayout);
-            }
-
-            for (int i = 0; i < 15; i++)
-            {
-                firmView.DisplaySubFirms(SubFirmsTableLayout);
-                firmView.DisplayContacts(ContactsTableLayout);
-            }
-        }
+            firmBindingSource1.DataSource = firmView.DisplayElement;
+            //subFirmBindingSource.DataSource = firmView.DisplaySubFirmsElements;
+            var t = new SubFirmViewElement(firm.Main);
+            subFirmBindingSource.DataSource = t;
+       }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _filterForm.ShowDialog();   
+        }
+
+        private void AddFirmColumns()
+        {
+            int index = 1;
+            foreach (var userField in FirmFactory.Instance.UserFields.Keys)
+            {
+                DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                column.DataPropertyName = $"UserField{index}";
+                column.HeaderText = $"UserField{index}";
+                index++;
+                dataGridView1.Columns.Add(column);
+            }
         }
     }
 }

@@ -13,30 +13,45 @@ namespace Lab4.Main
 {
     public struct FirmViewElement
     {
-        public string Name => firm.Name;
-        public string Country => firm.Country;
-        public string Region => firm.Region;
-        public string Town => firm.Town;
-        public string Street => firm.Street;
-        public string PostIndex => firm.PostIndex;
-        public string Email => firm.Email;
-        public string WebsiteUrl => firm.WebsiteUrl;
-        public DateTime EnterDate => firm.EnterDate;
-        public int ContactsAmount => firm.ContactsAmount;
-        public string UserField1 => firm.UserFields[FirmFactory.Instance.FieldName1];
-        public string UserField2 => firm.UserFields[FirmFactory.Instance.FieldName2];
-        public string UserField3 => firm.UserFields[FirmFactory.Instance.FieldName3];
-        public string UserField4 => firm.UserFields[FirmFactory.Instance.FieldName4];
-        public string UserField5 => firm.UserFields[FirmFactory.Instance.FieldName5];
+        public string Name => _firm.Name;
+        public string Country => _firm.Country;
+        public string Region => _firm.Region;
+        public string Town => _firm.Town;
+        public string Street => _firm.Street;
+        public string PostIndex => _firm.PostIndex;
+        public string Email => _firm.Email;
+        public string WebsiteUrl => _firm.WebsiteUrl;
+        public DateTime EnterDate => _firm.EnterDate;
+        public int ContactsAmount => _firm.ContactsAmount;
+        public string UserField1 => _firm.UserFields[FirmFactory.Instance.FieldName1];
+        public string UserField2 => _firm.UserFields[FirmFactory.Instance.FieldName2];
+        public string UserField3 => _firm.UserFields[FirmFactory.Instance.FieldName3];
+        public string UserField4 => _firm.UserFields[FirmFactory.Instance.FieldName4];
+        public string UserField5 => _firm.UserFields[FirmFactory.Instance.FieldName5];
 
-        private Firm firm;
+        private Firm _firm;
         public FirmViewElement(Firm relatedFirm)
         {
-            firm = relatedFirm;
+            _firm = relatedFirm;
         }
-
     }
 
+    public struct SubFirmViewElement
+    {
+        public string IsMain => _subFirm.Type.IsMain.ToString();
+        public string Name => _subFirm.Name;
+        public string BossName => _subFirm.BossName;
+        public string OfficialBossName => _subFirm.OfficialBossName;
+        public string PhoneNumber => _subFirm.PhoneNumber;
+        public string Email => _subFirm.Email;
+        public int ContactsAmount => _subFirm.ContactsAmount;
+
+        private SubFirm _subFirm;
+        public SubFirmViewElement(SubFirm relatedSubFirm)
+        {
+            _subFirm = relatedSubFirm;
+        }
+    }
 
     public class FirmView
     {
@@ -51,7 +66,17 @@ namespace Lab4.Main
         public ContactsAmountField ContactsAmountField { get; private set; }
         public readonly Dictionary<string, UserField> UserFields = new Dictionary<string, UserField>();
 
-        
+        public FirmViewElement DisplayElement => new FirmViewElement(_relatedFirm);
+        public SubFirmViewElement DisplayElementMain => new SubFirmViewElement(_relatedFirm.Main);
+        public List<SubFirmViewElement> DisplaySubFirmsElements =>
+            new List<SubFirmViewElement>(_relatedFirm.SubFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(ConvertSubFirm)))
+            { ConvertSubFirm(_relatedFirm.Main)};
+
+        public static SubFirmViewElement ConvertSubFirm(SubFirm subFirm)
+        {
+             return new SubFirmViewElement(subFirm);
+        }
+
         private Firm _relatedFirm;
 
         public FirmView(Firm relatedFirm)
