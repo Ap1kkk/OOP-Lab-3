@@ -34,13 +34,20 @@ namespace Lab_3
             UserFields.Add(FieldName4, "");
             UserFields.Add(FieldName5, "");
         }
-
-        public Firm Create(string country, string region,
+        public Firm Create()
+        {
+            Firm firm = new Firm(MainFirmName, "country", "region", "town", "street",
+                "postIndex", "email", "websiteUrl", new DateTime(2000, 4, 4), "bossName",
+                "officialBossName", "phoneNumber");
+            FillUserFields(firm);
+            return firm;
+        }
+        public Firm Create(string name, string country, string region,
             string town, string street, string postIndex, string email,
             string websiteUrl, DateTime enterDate,
             string bossName, string officialBossName, string phoneNumber)
         {
-            Firm firm = new Firm(MainFirmName, country, region, town, street,
+            Firm firm = new Firm(name, country, region, town, street,
                 postIndex, email, websiteUrl, enterDate, bossName,
                 officialBossName, phoneNumber);
 

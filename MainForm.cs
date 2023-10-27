@@ -17,7 +17,7 @@ namespace Lab_3
             InitializeComponent();
 
             FirmFactory _firmFactory = new FirmFactory();
-            _firmFactory.Create("2", "3", "4", "5", "6", "7", "8", new DateTime(2004, 4, 7), "9", "10", "11");
+            _firmFactory.Create("1", "2", "3", "4", "5", "6", "7", "8", new DateTime(2004, 4, 7), "9", "10", "11");
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class RegionRule : FilterRule<IStringFieldExpression, RegionField, string>
+    public class RegionRule : FilterRule<string>
     {
         public RegionRule(RegionField relatedField) : base(relatedField)
         {

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Lab4.Main.Expressions;
 using Lab4.Main.Fields;
 using Tests;
+using Lab_3;
+using Lab4.Main.Rules;
 
 namespace Lab4.Main.Tests
 {
@@ -50,6 +52,16 @@ namespace Lab4.Main.Tests
             Assert.IsTrue(postIndexField1.GetFilterResult(postIndexFiel2));
             postIndexField1.AddRule(expression3);
             Assert.IsFalse(postIndexField1.GetFilterResult(postIndexFiel2));
+        }
+
+        [TestMethod()]
+        public void CreateRuleTest()
+        {
+            Firm firm = Utils.DefaultFirm();
+            NameField nameField = new NameField(firm);
+            NameRule rule = nameField.CreateRule<NameRule>();
+            Assert.IsNotNull(rule);
+            Assert.AreSame(nameField, rule.Field);
         }
     }
 }

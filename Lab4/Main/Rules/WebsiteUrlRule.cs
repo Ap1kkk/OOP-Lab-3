@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class WebsiteUrlRule : FilterRule<ILogicalExpression<string>, WebsiteUrlField, string>
+    public class WebsiteUrlRule : FilterRule<string>
     {
         public WebsiteUrlRule(WebsiteUrlField relatedField) : base(relatedField)
         {

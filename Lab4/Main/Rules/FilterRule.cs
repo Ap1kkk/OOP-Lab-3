@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public abstract class FilterRule<L, F, T> : IFilterRule<L, F, T> where L : ILogicalExpression<T> where T : IComparable where F : Field<T>
+    public abstract class FilterRule<T> : IFilterRule<T> where T : IComparable
     {
-        public F Field { get; }
+        public Field<T> Field { get; }
 
-        public FilterRule(F relatedField)
+        public FilterRule(Field<T> relatedField)
         {
             if(relatedField == null)
                 throw new ArgumentNullException(nameof(relatedField));
             Field = relatedField;
         }
             
-        public bool FirmRespond(L expression, F comparable)
+        public bool FirmRespond(ILogicalExpression<T> expression, Field<T> comparable)
         {
             return expression.Compare(Field, comparable);
         }

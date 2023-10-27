@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class CountryRule : FilterRule<ILogicalExpression<string>, CountryField, string>
+    public class CountryRule : FilterRule<string>
     {
         public CountryRule(CountryField relatedField) : base(relatedField)
         {

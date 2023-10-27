@@ -18,7 +18,7 @@ namespace Lab4
         public MainForm()
         {
             InitializeComponent();
-            Firm firm = FirmFactory.Instance.Create("country", "region", "town", "street",
+            Firm firm = FirmFactory.Instance.Create("name", "country", "region", "town", "street",
                 "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
 
             firm.AddContact(new Contact(new ContactType("name", "note"), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));

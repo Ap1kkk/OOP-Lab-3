@@ -4,6 +4,7 @@ using Lab4.Main.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
@@ -58,6 +59,11 @@ namespace Lab4.Main
                 result = result && filterExpression.Compare(this, comparable);
             }
             return result;
+        }
+
+        public F CreateRule<F>() where F : FilterRule<T>
+        {
+            return (F)Activator.CreateInstance(typeof(F), this);
         }
     }
 }

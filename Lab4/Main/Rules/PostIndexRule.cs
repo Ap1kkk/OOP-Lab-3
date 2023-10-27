@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class PostIndexRule : FilterRule<IStringFieldExpression, PostIndexField, string>
+    public class PostIndexRule : FilterRule<string>
     {
         public PostIndexRule(PostIndexField relatedField) : base(relatedField)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class TownRule : FilterRule<IStringFieldExpression, TownField, string>
+    public class TownRule : FilterRule<string>
     {
         public TownRule(TownField relatedField) : base(relatedField)
         {

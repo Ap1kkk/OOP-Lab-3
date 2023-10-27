@@ -16,6 +16,7 @@ namespace Lab_3.Tests
         [TestMethod()]
         public void CreateTest()
         {
+            const string name = "name";
             const string country = "country";
             const string region = "region";
             const string town = "town";
@@ -28,7 +29,7 @@ namespace Lab_3.Tests
             const string officialBossName = "officialBossName";
             const string phoneNumber = "phoneNumber";
 
-            Firm createdFirm = Utils.FirmFactory.Create(country, region, town, street, postIndex, email, websiteUrl,
+            Firm createdFirm = Utils.FirmFactory.Create(name, country, region, town, street, postIndex, email, websiteUrl,
                 enterDate, bossName, officialBossName, phoneNumber);
 
 

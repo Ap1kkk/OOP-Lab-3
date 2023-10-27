@@ -11,6 +11,33 @@ using System.Windows.Forms;
 
 namespace Lab4.Main
 {
+    public struct FirmViewElement
+    {
+        public string Name => firm.Name;
+        public string Country => firm.Country;
+        public string Region => firm.Region;
+        public string Town => firm.Town;
+        public string Street => firm.Street;
+        public string PostIndex => firm.PostIndex;
+        public string Email => firm.Email;
+        public string WebsiteUrl => firm.WebsiteUrl;
+        public DateTime EnterDate => firm.EnterDate;
+        public int ContactsAmount => firm.ContactsAmount;
+        public string UserField1 => firm.UserFields[FirmFactory.Instance.FieldName1];
+        public string UserField2 => firm.UserFields[FirmFactory.Instance.FieldName2];
+        public string UserField3 => firm.UserFields[FirmFactory.Instance.FieldName3];
+        public string UserField4 => firm.UserFields[FirmFactory.Instance.FieldName4];
+        public string UserField5 => firm.UserFields[FirmFactory.Instance.FieldName5];
+
+        private Firm firm;
+        public FirmViewElement(Firm relatedFirm)
+        {
+            firm = relatedFirm;
+        }
+
+    }
+
+
     public class FirmView
     {
         public NameField NameField { get; private set; }

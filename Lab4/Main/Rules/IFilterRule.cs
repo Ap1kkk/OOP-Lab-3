@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public interface IFilterRule<L, F, T> where L : ILogicalExpression<T> where T : IComparable where F : Field<T>
+    public interface IFilterRule<T>  where T : IComparable
     {
-        F Field { get; }
-        bool FirmRespond(L expression, F comparable);
+        Field<T> Field { get; }
+        bool FirmRespond(ILogicalExpression<T> expression, Field<T> comparable);
     }
 }

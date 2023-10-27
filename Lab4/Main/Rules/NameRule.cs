@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class NameRule : FilterRule<ILogicalExpression<string>, NameField, string>
+    public class NameRule : FilterRule<string>
     {
         public NameRule(NameField relatedField) : base(relatedField)
         {

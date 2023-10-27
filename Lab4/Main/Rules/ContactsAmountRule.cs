@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class ContactsAmountRule : FilterRule<ILogicalExpression<int>, ContactsAmountField, int>
+    public class ContactsAmountRule : FilterRule<int>
     {
         public ContactsAmountRule(ContactsAmountField relatedField) : base(relatedField)
         {

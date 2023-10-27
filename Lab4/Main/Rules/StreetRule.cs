@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class StreetRule : FilterRule<ILogicalExpression<string>, StreetField, string>
+    public class StreetRule : FilterRule<string>
     {
         public StreetRule(StreetField relatedField) : base(relatedField)
         {

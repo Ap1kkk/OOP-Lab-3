@@ -12,7 +12,7 @@ namespace Tests
         public static FirmFactory FirmFactory { get; } = new FirmFactory();
         public static Firm DefaultFirm()
         {
-            return FirmFactory.Create("country", "region", "town", "street", 
+            return FirmFactory.Create("name", "country", "region", "town", "street", 
                 "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
         }
         public static SubFirm DefaultSubFirm()
