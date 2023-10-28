@@ -53,6 +53,22 @@ namespace Lab4.Main
         }
     }
 
+    public struct ContactViewElement
+    {
+        public string Name => contact.Type.Name;
+        public string Note => contact.Type.Note;
+        public string Description => contact.Description;
+        public string Information => contact.Information;
+        public DateTime BeginDate => contact.BeginDate;
+        public DateTime EndDate => contact.EndDate;
+
+        private Contact contact;
+        public ContactViewElement(Contact relatedContact)
+        {
+            contact = relatedContact;
+        }
+    }
+
     public class FirmView
     {
         public NameField NameField { get; private set; }
@@ -67,17 +83,33 @@ namespace Lab4.Main
         public readonly Dictionary<string, UserField> UserFields = new Dictionary<string, UserField>();
 
         public FirmViewElement DisplayElement => new FirmViewElement(_relatedFirm);
-        public SubFirmViewElement DisplayElementMain => new SubFirmViewElement(_relatedFirm.Main);
         public List<SubFirmViewElement> DisplaySubFirmsElements =>
             new List<SubFirmViewElement>(_relatedFirm.SubFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(ConvertSubFirm)))
             { ConvertSubFirm(_relatedFirm.Main)};
+        public List<ContactViewElement> DisplayContactsElements =>
+            new List<ContactViewElement>(GetAllContacts().ConvertAll(new Converter<Contact, ContactViewElement>(ConvertContact)));
 
-        public static SubFirmViewElement ConvertSubFirm(SubFirm subFirm)
+        private Firm _relatedFirm;
+
+        private List<Contact> GetAllContacts()
+        {
+            List<Contact> result = new List<Contact>();
+            result.AddRange(_relatedFirm.Main.Contacts);
+            foreach (var subFirm in _relatedFirm.SubFirms)
+            {
+                result.AddRange(subFirm.Contacts);
+            }
+            return result;
+        }
+
+        private static SubFirmViewElement ConvertSubFirm(SubFirm subFirm)
         {
              return new SubFirmViewElement(subFirm);
         }
-
-        private Firm _relatedFirm;
+        private static ContactViewElement ConvertContact(Contact contact)
+        {
+            return new ContactViewElement(contact);
+        }
 
         public FirmView(Firm relatedFirm)
         {

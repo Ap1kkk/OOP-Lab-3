@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class PostIndexRule : FilterRule<string>
+    public class PostIndexRule : FilterRule<PostIndexField, string>
     {
-        public PostIndexRule(PostIndexField relatedField) : base(relatedField)
+        public PostIndexRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

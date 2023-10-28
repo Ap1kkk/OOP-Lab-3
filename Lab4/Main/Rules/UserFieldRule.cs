@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class UserFieldRule : FilterRule<string>
+    public class UserFieldRule : FilterRule<UserField, string>
     {
-        public UserFieldRule(UserField relatedField) : base(relatedField)
+        public UserFieldRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }   
     }

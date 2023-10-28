@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class EnterDateRule : FilterRule<DateTime>
+    public class EnterDateRule : FilterRule<EnterDateField, DateTime>
     {
-        public EnterDateRule(EnterDateField relatedField) : base(relatedField)
+        public EnterDateRule(DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

@@ -12,6 +12,8 @@ namespace Lab_3
     {
         public static FirmFactory Instance { get; private set; } = null;
 
+        public event Action<Firm> OnFirmCreated;
+
         public readonly string FieldName1 = "field1";
         public readonly string FieldName2 = "field2";
         public readonly string FieldName3 = "field3";
@@ -36,11 +38,9 @@ namespace Lab_3
         }
         public Firm Create()
         {
-            Firm firm = new Firm(MainFirmName, "country", "region", "town", "street",
+            return Create(MainFirmName, "country", "region", "town", "street",
                 "postIndex", "email", "websiteUrl", new DateTime(2000, 4, 4), "bossName",
                 "officialBossName", "phoneNumber");
-            FillUserFields(firm);
-            return firm;
         }
         public Firm Create(string name, string country, string region,
             string town, string street, string postIndex, string email,
@@ -52,6 +52,7 @@ namespace Lab_3
                 officialBossName, phoneNumber);
 
             FillUserFields(firm);
+            OnFirmCreated?.Invoke(firm);
             return firm;
         }
 

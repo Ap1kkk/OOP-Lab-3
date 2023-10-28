@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class StreetRule : FilterRule<string>
+    public class StreetRule : FilterRule<StreetField, string>
     {
-        public StreetRule(StreetField relatedField) : base(relatedField)
+        public StreetRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

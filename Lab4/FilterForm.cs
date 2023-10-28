@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Lab4.Main;
+using Lab4.Main.Rules;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,40 +12,23 @@ using System.Windows.Forms;
 
 namespace Lab4
 {
+
     public partial class FilterForm : Form
     {
+        FilterSelector _filterSelector = new FilterSelector(FirmPool.Instance);
+
         public FilterForm()
         {
             InitializeComponent();
+
+            //_filterView = new FieldFilterView<NameRule>(FilterRuleType.String, "msgapn");
+            //_filterView.Display(FilterTableLayout);
+            _filterSelector.Display(FilterTableLayout);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void ApplyButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FirmNameFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            if(FirmNameFilter.Checked)
-            {
-
-            }
-        }
-
-
-        private Panel CreateStringExpressionsView()
-        {
-            Panel panel = new Panel() {AutoSize = true };
-            CheckBox filterCheckBox = new CheckBox() { Text = "filter" };
-
-
-
-            return panel;
+            _filterSelector.GetSelectedFirms();
         }
     }
 }

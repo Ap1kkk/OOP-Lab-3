@@ -34,10 +34,9 @@ namespace Lab4
 
             FirmView firmView = new FirmView(firm);
             firmBindingSource1.DataSource = firmView.DisplayElement;
-            //subFirmBindingSource.DataSource = firmView.DisplaySubFirmsElements;
-            var t = new SubFirmViewElement(firm.Main);
-            subFirmBindingSource.DataSource = t;
-       }
+            subFirmBindingSource.DataSource = firmView.DisplaySubFirmsElements;
+            contactBindingSource.DataSource = firmView.DisplayContactsElements;
+        }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {

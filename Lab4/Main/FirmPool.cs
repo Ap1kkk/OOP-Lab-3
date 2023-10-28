@@ -22,9 +22,15 @@ namespace Lab4.Main
                 throw new InvalidOperationException("Only single instance possible");
             }
             Instance = this;
+            FirmFactory.Instance.OnFirmCreated += OnFirmCreated;
         }
 
-        public void Add(Firm firm, FirmView firmView) 
+        private void OnFirmCreated(Firm firm)
+        {
+            _firms.Add(firm, new FirmView(firm));
+        }
+
+        private void Add(Firm firm, FirmView firmView) 
         { 
             _firms.Add(firm, firmView);
         }

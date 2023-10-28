@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class TownRule : FilterRule<string>
+    public class TownRule : FilterRule<TownField, string>
     {
-        public TownRule(TownField relatedField) : base(relatedField)
+        public TownRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

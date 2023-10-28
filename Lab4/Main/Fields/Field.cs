@@ -1,5 +1,6 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
+using Lab4.Main.Fields;
 using Lab4.Main.Rules;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Lab4.Main
 {
-    public abstract class Field<T> where T : IComparable
+    public abstract class Field<T> : IFieldBase where T : IComparable
     {
         public abstract T Value { get; set; }
         protected readonly Dictionary<Type, ILogicalExpression<T>> FilterExpressions = new Dictionary<Type, ILogicalExpression<T>>();
@@ -51,19 +52,19 @@ namespace Lab4.Main
             FilterExpressions.Remove(filterExpression.GetType());
         }
 
-        public bool GetFilterResult(Field<T> comparable)
-        {
-            bool result = true;
-            foreach (var filterExpression in FilterExpressions.Values)
-            {
-                result = result && filterExpression.Compare(this, comparable);
-            }
-            return result;
-        }
+        //public bool GetFilterResult(Field<T> comparable)
+        //{
+        //    bool result = true;
+        //    foreach (var filterExpression in FilterExpressions.Values)
+        //    {
+        //        result = result && filterExpression.Compare(this.Value, comparable);
+        //    }
+        //    return result;
+        //}
 
-        public F CreateRule<F>() where F : FilterRule<T>
-        {
-            return (F)Activator.CreateInstance(typeof(F), this);
-        }
+        //public F CreateRule<F>() where F : FilterRule<T>
+        //{
+        //    return (F)Activator.CreateInstance(typeof(F), this);
+        //}
     }
 }

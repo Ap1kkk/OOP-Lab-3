@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class NameRule : FilterRule<string>
+    public class NameRule : FilterRule<NameField, string>
     {
-        public NameRule(NameField relatedField) : base(relatedField)
+        public NameRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

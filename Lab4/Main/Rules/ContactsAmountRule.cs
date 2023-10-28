@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class ContactsAmountRule : FilterRule<int>
+    public class ContactsAmountRule : FilterRule<ContactsAmountField, int>
     {
-        public ContactsAmountRule(ContactsAmountField relatedField) : base(relatedField)
+        public ContactsAmountRule(int comparingValue, ILogicalExpression<int> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

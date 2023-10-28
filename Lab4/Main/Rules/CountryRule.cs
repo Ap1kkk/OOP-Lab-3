@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class CountryRule : FilterRule<string>
+    public class CountryRule : FilterRule<CountryField, string>
     {
-        public CountryRule(CountryField relatedField) : base(relatedField)
+        public CountryRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
         }
     }

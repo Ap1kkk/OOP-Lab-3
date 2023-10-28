@@ -1,4 +1,5 @@
 ﻿using Lab_3;
+using Lab4.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Lab4
         static void Main()
         {
             FirmFactory firmFactory = new FirmFactory();
+            FirmPool firmPool = new FirmPool();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

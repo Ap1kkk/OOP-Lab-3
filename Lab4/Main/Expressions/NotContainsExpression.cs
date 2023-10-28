@@ -12,5 +12,10 @@ namespace Lab4.Main.Expressions
         {
             return left.Value.Contains(right.Value);
         }
+
+        public bool Compare(string comparingValue, Field<string> field)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
