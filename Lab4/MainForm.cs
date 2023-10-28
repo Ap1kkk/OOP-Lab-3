@@ -14,7 +14,8 @@ namespace Lab4
 {
     public partial class MainForm : Form
     {
-        private FilterForm _filterForm = new FilterForm();
+        private MaInController _mainController;
+        private FilterForm _filterForm;
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +37,9 @@ namespace Lab4
             firmBindingSource1.DataSource = firmView.DisplayElement;
             subFirmBindingSource.DataSource = firmView.DisplaySubFirmsElements;
             contactBindingSource.DataSource = firmView.DisplayContactsElements;
+
+            _mainController = new MaInController(firmBindingSource1, subFirmBindingSource, contactBindingSource);
+            _filterForm = new FilterForm(_mainController);
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)

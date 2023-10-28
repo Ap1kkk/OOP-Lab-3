@@ -15,20 +15,17 @@ namespace Lab4
 
     public partial class FilterForm : Form
     {
-        FilterSelector _filterSelector = new FilterSelector(FirmPool.Instance);
-
-        public FilterForm()
+        private MaInController _mainController;
+        public FilterForm(MaInController maInController)
         {
             InitializeComponent();
-
-            //_filterView = new FieldFilterView<NameRule>(FilterRuleType.String, "msgapn");
-            //_filterView.Display(FilterTableLayout);
-            _filterSelector.Display(FilterTableLayout);
+            _mainController = maInController;
+            _mainController.DisplayFilters(FilterTableLayout);
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            _filterSelector.GetSelectedFirms();
+            _mainController.ApplyFilter();
         }
     }
 }

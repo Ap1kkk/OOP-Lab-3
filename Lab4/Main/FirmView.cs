@@ -82,132 +82,46 @@ namespace Lab4.Main
         public ContactsAmountField ContactsAmountField { get; private set; }
         public readonly Dictionary<string, UserField> UserFields = new Dictionary<string, UserField>();
 
-        public FirmViewElement DisplayElement => new FirmViewElement(_relatedFirm);
+        public FirmViewElement DisplayElement => new FirmViewElement(RelatedFirm);
         public List<SubFirmViewElement> DisplaySubFirmsElements =>
-            new List<SubFirmViewElement>(_relatedFirm.SubFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(ConvertSubFirm)))
-            { ConvertSubFirm(_relatedFirm.Main)};
+            new List<SubFirmViewElement>(RelatedFirm.SubFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(Converter.ConvertSubFirm)))
+            { Converter.ConvertSubFirm(RelatedFirm.Main)};
         public List<ContactViewElement> DisplayContactsElements =>
-            new List<ContactViewElement>(GetAllContacts().ConvertAll(new Converter<Contact, ContactViewElement>(ConvertContact)));
+            new List<ContactViewElement>(GetAllContacts().ConvertAll(new Converter<Contact, ContactViewElement>(Converter.ConvertContact)));
 
-        private Firm _relatedFirm;
+        public Firm RelatedFirm { get; private set; }
 
         private List<Contact> GetAllContacts()
         {
             List<Contact> result = new List<Contact>();
-            result.AddRange(_relatedFirm.Main.Contacts);
-            foreach (var subFirm in _relatedFirm.SubFirms)
+            result.AddRange(RelatedFirm.Main.Contacts);
+            foreach (var subFirm in RelatedFirm.SubFirms)
             {
                 result.AddRange(subFirm.Contacts);
             }
             return result;
         }
 
-        private static SubFirmViewElement ConvertSubFirm(SubFirm subFirm)
-        {
-             return new SubFirmViewElement(subFirm);
-        }
-        private static ContactViewElement ConvertContact(Contact contact)
-        {
-            return new ContactViewElement(contact);
-        }
 
         public FirmView(Firm relatedFirm)
         {
-            _relatedFirm = relatedFirm;
+            RelatedFirm = relatedFirm;
 
-            NameField = new NameField(_relatedFirm);
-            CountryField = new CountryField(_relatedFirm);
-            RegionField = new RegionField(_relatedFirm);
-            TownField = new TownField(_relatedFirm);
-            StreetField = new StreetField(_relatedFirm);
-            PostIndexField = new PostIndexField(_relatedFirm);
-            WebsiteUrlField = new WebsiteUrlField(_relatedFirm);
-            EnterDateField = new EnterDateField(_relatedFirm);
-            ContactsAmountField = new ContactsAmountField(_relatedFirm);
+            NameField = new NameField(RelatedFirm);
+            CountryField = new CountryField(RelatedFirm);
+            RegionField = new RegionField(RelatedFirm);
+            TownField = new TownField(RelatedFirm);
+            StreetField = new StreetField(RelatedFirm);
+            PostIndexField = new PostIndexField(RelatedFirm);
+            WebsiteUrlField = new WebsiteUrlField(RelatedFirm);
+            EnterDateField = new EnterDateField(RelatedFirm);
+            ContactsAmountField = new ContactsAmountField(RelatedFirm);
 
-            foreach (var userFieldName in _relatedFirm.UserFields.Keys)
+            foreach (var userFieldName in RelatedFirm.UserFields.Keys)
             {
                 UserFields.Add(userFieldName, new UserField(relatedFirm, userFieldName));
             }
         }
 
-        public void DisplayFirm(TableLayoutPanel tableLayout)
-        {
-            tableLayout.RowCount += 1;
-
-            tableLayout.Controls.Add(CreateTextBox(NameField.Value));
-            tableLayout.Controls.Add(CreateTextBox(CountryField.Value));
-            tableLayout.Controls.Add(CreateTextBox(RegionField.Value));
-            tableLayout.Controls.Add(CreateTextBox(TownField.Value));
-            tableLayout.Controls.Add(CreateTextBox(StreetField.Value));
-            tableLayout.Controls.Add(CreateTextBox(PostIndexField.Value));
-            tableLayout.Controls.Add(CreateTextBox(WebsiteUrlField.Value));
-            tableLayout.Controls.Add(CreateTextBox(EnterDateField.Value.ToString()));
-            tableLayout.Controls.Add(CreateUserFieldsView());
-            tableLayout.Controls.Add(CreateTextBox(ContactsAmountField.Value.ToString()));
-
-        }
-
-        public void DisplaySubFirms(TableLayoutPanel tableLayout)
-        {
-            DisplaySubFirm(tableLayout, _relatedFirm.Main);
-            foreach (var subFirm in _relatedFirm.SubFirms)
-            {
-                DisplaySubFirm(tableLayout, subFirm);
-            }
-        }
-        private void DisplaySubFirm(TableLayoutPanel tableLayout, SubFirm subFirm)
-        {
-            tableLayout.RowCount += 1;
-            tableLayout.Controls.Add(CreateTextBox(NameField.Value));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.Name));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.Type.IsMain.ToString()));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.BossName));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.OfficialBossName));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.PhoneNumber));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.Email));
-            tableLayout.Controls.Add(CreateTextBox(subFirm.ContactsAmount.ToString()));
-
-        }
-
-        public void DisplayContacts(TableLayoutPanel tableLayout)
-        {
-            DisplayContact(tableLayout, _relatedFirm.Main);
-        }
-        private void DisplayContact(TableLayoutPanel tableLayout, SubFirm subFirm)
-        {
-            foreach (var contact in subFirm.Contacts)
-            {
-                tableLayout.RowCount += 1;
-                tableLayout.Controls.Add(CreateTextBox(NameField.Value));
-                tableLayout.Controls.Add(CreateTextBox(subFirm.Name));
-                tableLayout.Controls.Add(CreateTextBox(contact.Type.Name));
-                tableLayout.Controls.Add(CreateTextBox(contact.Type.Note));
-                tableLayout.Controls.Add(CreateTextBox(contact.Description));
-                tableLayout.Controls.Add(CreateTextBox(contact.Information));
-                tableLayout.Controls.Add(CreateTextBox(contact.BeginDate.ToString()));
-                tableLayout.Controls.Add(CreateTextBox(contact.EndDate.ToString()));
-            }
-        }
-
-
-        private TextBox CreateTextBox(string textValue)
-        {
-            Font font = new Font("Microsoft Sans Serif", 14);
-            return new TextBox() { Text = textValue, Dock = DockStyle.Fill, TextAlign = HorizontalAlignment.Center, Font = font};
-
-        }
-        private TableLayoutPanel CreateUserFieldsView()
-        {
-            TableLayoutPanel layoutPanel = new TableLayoutPanel() { Dock = DockStyle.Fill,  AutoScroll = true };
-            layoutPanel.ColumnCount = 2;
-
-            foreach (var field in UserFields)
-            {
-                layoutPanel.Controls.Add(CreateTextBox(field.Key));
-                layoutPanel.Controls.Add(CreateTextBox(field.Value.Value));
-            }
-            return layoutPanel;
-        }
     }
 }

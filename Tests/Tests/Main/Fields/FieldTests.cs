@@ -33,35 +33,5 @@ namespace Lab4.Main.Tests
             postIndexField.RemoveRule(expression2);
         }
 
-        [TestMethod()]
-        public void GetFilterResultTest()
-        {
-            var firm1 = Utils.DefaultFirm();
-            var firm2 = Utils.DefaultFirm();
-            var postIndexField1 = new PostIndexField(firm1);
-            var postIndexFiel2 = new PostIndexField(firm2);
-
-            var expression1 = LogicalExpressionFactory.Create<EqualsExpression<string>, string>();
-            var expression2 = LogicalExpressionFactory.Create<LessEqualsExpression<string>, string>();
-            var expression3 = LogicalExpressionFactory.Create<LessExpression<string>, string>();
-
-            Assert.IsTrue(postIndexField1.GetFilterResult(postIndexFiel2));
-            postIndexField1.AddRule(expression1);
-            Assert.IsTrue(postIndexField1.GetFilterResult(postIndexFiel2));
-            postIndexField1.AddRule(expression2);
-            Assert.IsTrue(postIndexField1.GetFilterResult(postIndexFiel2));
-            postIndexField1.AddRule(expression3);
-            Assert.IsFalse(postIndexField1.GetFilterResult(postIndexFiel2));
-        }
-
-        [TestMethod()]
-        public void CreateRuleTest()
-        {
-            Firm firm = Utils.DefaultFirm();
-            NameField nameField = new NameField(firm);
-            NameRule rule = nameField.CreateRule<NameRule>();
-            Assert.IsNotNull(rule);
-            Assert.AreSame(nameField, rule.Field);
-        }
     }
 }
