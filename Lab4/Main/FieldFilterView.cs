@@ -20,7 +20,7 @@ namespace Lab4.Main
     public class FieldFilterView<F> : FieldFilterViewBase where F : class, IFilterRuleBase
     {
         private Label _label = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter};
-        private TextBox _textBox = new TextBox() { Text = "Searching string", TextAlign = HorizontalAlignment.Center};
+        private TextBox _textBox = new TextBox() { Text = "Search", TextAlign = HorizontalAlignment.Center};
         private DateTimePicker _dateTimePicker = new DateTimePicker() { };
         private NumericUpDown _numericUpDown = new NumericUpDown() { };
 
