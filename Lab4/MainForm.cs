@@ -22,24 +22,24 @@ namespace Lab4
 
             AddFirmColumns();
 
-            Firm firm = FirmFactory.Instance.Create("name", "country", "region", "town", "street",
-                "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
+            for (int i = 0; i < 20; i++)
+            {
+                Firm firm = FirmFactory.Instance.Create($"name{i}", $"country{i}", $"region{i}", $"town{i}", $"street{i}",
+                    $"postIndex{i}", $"email{i}", $"websiteUrl{i}", new DateTime(2000, 10, 10), $"bossName{i}", $"officialBossName{i}", $"phoneNumber{i}");
 
-            firm.AddContact(new Contact(new ContactType("name", "note"), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));
-            firm.SetField("field1", "vallues");
-            firm.SetField("field2", "vallues");
-            firm.SetField("field3", "vallues");
-            firm.SetField("field4", "vallues");
+                firm.AddContact(new Contact(new ContactType($"name{i}", $"note{i}"), $"description{i}", $"information{i}", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));
+                firm.SetField("field1", $"value{i}");
+                firm.SetField("field2", $"value{i}");
+                firm.SetField("field3", $"value{i}");
+                firm.SetField("field4", $"value{i}");
+                firm.SetField("field5", $"value{i}");
 
-
-
-            FirmView firmView = new FirmView(firm);
-            firmBindingSource1.DataSource = firmView.DisplayElement;
-            subFirmBindingSource.DataSource = firmView.DisplaySubFirmsElements;
-            contactBindingSource.DataSource = firmView.DisplayContactsElements;
+            }
 
             _mainController = new MaInController(firmBindingSource1, subFirmBindingSource, contactBindingSource);
             _filterForm = new FilterForm(_mainController);
+
+            _mainController.DisplayAllData();
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)

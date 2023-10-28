@@ -17,20 +17,22 @@ namespace Lab4.Main
         Int
     }
 
-    public class FieldFilterView<F> where F : class, IFilterRuleBase
+    public class FieldFilterView<F> : FieldFilterViewBase where F : class, IFilterRuleBase
     {
         private Label _label = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter};
         private TextBox _textBox = new TextBox() { Text = "Searching string", TextAlign = HorizontalAlignment.Center};
         private DateTimePicker _dateTimePicker = new DateTimePicker() { };
         private NumericUpDown _numericUpDown = new NumericUpDown() { };
 
-        private CheckBox _filterCheckBox = new CheckBox() { Text = "filter"};
-        private RadioButton _equalsRadioButton = new RadioButton() { Text = "=="};
-        private RadioButton _notEqualsRadioButton = new RadioButton() { Text = "!=" };
-        private RadioButton _containsRadioButton = new RadioButton() { Text = "contains" };
-        private RadioButton _notContainsRadioButton = new RadioButton() { Text = "not contains" };
-        private RadioButton _lessRadioButton = new RadioButton() { Text = "<" };
-        private RadioButton _greaterRadioButton = new RadioButton() { Text = ">" };
+        private FlowLayoutPanel _layoutPanel = new FlowLayoutPanel() { Dock = DockStyle.Fill};
+
+        private CheckBox _filterCheckBox = new CheckBox() { Text = "filter", AutoSize = true};
+        private RadioButton _equalsRadioButton = new RadioButton() { Text = "==", AutoSize = true };
+        private RadioButton _notEqualsRadioButton = new RadioButton() { Text = "!=" , AutoSize = true };
+        private RadioButton _containsRadioButton = new RadioButton() { Text = "contains" , AutoSize = true };
+        private RadioButton _notContainsRadioButton = new RadioButton() { Text = "not contains", AutoSize = true };
+        private RadioButton _lessRadioButton = new RadioButton() { Text = "<" , AutoSize = true };
+        private RadioButton _greaterRadioButton = new RadioButton() { Text = ">" , AutoSize = true };
 
         private LogicalExpressions _currentLogicalExpression;
 
@@ -44,6 +46,40 @@ namespace Lab4.Main
             _filterCheckBox.CheckedChanged += _filterCheckBox_CheckedChanged;
             _filterCheckBox.Checked = false;
             DisableRadioButtons();
+
+            _equalsRadioButton.CheckedChanged += _equalsRadioButton_CheckedChanged;
+            _notEqualsRadioButton.CheckedChanged += _notEqualsRadioButton_CheckedChanged;
+            _containsRadioButton.CheckedChanged += _containsRadioButton_CheckedChanged;
+            _notContainsRadioButton.CheckedChanged += _notContainsRadioButton_CheckedChanged;
+            _lessRadioButton.CheckedChanged += _lessRadioButton_CheckedChanged;
+            _greaterRadioButton.CheckedChanged += _greaterRadioButton_CheckedChanged;
+
+
+            _layoutPanel.Controls.Add(_equalsRadioButton);
+            _layoutPanel.Controls.Add(_notEqualsRadioButton);
+
+            switch (_ruleType)
+            {
+                case FilterRuleType.String:
+                    _layoutPanel.Controls.Add(_containsRadioButton);
+                    _layoutPanel.Controls.Add(_notContainsRadioButton);
+                    break;
+                default:
+                    _layoutPanel.Controls.Add(_lessRadioButton);
+                    _layoutPanel.Controls.Add(_greaterRadioButton);
+                    break;
+            }
+        }
+        ~FieldFilterView()
+        {
+            _filterCheckBox.CheckedChanged -= _filterCheckBox_CheckedChanged;
+
+            _equalsRadioButton.CheckedChanged -= _equalsRadioButton_CheckedChanged;
+            _notEqualsRadioButton.CheckedChanged -= _notEqualsRadioButton_CheckedChanged;
+            _containsRadioButton.CheckedChanged -= _containsRadioButton_CheckedChanged;
+            _notContainsRadioButton.CheckedChanged -= _notContainsRadioButton_CheckedChanged;
+            _lessRadioButton.CheckedChanged -= _lessRadioButton_CheckedChanged;
+            _greaterRadioButton.CheckedChanged -= _greaterRadioButton_CheckedChanged;
 
         }
 
@@ -69,7 +105,7 @@ namespace Lab4.Main
 
         }
 
-        public void Display(TableLayoutPanel tableLayoutPanel)
+        public override void Display(TableLayoutPanel tableLayoutPanel)
         {
             tableLayoutPanel.RowCount++;
             tableLayoutPanel.Controls.Add(_label);
@@ -89,19 +125,39 @@ namespace Lab4.Main
                     break;
             }
             tableLayoutPanel.Controls.Add(_filterCheckBox);
-            tableLayoutPanel.Controls.Add(_equalsRadioButton);
-            tableLayoutPanel.Controls.Add(_notEqualsRadioButton);
-            switch (_ruleType)
-            {
-                case FilterRuleType.String:
-                    tableLayoutPanel.Controls.Add(_containsRadioButton);
-                    tableLayoutPanel.Controls.Add(_notContainsRadioButton);
-                    break;
-                default:
-                    tableLayoutPanel.Controls.Add(_lessRadioButton);
-                    tableLayoutPanel.Controls.Add(_greaterRadioButton);
-                    break;
-            }
+
+
+            tableLayoutPanel.Controls.Add(_layoutPanel);
+        }
+
+        private void _greaterRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.Greater;
+        }
+
+        private void _lessRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.Less; 
+        }
+
+        private void _notContainsRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.NotContains; 
+        }
+
+        private void _containsRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.Contains; 
+        }
+
+        private void _notEqualsRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.NotEquals;
+        }
+
+        private void _equalsRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _currentLogicalExpression = LogicalExpressions.Equals;
         }
 
         private void _filterCheckBox_CheckedChanged(object sender, EventArgs e)

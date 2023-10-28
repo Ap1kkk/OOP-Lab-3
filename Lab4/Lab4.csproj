@@ -55,6 +55,7 @@
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldFilterView.cs" />
+    <Compile Include="Main\FieldFilterViewBase.cs" />
     <Compile Include="Main\Fields\IFieldBase.cs" />
     <Compile Include="Main\FilterSelector.cs" />
     <Compile Include="Main\FirmPool.cs" />
@@ -89,7 +90,6 @@
     <Compile Include="Main\Fields\TownField.cs" />
     <Compile Include="Main\Fields\UserField.cs" />
     <Compile Include="Main\Fields\WebsiteUrlField.cs" />
-    <Compile Include="Main\FirmFilter.cs" />
     <Compile Include="Main\FirmView.cs" />
     <Compile Include="Main\MaInController.cs" />
     <Compile Include="Main\Rules\ContactsAmountRule.cs" />

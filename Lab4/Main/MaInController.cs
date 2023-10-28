@@ -45,10 +45,23 @@ namespace Lab4.Main
             }
             _contactsLayout.DataSource = filteredContacts;
         }
+        public void DisplayAllData()
+        {
+            _firmsLayout.DataSource = _firmPool.FirmViews.ConvertAll(new Converter<FirmView, FirmViewElement>(Converter.ConvertFirm));
 
-        internal void DisplayFilters(TableLayoutPanel layoutPanel)
+            List<SubFirm> subFirms = _firmPool.SubFirms;
+            List<SubFirmViewElement> subFirmViews = subFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(Converter.ConvertSubFirm));
+            _subFirmsLayout.DataSource = subFirmViews;
+
+            List<Contact> contacts = _firmPool.Contacts;
+            List<ContactViewElement> contactViews = contacts.ConvertAll(new Converter<Contact, ContactViewElement>(Converter.ConvertContact));
+            _contactsLayout.DataSource = contactViews;
+        }
+
+        public void DisplayFilters(TableLayoutPanel layoutPanel)
         {
             _filterSelector.Display(layoutPanel);
         }
+
     }
 }

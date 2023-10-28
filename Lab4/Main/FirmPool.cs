@@ -14,6 +14,8 @@ namespace Lab4.Main
         private Dictionary<Firm, FirmView> _firms = new Dictionary<Firm, FirmView>();
         public List<Firm> Firms => _firms.Keys.ToList();
         public List<FirmView> FirmViews => _firms.Values.ToList();
+        public List<SubFirm> SubFirms => GetAllSubFirms(); 
+        public List<Contact> Contacts => GetAllContacts();
 
         public FirmPool()
         {
@@ -27,12 +29,37 @@ namespace Lab4.Main
 
         private void OnFirmCreated(Firm firm)
         {
-            _firms.Add(firm, new FirmView(firm));
+            Add(firm, new FirmView(firm));
         }
 
         private void Add(Firm firm, FirmView firmView) 
         { 
             _firms.Add(firm, firmView);
+        }
+
+        private List<SubFirm> GetAllSubFirms()
+        {
+            List<SubFirm> result = new List<SubFirm>();
+            foreach (var firm in Firms)
+            {
+                result.Add(firm.Main);
+                result.AddRange(firm.SubFirms);
+            }
+            return result;
+        }
+
+        private List<Contact> GetAllContacts()
+        {
+            List<Contact> result = new List<Contact>();
+            foreach (var firm in Firms)
+            {
+                result.AddRange(firm.Main.Contacts);
+                foreach (var subFirm in firm.SubFirms)
+                {
+                    result.AddRange(subFirm.Contacts);
+                }
+            }
+            return result;
         }
     }
 }
