@@ -91,6 +91,21 @@ namespace Lab4.Main
 
         public Firm RelatedFirm { get; private set; }
 
+        private Dictionary<Type, List<object>> _fields = new Dictionary<Type, List<object>>();
+
+        public void AddField<T>(Field<T> fieldToAdd) where T : IComparable
+        {
+            Type type = typeof(T);
+            if(_fields.ContainsKey(type))
+            {
+                _fields[type].Add(fieldToAdd);
+                return;
+            }
+            
+
+            _fields.Add(typeof(T), new List<object> { fieldToAdd });
+        }
+
         private List<Contact> GetAllContacts()
         {
             List<Contact> result = new List<Contact>();

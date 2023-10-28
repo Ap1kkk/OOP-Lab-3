@@ -35,7 +35,7 @@
             // ApplyButton
             // 
             this.ApplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ApplyButton.Location = new System.Drawing.Point(988, 550);
+            this.ApplyButton.Location = new System.Drawing.Point(997, 11);
             this.ApplyButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(268, 41);
@@ -66,8 +66,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 603);
-            this.Controls.Add(this.FilterTableLayout);
             this.Controls.Add(this.ApplyButton);
+            this.Controls.Add(this.FilterTableLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FilterForm";
             this.Text = "FilterForm";

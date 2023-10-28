@@ -14,7 +14,7 @@ namespace Lab4
 {
     public partial class MainForm : Form
     {
-        private MaInController _mainController;
+        private MainController _mainController;
         private FilterForm _filterForm;
         public MainForm()
         {
@@ -36,7 +36,7 @@ namespace Lab4
 
             }
 
-            _mainController = new MaInController(firmBindingSource1, subFirmBindingSource, contactBindingSource);
+            _mainController = new MainController(FirmsGridView, firmBindingSource1, dataGridView2, subFirmBindingSource, dataGridView3, contactBindingSource);
             _filterForm = new FilterForm(_mainController);
 
             _mainController.DisplayAllData();
@@ -56,7 +56,7 @@ namespace Lab4
                 column.DataPropertyName = $"UserField{index}";
                 column.HeaderText = $"UserField{index}";
                 index++;
-                dataGridView1.Columns.Add(column);
+                FirmsGridView.Columns.Add(column);
             }
         }
     }

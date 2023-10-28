@@ -15,8 +15,8 @@ namespace Lab4
 
     public partial class FilterForm : Form
     {
-        private MaInController _mainController;
-        public FilterForm(MaInController maInController)
+        private MainController _mainController;
+        public FilterForm(MainController maInController)
         {
             InitializeComponent();
             _mainController = maInController;

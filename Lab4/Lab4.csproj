@@ -56,6 +56,7 @@
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldFilterView.cs" />
     <Compile Include="Main\FieldFilterViewBase.cs" />
+    <Compile Include="Main\FieldsDisplayer.cs" />
     <Compile Include="Main\Fields\IFieldBase.cs" />
     <Compile Include="Main\FilterSelector.cs" />
     <Compile Include="Main\FirmPool.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="Main\Fields\UserField.cs" />
     <Compile Include="Main\Fields\WebsiteUrlField.cs" />
     <Compile Include="Main\FirmView.cs" />
-    <Compile Include="Main\MaInController.cs" />
+    <Compile Include="Main\MainController.cs" />
     <Compile Include="Main\Rules\ContactsAmountRule.cs" />
     <Compile Include="Main\Rules\CountryRule.cs" />
     <Compile Include="Main\Rules\EnterDateRule.cs" />
@@ -159,6 +160,9 @@
       <Project>{4d1e38e2-52c5-4b7a-a17f-0d0679dd806c}</Project>
       <Name>Lab-3</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Main\TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Lab_3;
+using Lab4.Main.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +9,39 @@ using System.Windows.Forms;
 
 namespace Lab4.Main
 {
-    public class MaInController
+    public class MainController
     {
         private FirmPool _firmPool;
         private FilterSelector _filterSelector;
 
+        private DataGridView _firmsTable;
         private BindingSource _firmsLayout;
+        private DataGridView _subFirmsTable;
         private BindingSource _subFirmsLayout;
+        private DataGridView _contactsTable;
         private BindingSource _contactsLayout;
-        public MaInController(BindingSource firmsLayout,
-                            BindingSource subFirmsLayout,
-                            BindingSource contactsLayout)
+        public MainController(DataGridView firmsTable, BindingSource firmsLayout,
+                            DataGridView subFirmsTable, BindingSource subFirmsLayout,
+                            DataGridView contactsTable, BindingSource contactsLayout)
         {
+            _firmsTable = firmsTable;
             _firmsLayout = firmsLayout;
+            _subFirmsTable= subFirmsTable;
             _subFirmsLayout = subFirmsLayout;
+            _contactsTable = contactsTable;
             _contactsLayout = contactsLayout;
 
             _firmPool = FirmPool.Instance;
             _filterSelector = new FilterSelector(_firmPool);
+
+            Test();
+        }
+
+        private void Test()
+        {
+            _firmsTable.Columns.Add("Name", nameof(FirmViewElement.Name));
+            var col = _firmsTable.Columns["Name"];
+            col.DataPropertyName = "Name";
         }
 
         public void ApplyFilter()
