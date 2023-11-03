@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab4.Main
+namespace Lab4.Main.FilterFieldVIew
 {
     public enum FilterRuleType
     {
@@ -17,7 +17,7 @@ namespace Lab4.Main
         Int
     }
 
-    public class FieldFilterView<F> : FieldFilterViewBase where F : class, IFilterRuleBase
+    public class FieldFilterView<F> where F : class, IFilterRule
     {
         private Label _label = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter};
         private TextBox _textBox = new TextBox() { Text = "Search", TextAlign = HorizontalAlignment.Center};
@@ -83,27 +83,27 @@ namespace Lab4.Main
 
         }
 
-        public F GetFilterRule()
-        {
-            object filterRule = null;
-            if(!_filterCheckBox.Checked)
-            {
-                return filterRule as F;
-            }
+        //public F GetFilterRule()
+        //{
+        //    object filterRule = null;
+        //    if(!_filterCheckBox.Checked)
+        //    {
+        //        return filterRule as F;
+        //    }
 
-            switch (_ruleType)
-            {
-                case FilterRuleType.String:
-                    return (F)Activator.CreateInstance(typeof(F), _textBox.Text, LogicalExpressionFactory.Create<string>(_currentLogicalExpression));
-                case FilterRuleType.DateTime:
-                    return (F)Activator.CreateInstance(typeof(F), _dateTimePicker.Value, LogicalExpressionFactory.Create<DateTime>(_currentLogicalExpression));
-                case FilterRuleType.Int:
-                    return (F)Activator.CreateInstance(typeof(F), _numericUpDown.Text, LogicalExpressionFactory.Create<int>(_currentLogicalExpression));
-                default:
-                    return null;
-            }
+        //    switch (_ruleType)
+        //    {
+        //        case FilterRuleType.String:
+        //            return (F)Activator.CreateInstance(typeof(F), _textBox.Text, LogicalExpressionFactory.Create<string>(_currentLogicalExpression));
+        //        case FilterRuleType.DateTime:
+        //            return (F)Activator.CreateInstance(typeof(F), _dateTimePicker.Value, LogicalExpressionFactory.Create<DateTime>(_currentLogicalExpression));
+        //        case FilterRuleType.Int:
+        //            return (F)Activator.CreateInstance(typeof(F), _numericUpDown.Text, LogicalExpressionFactory.Create<int>(_currentLogicalExpression));
+        //        default:
+        //            return null;
+        //    }
 
-        }
+        //}
 
         public override void Display(TableLayoutPanel tableLayoutPanel)
         {

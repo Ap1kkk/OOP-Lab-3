@@ -1,5 +1,6 @@
 ﻿using Lab_3;
 using Lab4.Main.Fields;
+using Lab4.Main.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Lab4.Main
     public class MainController
     {
         private FirmPool _firmPool;
+        private FirmView _firmView;
         private FilterSelector _filterSelector;
 
         private DataGridView _firmsTable;
@@ -20,9 +22,9 @@ namespace Lab4.Main
         private BindingSource _subFirmsLayout;
         private DataGridView _contactsTable;
         private BindingSource _contactsLayout;
-        public MainController(DataGridView firmsTable, BindingSource firmsLayout,
-                            DataGridView subFirmsTable, BindingSource subFirmsLayout,
-                            DataGridView contactsTable, BindingSource contactsLayout)
+        public MainController(BindingSource firmsLayout,
+                            BindingSource subFirmsLayout,
+                            BindingSource contactsLayout)
         {
             _firmsTable = firmsTable;
             _firmsLayout = firmsLayout;
@@ -32,9 +34,8 @@ namespace Lab4.Main
             _contactsLayout = contactsLayout;
 
             _firmPool = FirmPool.Instance;
-            _filterSelector = new FilterSelector(_firmPool);
-
-            Test();
+            _firmView = new FirmView(_firmPool);
+            _filterSelector = new FilterSelector(_firmPool, _firmView);
         }
 
         private void Test()
@@ -46,37 +47,33 @@ namespace Lab4.Main
 
         public void ApplyFilter()
         {
-            var selectedFirms = _filterSelector.FilteredFirms;
-            _firmsLayout.DataSource = selectedFirms;
-            List<SubFirmViewElement> filteredSubFirms = new List<SubFirmViewElement>();
-            foreach (var firmView in _filterSelector.FilteredFirmViews)
-            {
-                filteredSubFirms.AddRange(firmView.DisplaySubFirmsElements);
-            }
-            _subFirmsLayout.DataSource = filteredSubFirms;
-            List<ContactViewElement> filteredContacts = new List<ContactViewElement>();
-            foreach (var firmView in _filterSelector.FilteredFirmViews)
-            {
-                filteredContacts.AddRange(firmView.DisplayContactsElements);
-            }
-            _contactsLayout.DataSource = filteredContacts;
+            _firmsLayout.DataSource = _filterSelector.FilteredFirmElements;
+            _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_filterSelector.SelectedFirms);
+            _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_filterSelector.SelectedFirms);
+        }
+
+        public void DisplayAllData()
+        {
+            _firmsLayout.DataSource = Converter.ConvertFirms(_firmPool.Firms);
+            _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_firmPool.Firms);
+            _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_firmPool.Firms);
+        }
+
+        public void DisplayFilters(TableLayoutPanel layoutPanel)
+        {
+            _firmView.DisplayFilters(layoutPanel);
         }
         public void DisplayAllData()
         {
             _firmsLayout.DataSource = _firmPool.FirmViews.ConvertAll(new Converter<FirmView, FirmViewElement>(Converter.ConvertFirm));
 
-            List<SubFirm> subFirms = _firmPool.SubFirms;
-            List<SubFirmViewElement> subFirmViews = subFirms.ConvertAll(new Converter<SubFirm, SubFirmViewElement>(Converter.ConvertSubFirm));
-            _subFirmsLayout.DataSource = subFirmViews;
-
-            List<Contact> contacts = _firmPool.Contacts;
-            List<ContactViewElement> contactViews = contacts.ConvertAll(new Converter<Contact, ContactViewElement>(Converter.ConvertContact));
-            _contactsLayout.DataSource = contactViews;
-        }
-
-        public void DisplayFilters(TableLayoutPanel layoutPanel)
+        public void DisplayColumns(DataGridView gridView)
         {
-            _filterSelector.Display(layoutPanel);
+            _firmView.DisplayColumns(gridView);
+        }
+        public void AddField(IFieldBase field)
+        {
+            _firmView.AddField(field);
         }
 
     }

@@ -9,10 +9,14 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class NameRule : FilterRule<NameField, string>
+    public class NameRule : FilterRule<string>
     {
         public NameRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
+        }
+        public override bool FirmRespond(Firm firm)
+        {
+            return LogicalExpression.Compare(ComparingValue, firm.Name);
         }
     }
 }

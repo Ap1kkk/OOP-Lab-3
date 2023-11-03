@@ -1,6 +1,7 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
 using Lab4.Main.Fields;
+using Lab4.Main.FilterFieldVIew;
 using Lab4.Main.Rules;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace Lab4.Main
@@ -15,56 +17,28 @@ namespace Lab4.Main
     public abstract class Field<T> : IFieldBase where T : IComparable
     {
         public abstract T Value { get; set; }
-        protected readonly Dictionary<Type, ILogicalExpression<T>> FilterExpressions = new Dictionary<Type, ILogicalExpression<T>>();
+        protected IFieldFilterView<T> FilterView { get; }
         protected Firm Firm;
 
-        public Field(Firm relatedFirm)
+        public Field(IFieldFilterView<T> filterView)
         {
-            if (relatedFirm == null)
-                throw new ArgumentNullException(nameof(relatedFirm));
-            Firm = relatedFirm;
+            FilterView = filterView;
         }
 
         public abstract Field<T> Clone();
 
-        public void AddRule(ILogicalExpression<T> filterExpression)
+        public abstract IFilterRule CreateRule();
+
+        public abstract void AddDisplayingColumn(DataGridView gridView);
+        public void DisplayFilter(TableLayoutPanel layoutPanel)
         {
-            if(filterExpression == null)
-                throw new ArgumentNullException(nameof(filterExpression));
-
-            if (FilterExpressions.ContainsKey(filterExpression.GetType()))
-                return;
-
-            FilterExpressions.Add(filterExpression.GetType(), filterExpression);
-        }
-        public void ClearRules()
-        {
-            FilterExpressions.Clear();
-        }
-        public void RemoveRule(ILogicalExpression<T> filterExpression)
-        {
-            if (filterExpression == null)
-                throw new ArgumentNullException(nameof(filterExpression));
-
-            if(!FilterExpressions.ContainsKey(filterExpression.GetType()))
-                throw new ArgumentException(nameof(filterExpression));
-
-            FilterExpressions.Remove(filterExpression.GetType());
+            FilterView.Display(layoutPanel);
         }
 
-        //public bool GetFilterResult(Field<T> comparable)
-        //{
-        //    bool result = true;
-        //    foreach (var filterExpression in FilterExpressions.Values)
-        //    {
-        //        result = result && filterExpression.Compare(this.Value, comparable);
-        //    }
-        //    return result;
-        //}
+        protected void AddDisplayingColumn(DataGridView gridView, string name, string dataPropertyName)
+        {
+            gridView.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = name, DataPropertyName = dataPropertyName });
+        }
 
-        //public F CreateRule<F>() where F : FilterRule<T>
-        //{
-        //    return (F)Activator.CreateInstance(typeof(F), this);
-        //}
     }
 }

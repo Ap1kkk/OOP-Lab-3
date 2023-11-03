@@ -8,9 +8,9 @@ namespace Lab4.Main.Expressions
 {
     public class ContainsExpression : ILogicalExpression<string>
     {
-        public bool Compare(string comparingValue, Field<string> field)
+        public bool Compare(string left, string right)
         {
-            return field.Value.Contains(comparingValue);
+            return right.Contains(left);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Lab4.Main.Expressions
 {
     public interface ILogicalExpression<T> : ILogicalExpressionBase where T : IComparable
     {
-        bool Compare(T comparingValue, Field<T> field);
+        bool Compare(T left, T right);
     }
 }

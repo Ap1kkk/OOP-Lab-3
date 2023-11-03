@@ -1,17 +1,20 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
+using Lab4.Main.FilterFieldVIew;
 using Lab4.Main.Rules;
+using Lab4.Main.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lab4.Main.Fields
 {
     public class EnterDateField : Field<DateTime>
     {
-        public EnterDateField(Firm relatedFirm) : base(relatedFirm)
+        public EnterDateField() : base(new DateFieldFilterView("Enter date"))
         {
         }
 
@@ -21,9 +24,19 @@ namespace Lab4.Main.Fields
             set { Firm.EnterDate = value; }
         }
 
+        public override void AddDisplayingColumn(DataGridView gridView)
+        {
+            AddDisplayingColumn(gridView, "Enter date", nameof(FirmViewElement.EnterDate));
+        }
+
         public override Field<DateTime> Clone()
         {
-            return new EnterDateField(Firm);
+            return new EnterDateField();
+        }
+
+        public override IFilterRule CreateRule()
+        {
+            return new EnterDateRule(FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

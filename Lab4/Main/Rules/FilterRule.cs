@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public abstract class FilterRule<F, T> : IFilterRule<F, T> where T : IComparable where F : IFieldBase
+    public abstract class FilterRule<T> : IFilterRule where T : IComparable
     {
-        public T ComparingValue { get; }
-        public ILogicalExpression<T> LogicalExpression { get; }
+        protected T ComparingValue { get; }
+        protected ILogicalExpression<T> LogicalExpression { get; }
 
         public FilterRule(T comparingValue, ILogicalExpression<T> logicalExpression)
         {
@@ -20,9 +20,6 @@ namespace Lab4.Main.Rules
             LogicalExpression = logicalExpression;
         }
 
-        public bool FirmRespond(F comparable)
-        {
-            return LogicalExpression.Compare(ComparingValue, comparable as Field<T>);
-        }
+        public abstract bool FirmRespond(Firm firm);
     }
 }

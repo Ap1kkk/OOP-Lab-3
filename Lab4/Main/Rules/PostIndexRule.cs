@@ -1,4 +1,5 @@
-﻿using Lab4.Main.Expressions;
+﻿using Lab_3;
+using Lab4.Main.Expressions;
 using Lab4.Main.Fields;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,14 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class PostIndexRule : FilterRule<PostIndexField, string>
+    public class PostIndexRule : FilterRule<string>
     {
         public PostIndexRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
         {
+        }
+        public override bool FirmRespond(Firm firm)
+        {
+            return LogicalExpression.Compare(ComparingValue, firm.PostIndex);
         }
     }
 }

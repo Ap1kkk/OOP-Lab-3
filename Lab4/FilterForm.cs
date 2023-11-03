@@ -20,6 +20,12 @@ namespace Lab4
         {
             InitializeComponent();
             _mainController = maInController;
+
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
             _mainController.DisplayFilters(FilterTableLayout);
         }
 

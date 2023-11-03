@@ -54,10 +54,13 @@
     </Compile>
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
-    <Compile Include="Main\FieldFilterView.cs" />
-    <Compile Include="Main\FieldFilterViewBase.cs" />
-    <Compile Include="Main\FieldsDisplayer.cs" />
+    <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
+    <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />
+    <Compile Include="Main\FilterFieldVIew\IntFieldFilterView.cs" />
+    <Compile Include="Main\FilterFieldVIew\IFieldFilterView.cs" />
     <Compile Include="Main\Fields\IFieldBase.cs" />
+    <Compile Include="Main\FilterFieldVIew\StringFieldFilterView.cs" />
+    <Compile Include="Main\FilterFieldVIew\IFieldFilterViewBase.cs" />
     <Compile Include="Main\FilterSelector.cs" />
     <Compile Include="Main\FirmPool.cs" />
     <Compile Include="MainForm.cs">
@@ -91,14 +94,14 @@
     <Compile Include="Main\Fields\TownField.cs" />
     <Compile Include="Main\Fields\UserField.cs" />
     <Compile Include="Main\Fields\WebsiteUrlField.cs" />
-    <Compile Include="Main\FirmView.cs" />
+    <Compile Include="Main\View\ContactViewElement.cs" />
+    <Compile Include="Main\View\FirmView.cs" />
     <Compile Include="Main\MainController.cs" />
     <Compile Include="Main\Rules\ContactsAmountRule.cs" />
     <Compile Include="Main\Rules\CountryRule.cs" />
     <Compile Include="Main\Rules\EnterDateRule.cs" />
     <Compile Include="Main\Rules\FilterRule.cs" />
     <Compile Include="Main\Rules\IFilterRule.cs" />
-    <Compile Include="Main\Rules\IFilterRuleBase.cs" />
     <Compile Include="Main\Rules\NameRule.cs" />
     <Compile Include="Main\Rules\PostIndexRule.cs" />
     <Compile Include="Main\Rules\RegionRule.cs" />
@@ -106,6 +109,8 @@
     <Compile Include="Main\Rules\TownRule.cs" />
     <Compile Include="Main\Rules\UserFieldRule.cs" />
     <Compile Include="Main\Rules\WebsiteUrlRule.cs" />
+    <Compile Include="Main\View\FirmViewElement.cs" />
+    <Compile Include="Main\View\SubFirmViewElement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestForm.cs">

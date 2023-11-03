@@ -19,18 +19,7 @@ namespace Lab4.Main.Tests
         [TestMethod()]
         public void RemoveRuleTest()
         {
-            var postIndexField = new PostIndexField(Utils.DefaultFirm());
-            var expression1 = LogicalExpressionFactory.Create<EqualsExpression<string>, string>();
-            var expression2 = LogicalExpressionFactory.Create<EqualsExpression<string>, string>();
 
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                postIndexField.RemoveRule(expression2);
-
-            });
-
-            postIndexField.AddRule(expression1);
-            postIndexField.RemoveRule(expression2);
         }
 
     }

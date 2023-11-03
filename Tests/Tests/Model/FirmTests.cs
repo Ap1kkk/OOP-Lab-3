@@ -80,8 +80,8 @@ namespace Lab_3.Tests
         {
             Firm firm = Utils.DefaultFirm();
             const string value = "value";
-            firm.SetField(Utils.FirmFactory.FieldName1, value);
-            string getValue = firm.GetField(Utils.FirmFactory.FieldName1);
+            firm.SetField(FirmFactory.FieldName1, value);
+            string getValue = firm.GetField(FirmFactory.FieldName1);
             Assert.AreEqual(value, getValue);
         }
         [TestMethod()]
@@ -104,9 +104,9 @@ namespace Lab_3.Tests
 
             const string newFieldName = "testNew";
             const string value = "value";
-            firm.SetField(Utils.FirmFactory.FieldName1, value);
+            firm.SetField(FirmFactory.FieldName1, value);
 
-            firm.RenameField(Utils.FirmFactory.FieldName1, newFieldName);
+            firm.RenameField(FirmFactory.FieldName1, newFieldName);
 
             string getValue = firm.GetField(newFieldName);
             Assert.AreEqual(value, getValue);
@@ -131,7 +131,7 @@ namespace Lab_3.Tests
             {
                 Firm firm = Utils.DefaultFirm();
 
-                firm.RenameField(Utils.FirmFactory.FieldName1, Utils.FirmFactory.FieldName2);
+                firm.RenameField(FirmFactory.FieldName1, FirmFactory.FieldName2);
             });
         }
         #endregion

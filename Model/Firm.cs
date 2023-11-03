@@ -141,6 +141,7 @@ namespace Lab_3
         public SubFirm Main { get; private set; }
         public Dictionary<string, string> UserFields => _userFields;
         public List<SubFirm> SubFirms => _subFirms;
+        public List<Contact> Contacts => GetAllContacts();
 
         private string _name;
         private string _country;
@@ -280,6 +281,17 @@ namespace Lab_3
             string value = _userFields[oldFieldName];
             _userFields.Remove(oldFieldName);
             _userFields.Add(newFieldName, value);
+        }
+
+        private List<Contact> GetAllContacts()
+        {
+            List<Contact> result = new List<Contact>() { };
+            result.AddRange(Main.Contacts);
+            foreach (SubFirm subFirm in _subFirms) 
+            {
+                result.AddRange(subFirm.Contacts);
+            }
+            return result;
         }
     }
 }

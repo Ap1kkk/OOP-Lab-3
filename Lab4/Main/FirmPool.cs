@@ -11,11 +11,8 @@ namespace Lab4.Main
     {
         public static FirmPool Instance { get; private set; } = null;
 
-        private Dictionary<Firm, FirmView> _firms = new Dictionary<Firm, FirmView>();
-        public List<Firm> Firms => _firms.Keys.ToList();
-        public List<FirmView> FirmViews => _firms.Values.ToList();
-        public List<SubFirm> SubFirms => GetAllSubFirms(); 
-        public List<Contact> Contacts => GetAllContacts();
+        public List<Firm> Firms => _firms;
+        private List<Firm> _firms = new List<Firm>();
 
         public FirmPool()
         {
@@ -29,12 +26,7 @@ namespace Lab4.Main
 
         private void OnFirmCreated(Firm firm)
         {
-            Add(firm, new FirmView(firm));
-        }
-
-        private void Add(Firm firm, FirmView firmView) 
-        { 
-            _firms.Add(firm, firmView);
+            _firms.Add(firm);
         }
 
         private List<SubFirm> GetAllSubFirms()

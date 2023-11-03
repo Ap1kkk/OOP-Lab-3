@@ -8,9 +8,9 @@ namespace Lab4.Main.Expressions
 {
     public class EqualsExpression<T> : ILogicalExpression<T> where T : IComparable
     {
-        public bool Compare(T comparingValue, Field<T> field)
+        public bool Compare(T left, T right)
         {
-            return field.Value.CompareTo(comparingValue) == 0;
+            return left.CompareTo(right) == 0;
         }
     }
 }
