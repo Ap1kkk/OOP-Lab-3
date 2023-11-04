@@ -27,6 +27,10 @@ namespace Lab4.Main.View
             _firmPool = firmPool;
         }
 
+        public void ClearFields()
+        {
+            _fields.Clear();
+        }
         public void AddField(IFieldBase field)
         {
             _fields.Add(field);

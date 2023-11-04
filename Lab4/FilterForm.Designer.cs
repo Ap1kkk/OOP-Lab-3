@@ -46,15 +46,15 @@
             // 
             // FilterTableLayout
             // 
-            this.FilterTableLayout.AutoScroll = true;
-            this.FilterTableLayout.AutoSize = true;
             this.FilterTableLayout.ColumnCount = 4;
             this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.FilterTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FilterTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilterTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.FilterTableLayout.Location = new System.Drawing.Point(3, 3);
             this.FilterTableLayout.Name = "FilterTableLayout";
             this.FilterTableLayout.RowCount = 1;
             this.FilterTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());

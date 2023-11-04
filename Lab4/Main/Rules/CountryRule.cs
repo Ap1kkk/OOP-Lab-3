@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class CountryRule : FilterRule<string>
     {
-        public CountryRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public CountryRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression)
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

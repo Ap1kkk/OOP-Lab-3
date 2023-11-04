@@ -14,7 +14,9 @@ namespace Lab4.Main.Fields
 {
     public class CountryField : Field<string>
     {
-        public CountryField() : base(new StringFieldFilterView("Country"))
+        public override string Name => _name;
+        private const string _name = "Country";
+        public CountryField() : base(new StringFieldFilterView(_name))
         {
         }
 
@@ -26,7 +28,7 @@ namespace Lab4.Main.Fields
 
         public override void AddDisplayingColumn(DataGridView gridView)
         {
-            AddDisplayingColumn(gridView, "Country", nameof(FirmViewElement.Country));
+            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Country));
         }
 
         public override Field<string> Clone()
@@ -36,7 +38,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new CountryRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new CountryRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

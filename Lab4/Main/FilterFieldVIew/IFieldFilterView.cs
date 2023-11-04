@@ -11,6 +11,7 @@ namespace Lab4.Main.FilterFieldVIew
 {
     public interface IFieldFilterView<T> : IFieldFilterViewBase where T : IComparable
     {
+        bool IsFilterActive { get; }
         T FilteringValue { get; }
         ILogicalExpression<T> LogicalExpression { get; }
     }

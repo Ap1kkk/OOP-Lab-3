@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class WebsiteUrlRule : FilterRule<string>
     {
-        public WebsiteUrlRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public WebsiteUrlRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

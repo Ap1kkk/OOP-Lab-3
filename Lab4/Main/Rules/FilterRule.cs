@@ -11,11 +11,15 @@ namespace Lab4.Main.Rules
 {
     public abstract class FilterRule<T> : IFilterRule where T : IComparable
     {
+        public bool IsFilterActive { get; }
+
         protected T ComparingValue { get; }
         protected ILogicalExpression<T> LogicalExpression { get; }
 
-        public FilterRule(T comparingValue, ILogicalExpression<T> logicalExpression)
+
+        public FilterRule(bool isFilterActive, T comparingValue, ILogicalExpression<T> logicalExpression)
         {
+            IsFilterActive = isFilterActive;
             ComparingValue = comparingValue;
             LogicalExpression = logicalExpression;
         }

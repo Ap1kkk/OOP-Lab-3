@@ -16,6 +16,7 @@ namespace Lab4.Main
 {
     public abstract class Field<T> : IFieldBase where T : IComparable
     {
+        public abstract string Name { get; }
         public abstract T Value { get; set; }
         protected IFieldFilterView<T> FilterView { get; }
         protected Firm Firm;

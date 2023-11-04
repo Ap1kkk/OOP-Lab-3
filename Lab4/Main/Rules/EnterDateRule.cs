@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class EnterDateRule : FilterRule<DateTime>
     {
-        public EnterDateRule(DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) : base(comparingValue, logicalExpression)
+        public EnterDateRule(bool isFilterActive, DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

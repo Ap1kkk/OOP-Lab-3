@@ -12,7 +12,8 @@ namespace Lab4.Main.Rules
     public class UserFieldRule : FilterRule<string>
     {
         private string _userFieldKey;
-        public UserFieldRule(string userFieldKey, string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public UserFieldRule(bool isFilterActive, string userFieldKey, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
             _userFieldKey = userFieldKey;
         }

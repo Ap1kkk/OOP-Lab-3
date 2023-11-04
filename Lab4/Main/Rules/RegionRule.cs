@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class RegionRule : FilterRule<string>
     {
-        public RegionRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public RegionRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

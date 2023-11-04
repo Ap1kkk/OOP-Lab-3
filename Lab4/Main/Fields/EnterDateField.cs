@@ -36,7 +36,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new EnterDateRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new EnterDateRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Lab4.Main.Fields
 {
     public interface IFieldBase
     {
+        string Name { get; }
         void AddDisplayingColumn(DataGridView gridView);
         void DisplayFilter(TableLayoutPanel layoutPanel);
         IFilterRule CreateRule();

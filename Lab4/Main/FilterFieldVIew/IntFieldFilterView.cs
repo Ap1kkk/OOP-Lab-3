@@ -13,6 +13,7 @@ namespace Lab4.Main.FilterFieldVIew
         public int FilteringValue => int.Parse(_numericUpDown.Value.ToString());
         public ILogicalExpression<int> LogicalExpression { get; }
 
+        public bool IsFilterActive => throw new NotImplementedException();
 
         private Label _label = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter };
         private NumericUpDown _numericUpDown = new NumericUpDown() { };

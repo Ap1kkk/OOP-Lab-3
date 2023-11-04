@@ -36,7 +36,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new PostIndexRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new PostIndexRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

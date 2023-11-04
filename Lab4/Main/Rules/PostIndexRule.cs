@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class PostIndexRule : FilterRule<string>
     {
-        public PostIndexRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public PostIndexRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

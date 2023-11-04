@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class NameRule : FilterRule<string>
     {
-        public NameRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public NameRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

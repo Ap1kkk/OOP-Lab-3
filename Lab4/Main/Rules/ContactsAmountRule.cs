@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class ContactsAmountRule : FilterRule<int>
     {
-        public ContactsAmountRule(int comparingValue, ILogicalExpression<int> logicalExpression) : base(comparingValue, logicalExpression)
+        public ContactsAmountRule(bool isFilterActive, int comparingValue, ILogicalExpression<int> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
 

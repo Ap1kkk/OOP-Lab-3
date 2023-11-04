@@ -9,7 +9,7 @@ namespace Lab4.Main.Rules
 {
     public interface IFilterRule
     {
+        bool IsFilterActive { get; }
         bool FirmRespond(Firm firm);
-
     }
 }

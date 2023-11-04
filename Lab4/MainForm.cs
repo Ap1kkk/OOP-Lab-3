@@ -17,6 +17,7 @@ namespace Lab4
     {
         private MainController _mainController;
         private FilterForm _filterForm;
+        private FieldSelectForm _fieldSelectForm;
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Lab4
 
             _mainController = new MainController(firmBindingSource1, subFirmBindingSource, contactBindingSource);
             _filterForm = new FilterForm(_mainController);
+            _fieldSelectForm = new FieldSelectForm(_mainController);
 
             _mainController.AddField(new NameField());
             _mainController.AddField(new NameField());
@@ -46,6 +48,11 @@ namespace Lab4
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _filterForm.ShowDialog();   
+        }
+
+        private void selectFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _fieldSelectForm.ShowDialog();
         }
     }
 }

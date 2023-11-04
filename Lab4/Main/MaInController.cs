@@ -52,6 +52,15 @@ namespace Lab4.Main
             _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_filterSelector.SelectedFirms);
         }
 
+        public void ApplyDisplayingFields(List<IFieldBase> fields)
+        {
+            ClearFields();
+            foreach (IFieldBase field in fields)
+            {
+                AddField(field);
+            }
+        }
+
         public void DisplayAllData()
         {
             _firmsLayout.DataSource = Converter.ConvertFirms(_firmPool.Firms);
@@ -70,6 +79,10 @@ namespace Lab4.Main
         public void DisplayColumns(DataGridView gridView)
         {
             _firmView.DisplayColumns(gridView);
+        }
+        public void ClearFields()
+        {
+            _firmView.ClearFields();
         }
         public void AddField(IFieldBase field)
         {

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FieldSelectForm.Designer.cs">
+      <DependentUpon>FieldSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,7 @@
     </Compile>
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
+    <Compile Include="Main\FieldCheckBox.cs" />
     <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IntFieldFilterView.cs" />
@@ -119,6 +126,9 @@
     <Compile Include="TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FieldSelectForm.resx">
+      <DependentUpon>FieldSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>

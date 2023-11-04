@@ -35,7 +35,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new WebsiteUrlRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new WebsiteUrlRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

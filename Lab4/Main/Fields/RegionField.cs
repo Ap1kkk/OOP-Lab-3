@@ -36,7 +36,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new RegionRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new RegionRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

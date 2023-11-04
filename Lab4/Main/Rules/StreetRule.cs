@@ -11,7 +11,8 @@ namespace Lab4.Main.Rules
 {
     public class StreetRule : FilterRule<string>
     {
-        public StreetRule(string comparingValue, ILogicalExpression<string> logicalExpression) : base(comparingValue, logicalExpression)
+        public StreetRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+            : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)

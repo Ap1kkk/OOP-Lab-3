@@ -13,6 +13,7 @@ namespace Lab4.Main.FilterFieldVIew
         public DateTime FilteringValue => _dateTimePicker.Value;
         public ILogicalExpression<DateTime> LogicalExpression { get; }
 
+        public bool IsFilterActive => throw new NotImplementedException();
 
         private Label _label = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter };
         private DateTimePicker _dateTimePicker = new DateTimePicker() { };

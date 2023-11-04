@@ -39,7 +39,10 @@ namespace Lab4.Main
                 bool result = true;
                 foreach (var rule in filterRules)
                 {
-                    result = result && rule.FirmRespond(current);
+                    if(rule.IsFilterActive)
+                    {
+                        result = result && rule.FirmRespond(current);
+                    }
                 }
                 return result;
             }).ToList();

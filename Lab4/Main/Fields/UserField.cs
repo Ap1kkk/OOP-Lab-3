@@ -56,7 +56,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new UserFieldRule(_fieldName, FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new UserFieldRule(FilterView.IsFilterActive, _fieldName, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

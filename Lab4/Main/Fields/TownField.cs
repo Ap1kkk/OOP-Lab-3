@@ -35,7 +35,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new TownRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new TownRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

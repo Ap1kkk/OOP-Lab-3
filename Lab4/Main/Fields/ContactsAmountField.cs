@@ -14,7 +14,10 @@ namespace Lab4.Main.Fields
 {
     public class ContactsAmountField : Field<int>
     {
-        public ContactsAmountField() : base(new IntFieldFilterView("Contacts amount"))
+        public override string Name => _name;
+        private const string _name = "ContactsAmount";
+
+        public ContactsAmountField() : base(new IntFieldFilterView(_name))
         {
         }
 
@@ -26,7 +29,7 @@ namespace Lab4.Main.Fields
 
         public override void AddDisplayingColumn(DataGridView gridView)
         {
-            AddDisplayingColumn(gridView, "Contacts Amount", nameof(FirmViewElement.ContactsAmount));
+            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.ContactsAmount));
         }
 
         public override Field<int> Clone()
@@ -36,7 +39,7 @@ namespace Lab4.Main.Fields
 
         public override IFilterRule CreateRule()
         {
-            return new ContactsAmountRule(FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new ContactsAmountRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

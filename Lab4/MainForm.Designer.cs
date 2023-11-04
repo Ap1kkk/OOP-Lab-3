@@ -56,8 +56,7 @@
             this.firmBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userFieldsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectFieldsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ContactsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -76,7 +75,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
+            this.menuToolStripMenuItem,
+            this.selectFieldsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -131,49 +131,43 @@
             // 
             this.Name.DataPropertyName = "Name";
             this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 6;
             this.Name.Name = "Name";
-            this.Name.Width = 93;
+            this.Name.Width = 76;
             // 
             // Note
             // 
             this.Note.DataPropertyName = "Note";
             this.Note.HeaderText = "Note";
-            this.Note.MinimumWidth = 6;
             this.Note.Name = "Note";
-            this.Note.Width = 82;
+            this.Note.Width = 68;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.Width = 138;
+            this.descriptionDataGridViewTextBoxColumn.Width = 114;
             // 
             // informationDataGridViewTextBoxColumn
             // 
             this.informationDataGridViewTextBoxColumn.DataPropertyName = "Information";
             this.informationDataGridViewTextBoxColumn.HeaderText = "Information";
-            this.informationDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.informationDataGridViewTextBoxColumn.Name = "informationDataGridViewTextBoxColumn";
-            this.informationDataGridViewTextBoxColumn.Width = 137;
+            this.informationDataGridViewTextBoxColumn.Width = 115;
             // 
             // beginDateDataGridViewTextBoxColumn
             // 
             this.beginDateDataGridViewTextBoxColumn.DataPropertyName = "BeginDate";
             this.beginDateDataGridViewTextBoxColumn.HeaderText = "BeginDate";
-            this.beginDateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.beginDateDataGridViewTextBoxColumn.Name = "beginDateDataGridViewTextBoxColumn";
-            this.beginDateDataGridViewTextBoxColumn.Width = 132;
+            this.beginDateDataGridViewTextBoxColumn.Width = 110;
             // 
             // endDateDataGridViewTextBoxColumn
             // 
             this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
             this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            this.endDateDataGridViewTextBoxColumn.Width = 117;
+            this.endDateDataGridViewTextBoxColumn.Width = 98;
             // 
             // contactBindingSource
             // 
@@ -337,23 +331,12 @@
             // 
             this.firmBindingSource.DataSource = typeof(Lab_3.Firm);
             // 
-            // mainDataGridViewTextBoxColumn
+            // selectFieldsToolStripMenuItem
             // 
-            this.mainDataGridViewTextBoxColumn.DataPropertyName = "Main";
-            this.mainDataGridViewTextBoxColumn.HeaderText = "Main";
-            this.mainDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.mainDataGridViewTextBoxColumn.Name = "mainDataGridViewTextBoxColumn";
-            this.mainDataGridViewTextBoxColumn.ReadOnly = true;
-            this.mainDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // userFieldsDataGridViewTextBoxColumn
-            // 
-            this.userFieldsDataGridViewTextBoxColumn.DataPropertyName = "UserFields";
-            this.userFieldsDataGridViewTextBoxColumn.HeaderText = "UserFields";
-            this.userFieldsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.userFieldsDataGridViewTextBoxColumn.Name = "userFieldsDataGridViewTextBoxColumn";
-            this.userFieldsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.userFieldsDataGridViewTextBoxColumn.Width = 134;
+            this.selectFieldsToolStripMenuItem.Name = "selectFieldsToolStripMenuItem";
+            this.selectFieldsToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.selectFieldsToolStripMenuItem.Text = "&Select fields";
+            this.selectFieldsToolStripMenuItem.Click += new System.EventHandler(this.selectFieldsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -413,7 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn informationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn beginDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userFieldsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem selectFieldsToolStripMenuItem;
     }
 }
