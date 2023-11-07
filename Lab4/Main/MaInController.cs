@@ -16,22 +16,16 @@ namespace Lab4.Main
         private FirmView _firmView;
         private FilterSelector _filterSelector;
 
-        private DataGridView _firmsTable;
         private BindingSource _firmsLayout;
-        private DataGridView _subFirmsTable;
         private BindingSource _subFirmsLayout;
-        private DataGridView _contactsTable;
         private BindingSource _contactsLayout;
 
         public MainController(BindingSource firmsLayout,
                             BindingSource subFirmsLayout,
                             BindingSource contactsLayout)
         {
-            _firmsTable = firmsTable;
             _firmsLayout = firmsLayout;
-            _subFirmsTable= subFirmsTable;
             _subFirmsLayout = subFirmsLayout;
-            _contactsTable = contactsTable;
             _contactsLayout = contactsLayout;
 
             _firmPool = FirmPool.Instance;
@@ -65,10 +59,6 @@ namespace Lab4.Main
         {
             _firmView.DisplayFilters(layoutPanel);
         }
-        public void DisplayAllData()
-        {
-            _firmsLayout.DataSource = _firmPool.FirmViews.ConvertAll(new Converter<FirmView, FirmViewElement>(Converter.ConvertFirm));
-
         public void DisplayColumns(DataGridView gridView)
         {
             _firmView.DisplayColumns(gridView);
@@ -81,6 +71,5 @@ namespace Lab4.Main
         {
             _firmView.AddField(field);
         }
-
     }
 }

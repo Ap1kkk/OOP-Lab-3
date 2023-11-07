@@ -12,10 +12,5 @@ namespace Lab4.Main.Expressions
         {
             return left.CompareTo(right) <= 0;
         }
-
-        public bool Compare(T comparingValue, Field<T> field)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

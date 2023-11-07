@@ -46,13 +46,13 @@ namespace Lab4
             _fieldSelectForm.FormClosed += _fieldSelectForm_FormClosed;
             _addFirmForm = new AddFirmForm(_fieldPool);
 
-            _mainController.DisplayColumns(dataGridView1);
+            _mainController.DisplayColumns(FirmsGridView);
             _mainController.DisplayAllData();
         }
 
         private void _fieldSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _mainController.DisplayColumns(dataGridView1);
+            _mainController.DisplayColumns(FirmsGridView);
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
