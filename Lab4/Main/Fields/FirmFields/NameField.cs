@@ -3,43 +3,40 @@ using Lab4.Main.Expressions;
 using Lab4.Main.FilterFieldVIew;
 using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
+using Lab4.Main.Rules.FirmRules;
 using Lab4.Main.View;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab4.Main.Fields
+namespace Lab4.Main.Fields.FirmFields
 {
-    public class StreetField : Field<string>
+    public class NameField : Field<string>
     {
         public override string Name => _name;
-        private const string _name = "Street";
-        public StreetField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
-        {
-        }
+        private const string _name = "Name";
 
-        public override string Value
+        public NameField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
         {
-            get { return Firm.Street; }
-            set { Firm.Street = value; }
         }
 
         public override void AddDisplayingColumn(DataGridView gridView)
         {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Street));
+            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Name));
         }
 
         public override Field<string> Clone()
         {
-            return new StreetField();
+            return new NameField();
         }
 
         public override IFilterRule CreateRule()
         {
-            return new StreetRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new NameRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
     }
 }

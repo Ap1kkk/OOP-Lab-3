@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class EnterDateRule : FilterRule<DateTime>
+    public class EnterDateRule : FirmFilterRule<DateTime>
     {
         public EnterDateRule(bool isFilterActive, DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)

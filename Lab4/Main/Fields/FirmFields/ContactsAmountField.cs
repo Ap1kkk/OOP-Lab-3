@@ -1,5 +1,6 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
+using Lab4.Main.Fields;
 using Lab4.Main.FilterFieldVIew;
 using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
@@ -11,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab4.Main.Fields
+namespace Lab4.Main.Fields.FirmFields
 {
     public class ContactsAmountField : Field<int>
     {
@@ -20,12 +21,6 @@ namespace Lab4.Main.Fields
 
         public ContactsAmountField() : base(new IntFieldFilterView(_name), new IntInputFieldView(_name))
         {
-        }
-
-        public override int Value
-        {
-            get { return Firm.Main.ContactsAmount; }
-            set { throw new InvalidOperationException("Cannot change Contacts Amount value"); }
         }
 
         public override void AddDisplayingColumn(DataGridView gridView)

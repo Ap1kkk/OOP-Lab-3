@@ -13,9 +13,9 @@ namespace Lab4.Main.View
 {
     public class FirmView
     {
-        public List<FirmViewElement> DisplayFirmElements => Converter.ConvertFirms(_firmPool.Firms);
-        public List<SubFirmViewElement> DisplaySubFirmsElements => Converter.ConvertFirmsToSubFirms(_firmPool.Firms);
-        public List<ContactViewElement> DisplayContactsElements => Converter.ConvertFirmsToContacts(_firmPool.Firms);
+        //public List<FirmViewElement> DisplayFirmElements => Converter.ConvertFirms(_firmPool.Firms);
+        //public List<SubFirmViewElement> DisplaySubFirmsElements => Converter.ConvertFirmsToSubFirms(_firmPool.Firms);
+        //public List<ContactViewElement> DisplayContactsElements => Converter.ConvertFirmsToContacts(_firmPool.Firms);
         public List<IFieldBase> Fields => _fields;
 
         private List<IFieldBase> _fields = new List<IFieldBase>();

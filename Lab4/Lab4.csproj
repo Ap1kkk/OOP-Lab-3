@@ -67,12 +67,18 @@
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldCheckBox.cs" />
-    <Compile Include="Main\FieldPool.cs" />
+    <Compile Include="Main\Fields\ContactFields\BeginDateField.cs" />
+    <Compile Include="Main\Fields\ContactFields\DescriptionField.cs" />
+    <Compile Include="Main\Fields\ContactFields\EndDateField.cs" />
+    <Compile Include="Main\Fields\ContactFields\InformationField.cs" />
+    <Compile Include="Main\Fields\ContactFields\NameField.cs" />
+    <Compile Include="Main\Fields\ContactFields\NoteField.cs" />
+    <Compile Include="Main\FirmFieldPool.cs" />
     <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IntFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IFieldFilterView.cs" />
-    <Compile Include="Main\Fields\IFieldBase.cs" />
+    <Compile Include="Main\Fields\FieldBase\IFieldBase.cs" />
     <Compile Include="Main\FilterFieldVIew\StringFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IFieldFilterViewBase.cs" />
     <Compile Include="Main\FilterSelector.cs" />
@@ -97,37 +103,46 @@
     <Compile Include="Main\Expressions\NotContainsExpression.cs" />
     <Compile Include="Main\Expressions\NotEqualsExpression.cs" />
     <Compile Include="Main\Expressions\IStringFieldExpression.cs" />
-    <Compile Include="Main\Fields\ContactsAmountField.cs" />
-    <Compile Include="Main\Fields\CountryField.cs" />
-    <Compile Include="Main\Fields\EnterDateField.cs" />
-    <Compile Include="Main\Fields\Field.cs" />
-    <Compile Include="Main\Fields\NameField.cs" />
-    <Compile Include="Main\Fields\PostIndexField.cs" />
-    <Compile Include="Main\Fields\RegionField.cs" />
-    <Compile Include="Main\Fields\StreetField.cs" />
-    <Compile Include="Main\Fields\TownField.cs" />
-    <Compile Include="Main\Fields\UserField.cs" />
-    <Compile Include="Main\Fields\WebsiteUrlField.cs" />
+    <Compile Include="Main\Fields\FirmFields\ContactsAmountField.cs" />
+    <Compile Include="Main\Fields\FirmFields\CountryField.cs" />
+    <Compile Include="Main\Fields\FirmFields\EnterDateField.cs" />
+    <Compile Include="Main\Fields\FieldBase\Field.cs" />
+    <Compile Include="Main\Fields\FirmFields\NameField.cs" />
+    <Compile Include="Main\Fields\FirmFields\PostIndexField.cs" />
+    <Compile Include="Main\Fields\FirmFields\RegionField.cs" />
+    <Compile Include="Main\Fields\FirmFields\StreetField.cs" />
+    <Compile Include="Main\Fields\FirmFields\TownField.cs" />
+    <Compile Include="Main\Fields\FirmFields\UserField.cs" />
+    <Compile Include="Main\Fields\FirmFields\WebsiteUrlField.cs" />
     <Compile Include="Main\InputFieldView\DateInputFieldView.cs" />
     <Compile Include="Main\InputFieldView\IInputFieldView.cs" />
     <Compile Include="Main\InputFieldView\InputFieldView.cs" />
     <Compile Include="Main\InputFieldView\IntInputFieldView.cs" />
     <Compile Include="Main\InputFieldView\StringInputFieldView.cs" />
+    <Compile Include="Main\Rules\ContactRules\BeginDateRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\ContactFilterRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\DescriptionRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\EndDateRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\IContactFilterRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\InformationRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\NameRule.cs" />
+    <Compile Include="Main\Rules\ContactRules\NoteRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\IFirmFilterRule.cs" />
     <Compile Include="Main\View\ContactViewElement.cs" />
     <Compile Include="Main\View\FirmView.cs" />
     <Compile Include="Main\MainController.cs" />
-    <Compile Include="Main\Rules\ContactsAmountRule.cs" />
-    <Compile Include="Main\Rules\CountryRule.cs" />
-    <Compile Include="Main\Rules\EnterDateRule.cs" />
-    <Compile Include="Main\Rules\FilterRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\ContactsAmountRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\CountryRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\EnterDateRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\FirmFilterRule.cs" />
     <Compile Include="Main\Rules\IFilterRule.cs" />
-    <Compile Include="Main\Rules\NameRule.cs" />
-    <Compile Include="Main\Rules\PostIndexRule.cs" />
-    <Compile Include="Main\Rules\RegionRule.cs" />
-    <Compile Include="Main\Rules\StreetRule.cs" />
-    <Compile Include="Main\Rules\TownRule.cs" />
-    <Compile Include="Main\Rules\UserFieldRule.cs" />
-    <Compile Include="Main\Rules\WebsiteUrlRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\NameRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\PostIndexRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\RegionRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\StreetRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\TownRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\UserFieldRule.cs" />
+    <Compile Include="Main\Rules\FirmRules\WebsiteUrlRule.cs" />
     <Compile Include="Main\View\FirmViewElement.cs" />
     <Compile Include="Main\View\SubFirmViewElement.cs" />
     <Compile Include="Program.cs" />
@@ -182,8 +197,6 @@
       <Name>Lab-3</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Main\TODO.txt" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

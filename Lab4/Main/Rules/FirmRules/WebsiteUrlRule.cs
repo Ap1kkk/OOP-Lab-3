@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class WebsiteUrlRule : FilterRule<string>
+    public class WebsiteUrlRule : FirmFilterRule<string>
     {
         public WebsiteUrlRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)

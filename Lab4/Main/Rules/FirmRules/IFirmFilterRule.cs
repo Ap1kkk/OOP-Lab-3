@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4.Main.Rules
+namespace Lab4.Main.Rules.FirmRules
 {
-    public interface IFilterRule
+    public interface IFirmFilterRule : IFilterRule
     {
-        bool IsFilterActive { get; }
+        bool FirmRespond(Firm firm);
     }
 }

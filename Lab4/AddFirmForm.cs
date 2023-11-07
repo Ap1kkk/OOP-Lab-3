@@ -13,8 +13,8 @@ namespace Lab4
 {
     public partial class AddFirmForm : Form
     {
-        private FieldPool _fieldPool;
-        public AddFirmForm(FieldPool fieldPool)
+        private FirmFieldPool _fieldPool;
+        public AddFirmForm(FirmFieldPool fieldPool)
         {
             InitializeComponent();
             _fieldPool = fieldPool;

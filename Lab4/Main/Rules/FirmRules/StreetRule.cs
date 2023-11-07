@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class CountryRule : FilterRule<string>
+    public class StreetRule : FirmFilterRule<string>
     {
-        public CountryRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression)
+        public StreetRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.Country);
+            return LogicalExpression.Compare(ComparingValue, firm.Street);
         }
     }
 }

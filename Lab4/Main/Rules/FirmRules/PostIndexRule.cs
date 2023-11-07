@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class RegionRule : FilterRule<string>
+    public class PostIndexRule : FirmFilterRule<string>
     {
-        public RegionRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        public PostIndexRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.Region);
+            return LogicalExpression.Compare(ComparingValue, firm.PostIndex);
         }
     }
 }

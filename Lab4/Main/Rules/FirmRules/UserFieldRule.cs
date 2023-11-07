@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class StreetRule : FilterRule<string>
+    public class UserFieldRule : FirmFilterRule<string>
     {
-        public StreetRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        private string _userFieldKey;
+        public UserFieldRule(bool isFilterActive, string userFieldKey, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)
         {
+            _userFieldKey = userFieldKey;
         }
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.Street);
+            return LogicalExpression.Compare(ComparingValue, firm.UserFields[_userFieldKey]);
         }
     }
 }

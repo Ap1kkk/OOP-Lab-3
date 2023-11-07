@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class UserFieldRule : FilterRule<string>
+    public class RegionRule : FirmFilterRule<string>
     {
-        private string _userFieldKey;
-        public UserFieldRule(bool isFilterActive, string userFieldKey, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        public RegionRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)
         {
-            _userFieldKey = userFieldKey;
         }
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.UserFields[_userFieldKey]);
+            return LogicalExpression.Compare(ComparingValue, firm.Region);
         }
     }
 }

@@ -23,6 +23,10 @@ namespace Lab4.Main
             Instance = this;
             FirmFactory.Instance.OnFirmCreated += OnFirmCreated;
         }
+        ~FirmPool()
+        {
+            FirmFactory.Instance.OnFirmCreated -= OnFirmCreated;
+        }
 
         private void OnFirmCreated(Firm firm)
         {

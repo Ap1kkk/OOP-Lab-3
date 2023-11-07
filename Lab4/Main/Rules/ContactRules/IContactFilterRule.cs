@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4.Main.Rules
+namespace Lab4.Main.Rules.ContactRules
 {
-    public interface IFilterRule
+    public interface IContactFilterRule : IFilterRule
     {
-        bool IsFilterActive { get; }
+        bool ContactRespond(Contact contact);
     }
 }

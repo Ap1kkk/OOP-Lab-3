@@ -19,7 +19,7 @@ namespace Lab4
         private FilterForm _filterForm;
         private FieldSelectForm _fieldSelectForm;
         private AddFirmForm _addFirmForm;
-        private FieldPool _fieldPool;
+        private FirmFieldPool _fieldPool;
         public MainForm()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace Lab4
 
             _mainController = new MainController(firmBindingSource1, subFirmBindingSource, 
                 contactBindingSource);
-            _fieldPool = new FieldPool();
+            _fieldPool = new FirmFieldPool();
             _filterForm = new FilterForm(_mainController);
             _fieldSelectForm = new FieldSelectForm(_mainController, _fieldPool);
             _fieldSelectForm.FormClosed += _fieldSelectForm_FormClosed;

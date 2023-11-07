@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4.Main.Rules
+namespace Lab4.Main.Rules.FirmRules
 {
-    public class NameRule : FilterRule<string>
+    public class NameRule : FirmFilterRule<string>
     {
         public NameRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)

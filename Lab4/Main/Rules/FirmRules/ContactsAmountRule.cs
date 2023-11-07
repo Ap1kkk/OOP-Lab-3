@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main.Rules
 {
-    public class PostIndexRule : FilterRule<string>
+    public class ContactsAmountRule : FirmFilterRule<int>
     {
-        public PostIndexRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        public ContactsAmountRule(bool isFilterActive, int comparingValue, ILogicalExpression<int> logicalExpression) 
             : base(isFilterActive, comparingValue, logicalExpression)
         {
         }
+
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.PostIndex);
+            return LogicalExpression.Compare(ComparingValue, firm.ContactsAmount);
         }
     }
 }

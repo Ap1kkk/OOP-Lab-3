@@ -13,15 +13,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace Lab4.Main
+namespace Lab4.Main.Fields
 {
     public abstract class Field<T> : IFieldBase where T : IComparable
     {
         public abstract string Name { get; }
-        public abstract T Value { get; set; }
         protected IFieldFilterView<T> FilterView { get; }
         protected IInputFieldView<T> InputView { get; }
-        protected Firm Firm;
 
         public Field(IFieldFilterView<T> filterView, IInputFieldView<T> inputView)
         {

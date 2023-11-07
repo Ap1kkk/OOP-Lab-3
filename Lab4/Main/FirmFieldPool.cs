@@ -1,5 +1,6 @@
 ﻿using Lab_3;
 using Lab4.Main.Fields;
+using Lab4.Main.Fields.FirmFields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main
 {
-    public class FieldPool
+    public class FirmFieldPool
     {
         public List<IFieldBase> Fields => _fields;
         private List<IFieldBase> _fields = new List<IFieldBase>();
@@ -28,7 +29,7 @@ namespace Lab4.Main
         private UserField _userField4 = new UserField(FirmFactory.FieldName4);
         private UserField _userField5 = new UserField(FirmFactory.FieldName5);
 
-        public FieldPool()
+        public FirmFieldPool()
         {
             _fields.Add(_nameField);
             _fields.Add(_countryField);
