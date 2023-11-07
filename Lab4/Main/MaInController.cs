@@ -22,6 +22,7 @@ namespace Lab4.Main
         private BindingSource _subFirmsLayout;
         private DataGridView _contactsTable;
         private BindingSource _contactsLayout;
+
         public MainController(BindingSource firmsLayout,
                             BindingSource subFirmsLayout,
                             BindingSource contactsLayout)
@@ -37,14 +38,6 @@ namespace Lab4.Main
             _firmView = new FirmView(_firmPool);
             _filterSelector = new FilterSelector(_firmPool, _firmView);
         }
-
-        private void Test()
-        {
-            _firmsTable.Columns.Add("Name", nameof(FirmViewElement.Name));
-            var col = _firmsTable.Columns["Name"];
-            col.DataPropertyName = "Name";
-        }
-
         public void ApplyFilter()
         {
             _firmsLayout.DataSource = _filterSelector.FilteredFirmElements;
@@ -80,11 +73,11 @@ namespace Lab4.Main
         {
             _firmView.DisplayColumns(gridView);
         }
-        public void ClearFields()
+        private void ClearFields()
         {
             _firmView.ClearFields();
         }
-        public void AddField(IFieldBase field)
+        private void AddField(IFieldBase field)
         {
             _firmView.AddField(field);
         }

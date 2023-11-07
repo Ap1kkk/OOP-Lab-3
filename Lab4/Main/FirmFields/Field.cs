@@ -2,6 +2,7 @@
 using Lab4.Main.Expressions;
 using Lab4.Main.Fields;
 using Lab4.Main.FilterFieldVIew;
+using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,13 @@ namespace Lab4.Main
         public abstract string Name { get; }
         public abstract T Value { get; set; }
         protected IFieldFilterView<T> FilterView { get; }
+        protected IInputFieldView<T> InputView { get; }
         protected Firm Firm;
 
-        public Field(IFieldFilterView<T> filterView)
+        public Field(IFieldFilterView<T> filterView, IInputFieldView<T> inputView)
         {
             FilterView = filterView;
+            InputView = inputView;
         }
 
         public abstract Field<T> Clone();
@@ -34,6 +37,10 @@ namespace Lab4.Main
         public void DisplayFilter(TableLayoutPanel layoutPanel)
         {
             FilterView.Display(layoutPanel);
+        }
+        public void DisplayInput(TableLayoutPanel layoutPanel)
+        {
+            InputView.Display(layoutPanel);
         }
 
         protected void AddDisplayingColumn(DataGridView gridView, string name, string dataPropertyName)

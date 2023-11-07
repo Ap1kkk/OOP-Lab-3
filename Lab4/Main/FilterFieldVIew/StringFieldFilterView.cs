@@ -33,6 +33,18 @@ namespace Lab4.Main.FilterFieldVIew
             _notContainsRadioButton.CheckedChanged -= _notContainsRadioButton_CheckedChanged;
         }
 
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            _equalsRadioButton.CheckedChanged += _equalsRadioButton_CheckedChanged;
+            _notEqualsRadioButton.CheckedChanged += _notEqualsRadioButton_CheckedChanged;
+            _containsRadioButton.CheckedChanged += _containsRadioButton_CheckedChanged;
+            _notContainsRadioButton.CheckedChanged += _notContainsRadioButton_CheckedChanged;
+
+            _equalsRadioButton.Checked = true;
+        }
+
         public override void Display(TableLayoutPanel tableLayoutPanel)
         {
             base.Display(tableLayoutPanel);
@@ -44,18 +56,6 @@ namespace Lab4.Main.FilterFieldVIew
             LayoutPanel.Controls.Add(_notContainsRadioButton);
 
             tableLayoutPanel.Controls.Add(LayoutPanel);
-        }
-
-        protected override void Initialize()
-        {
-            base.Initialize();
-
-            _equalsRadioButton.CheckedChanged += _equalsRadioButton_CheckedChanged;
-            _notEqualsRadioButton.CheckedChanged += _notEqualsRadioButton_CheckedChanged;
-            _containsRadioButton.CheckedChanged += _containsRadioButton_CheckedChanged;
-            _notContainsRadioButton.CheckedChanged += _notContainsRadioButton_CheckedChanged;
-
-            _equalsRadioButton.Checked = true;
         }
 
         public override void EnableControls()

@@ -36,19 +36,32 @@ namespace Lab4.Main.View
             _fields.Add(field);
         }
 
-        public void DisplayFilters(TableLayoutPanel layoutPanel)
+        public void DisplayFilters(TableLayoutPanel filterLayout)
         {
+            filterLayout.RowCount = 0;
+            filterLayout.Controls.Clear();
             foreach (var field in _fields)
             {
-                field.DisplayFilter(layoutPanel);
+                field.DisplayFilter(filterLayout);
             }
         }
 
-        public void DisplayColumns(DataGridView gridView)
+        public void DisplayColumns(DataGridView fieldsView)
         {
+            fieldsView.Columns.Clear();
             foreach (var field in _fields)
             {
-                field.AddDisplayingColumn(gridView);
+                field.AddDisplayingColumn(fieldsView);
+            }
+        }
+
+        public void DisplayInputs(TableLayoutPanel inputLayout)
+        {
+            inputLayout.RowCount = 0;
+            inputLayout.Controls.Clear();
+            foreach (var field in _fields)
+            {
+                field.DisplayInput(inputLayout);
             }
         }
     }

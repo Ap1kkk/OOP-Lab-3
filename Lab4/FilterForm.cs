@@ -20,7 +20,7 @@ namespace Lab4
         {
             InitializeComponent();
             _mainController = maInController;
-
+            _mainController.DisplayFilters(FilterTableLayout);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -32,6 +32,7 @@ namespace Lab4
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             _mainController.ApplyFilter();
+            Close();
         }
     }
 }

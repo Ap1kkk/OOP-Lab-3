@@ -13,6 +13,7 @@ namespace Lab4.Main.Fields
         string Name { get; }
         void AddDisplayingColumn(DataGridView gridView);
         void DisplayFilter(TableLayoutPanel layoutPanel);
+        void DisplayInput(TableLayoutPanel layoutPanel);
         IFilterRule CreateRule();
     }
 }

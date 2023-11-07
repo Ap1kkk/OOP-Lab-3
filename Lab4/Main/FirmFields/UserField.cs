@@ -1,6 +1,7 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
 using Lab4.Main.FilterFieldVIew;
+using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
 using Lab4.Main.View;
 using System;
@@ -9,13 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Lab4.Main.Fields
 {
     public class UserField : Field<string>
     {
+        public override string Name => _fieldName;
         private readonly string _fieldName;
-        public UserField(string fieldName) : base(new StringFieldFilterView(fieldName))
+        public UserField(string fieldName) : base(new StringFieldFilterView(fieldName), new StringInputFieldView(fieldName))
         {
             _fieldName = fieldName;
         }

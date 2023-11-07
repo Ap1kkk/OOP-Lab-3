@@ -18,6 +18,8 @@ namespace Lab4
         private MainController _mainController;
         private FilterForm _filterForm;
         private FieldSelectForm _fieldSelectForm;
+        private AddFirmForm _addFirmForm;
+        private FieldPool _fieldPool;
         public MainForm()
         {
             InitializeComponent();
@@ -32,17 +34,25 @@ namespace Lab4
                 firm.SetField("field2", "vallues");
                 firm.SetField("field3", "vallues");
                 firm.SetField("field4", "vallues"); 
+                firm.SetField("field5", "vallues"); 
             }
 
 
-            _mainController = new MainController(firmBindingSource1, subFirmBindingSource, contactBindingSource);
+            _mainController = new MainController(firmBindingSource1, subFirmBindingSource, 
+                contactBindingSource);
+            _fieldPool = new FieldPool();
             _filterForm = new FilterForm(_mainController);
-            _fieldSelectForm = new FieldSelectForm(_mainController);
+            _fieldSelectForm = new FieldSelectForm(_mainController, _fieldPool);
+            _fieldSelectForm.FormClosed += _fieldSelectForm_FormClosed;
+            _addFirmForm = new AddFirmForm(_fieldPool);
 
-            _mainController.AddField(new NameField());
-            _mainController.AddField(new NameField());
             _mainController.DisplayColumns(dataGridView1);
             _mainController.DisplayAllData();
+        }
+
+        private void _fieldSelectForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _mainController.DisplayColumns(dataGridView1);
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +63,11 @@ namespace Lab4
         private void selectFieldsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _fieldSelectForm.ShowDialog();
+        }
+
+        private void addFirmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _addFirmForm.ShowDialog();
         }
     }
 }

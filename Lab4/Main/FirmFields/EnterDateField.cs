@@ -1,6 +1,7 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
 using Lab4.Main.FilterFieldVIew;
+using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
 using Lab4.Main.View;
 using System;
@@ -14,7 +15,9 @@ namespace Lab4.Main.Fields
 {
     public class EnterDateField : Field<DateTime>
     {
-        public EnterDateField() : base(new DateFieldFilterView("Enter date"))
+        public override string Name => _name;
+        private const string _name = "Enter date";
+        public EnterDateField() : base(new DateFieldFilterView(_name), new DateInputFieldView(_name))
         {
         }
 
@@ -26,7 +29,7 @@ namespace Lab4.Main.Fields
 
         public override void AddDisplayingColumn(DataGridView gridView)
         {
-            AddDisplayingColumn(gridView, "Enter date", nameof(FirmViewElement.EnterDate));
+            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.EnterDate));
         }
 
         public override Field<DateTime> Clone()

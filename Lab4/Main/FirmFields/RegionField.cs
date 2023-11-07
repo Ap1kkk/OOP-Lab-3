@@ -1,6 +1,7 @@
 ﻿using Lab_3;
 using Lab4.Main.Expressions;
 using Lab4.Main.FilterFieldVIew;
+using Lab4.Main.InputFieldView;
 using Lab4.Main.Rules;
 using Lab4.Main.View;
 using System;
@@ -14,7 +15,9 @@ namespace Lab4.Main.Fields
 {
     public class RegionField : Field<string>
     {
-        public RegionField() : base(new StringFieldFilterView("Reegion"))
+        public override string Name => _name;
+        private const string _name = "Region";
+        public RegionField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
         {
         }
 
@@ -26,7 +29,7 @@ namespace Lab4.Main.Fields
 
         public override void AddDisplayingColumn(DataGridView gridView)
         {
-            AddDisplayingColumn(gridView, "Region", nameof(FirmViewElement.Region));
+            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Region));
         }
 
         public override Field<string> Clone()

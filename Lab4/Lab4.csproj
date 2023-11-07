@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFirmForm.Designer.cs">
+      <DependentUpon>AddFirmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FieldSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,7 @@
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldCheckBox.cs" />
+    <Compile Include="Main\FieldPool.cs" />
     <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IntFieldFilterView.cs" />
@@ -101,6 +108,11 @@
     <Compile Include="Main\Fields\TownField.cs" />
     <Compile Include="Main\Fields\UserField.cs" />
     <Compile Include="Main\Fields\WebsiteUrlField.cs" />
+    <Compile Include="Main\InputFieldView\DateInputFieldView.cs" />
+    <Compile Include="Main\InputFieldView\IInputFieldView.cs" />
+    <Compile Include="Main\InputFieldView\InputFieldView.cs" />
+    <Compile Include="Main\InputFieldView\IntInputFieldView.cs" />
+    <Compile Include="Main\InputFieldView\StringInputFieldView.cs" />
     <Compile Include="Main\View\ContactViewElement.cs" />
     <Compile Include="Main\View\FirmView.cs" />
     <Compile Include="Main\MainController.cs" />
@@ -120,12 +132,9 @@
     <Compile Include="Main\View\SubFirmViewElement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="AddFirmForm.resx">
+      <DependentUpon>AddFirmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FieldSelectForm.resx">
       <DependentUpon>FieldSelectForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,9 +153,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\DataSources\Lab4.Main.FirmView.datasource" />
     <None Include="Properties\DataSources\Lab_3.Contact.datasource" />
     <None Include="Properties\DataSources\Lab_3.ContactType.datasource" />
