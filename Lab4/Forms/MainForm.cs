@@ -1,4 +1,6 @@
 ﻿using Lab_3;
+using Lab4.Forms.FieldSelectForms;
+using Lab4.Forms.FilterForms;
 using Lab4.Main;
 using Lab4.Main.Fields;
 using System;
@@ -16,8 +18,8 @@ namespace Lab4
     public partial class MainForm : Form
     {
         private MainController _mainController;
-        private FilterForm _filterForm;
-        private FieldSelectForm _fieldSelectForm;
+        private FilterForm _firmFilterForm;
+        private FieldSelectForm _firmFieldSelectForm;
         private AddFirmForm _addFirmForm;
         private FirmFieldPool _fieldPool;
         public MainForm()
@@ -41,28 +43,28 @@ namespace Lab4
             _mainController = new MainController(firmBindingSource1, subFirmBindingSource, 
                 contactBindingSource);
             _fieldPool = new FirmFieldPool();
-            _filterForm = new FilterForm(_mainController);
-            _fieldSelectForm = new FieldSelectForm(_mainController, _fieldPool);
-            _fieldSelectForm.FormClosed += _fieldSelectForm_FormClosed;
+            _firmFilterForm = new FirmFilterForm(_mainController);
+            _firmFieldSelectForm = new FirmFieldSelectForm(_mainController, _fieldPool);
+            _firmFieldSelectForm.FormClosed += _firmFieldSelectForm_FormClosed;
             _addFirmForm = new AddFirmForm(_fieldPool);
 
-            _mainController.DisplayColumns(FirmsGridView);
+            _mainController.DisplayFirmColumns(FirmsGridView);
             _mainController.DisplayAllData();
         }
 
-        private void _fieldSelectForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void _firmFieldSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _mainController.DisplayColumns(FirmsGridView);
+            _mainController.DisplayFirmColumns(FirmsGridView);
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _filterForm.ShowDialog();   
+            _firmFilterForm.ShowDialog();   
         }
 
         private void selectFieldsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _fieldSelectForm.ShowDialog();
+            _firmFieldSelectForm.ShowDialog();
         }
 
         private void addFirmToolStripMenuItem_Click(object sender, EventArgs e)

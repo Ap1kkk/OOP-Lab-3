@@ -14,21 +14,22 @@ using System.Windows.Forms;
 
 namespace Lab4
 {
-    public partial class FieldSelectForm : Form
+    public abstract partial class FieldSelectForm : Form
     {
-        private MainController _mainController;
-        private FirmFieldPool _fieldPool;
+        protected MainController MainController;
+        protected IFieldPool FieldPool;
 
+        protected List<IFieldBase> Fields => _fields;
         private List<IFieldBase> _fields;
         private List<FieldCheckBox> _checkBoxes = new List<FieldCheckBox>();
 
-        public FieldSelectForm(MainController mainController, FirmFieldPool fieldPool)
+        public FieldSelectForm(MainController mainController, IFieldPool fieldPool)
         {
             InitializeComponent();
 
-            _mainController = mainController;
-            _fieldPool = fieldPool;
-            _fields = new List<IFieldBase>(_fieldPool.Fields);
+            MainController = mainController;
+            FieldPool = fieldPool;
+            _fields = new List<IFieldBase>(FieldPool.Fields);
 
             foreach (var field in _fields)
             {
@@ -38,7 +39,7 @@ namespace Lab4
                 FieldSelectPanel.Controls.Add(fieldCheckBox.CheckBox);
                 _checkBoxes.Add(fieldCheckBox);
             }
-            _mainController.ApplyDisplayingFields(_fields);
+            MainController.ApplyDisplayingFirmFields(_fields);
         }
         ~FieldSelectForm()
         {
@@ -60,11 +61,11 @@ namespace Lab4
             }
         }
 
-        private void ApplyButton_Click(object sender, EventArgs e)
-        {
-            _mainController.ApplyDisplayingFields(_fields);
-            Close();
-        }
+        protected abstract void ApplyButton_Click(object sender, EventArgs e);
+        //{
+        //    _mainController.ApplyDisplayingFields(_fields);
+        //    Close();
+        //}
 
     }
 }

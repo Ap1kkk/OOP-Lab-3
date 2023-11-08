@@ -30,5 +30,10 @@ namespace Lab4
 
             Close();
         }
+
+        private bool ValidateInputFirm()
+        {
+            return false;
+        }
     }
 }

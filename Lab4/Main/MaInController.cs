@@ -14,6 +14,8 @@ namespace Lab4.Main
     {
         private FirmPool _firmPool;
         private FirmView _firmView;
+        private ContactView _contactView;
+
         private FilterSelector _filterSelector;
 
         private BindingSource _firmsLayout;
@@ -29,22 +31,23 @@ namespace Lab4.Main
             _contactsLayout = contactsLayout;
 
             _firmPool = FirmPool.Instance;
-            _firmView = new FirmView(_firmPool);
-            _filterSelector = new FilterSelector(_firmPool, _firmView);
+            _firmView = new FirmView();
+            _contactView = new ContactView();
+            _filterSelector = new FilterSelector(_firmPool, _firmView, _contactView);
         }
-        public void ApplyFilter()
+        public void ApplyFirmFilter()
         {
-            _firmsLayout.DataSource = _filterSelector.FilteredFirmElements;
+            _firmsLayout.DataSource = Converter.ConvertFirms(_filterSelector.SelectedFirms);
             _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_filterSelector.SelectedFirms);
-            _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_filterSelector.SelectedFirms);
+            _contactsLayout.DataSource = Converter.ConvertContacts(_filterSelector.SelectedContacts);
         }
 
-        public void ApplyDisplayingFields(List<IFieldBase> fields)
+        public void ApplyDisplayingFirmFields(List<IFieldBase> fields)
         {
-            ClearFields();
+            ClearFirmFields();
             foreach (IFieldBase field in fields)
             {
-                AddField(field);
+                AddFirmField(field);
             }
         }
 
@@ -55,19 +58,19 @@ namespace Lab4.Main
             _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_firmPool.Firms);
         }
 
-        public void DisplayFilters(TableLayoutPanel layoutPanel)
+        public void DisplayFirmFilters(TableLayoutPanel layoutPanel)
         {
             _firmView.DisplayFilters(layoutPanel);
         }
-        public void DisplayColumns(DataGridView gridView)
+        public void DisplayFirmColumns(DataGridView gridView)
         {
             _firmView.DisplayColumns(gridView);
         }
-        private void ClearFields()
+        private void ClearFirmFields()
         {
             _firmView.ClearFields();
         }
-        private void AddField(IFieldBase field)
+        private void AddFirmField(IFieldBase field)
         {
             _firmView.AddField(field);
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Main
 {
-    public class FirmFieldPool
+    public class FirmFieldPool : IFieldPool
     {
         public List<IFieldBase> Fields => _fields;
         private List<IFieldBase> _fields = new List<IFieldBase>();

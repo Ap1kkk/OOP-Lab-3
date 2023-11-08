@@ -12,6 +12,9 @@ namespace Lab4.Main
         public static FirmPool Instance { get; private set; } = null;
 
         public List<Firm> Firms => _firms;
+        public List<SubFirm> SubFirms => GetAllSubFirms();
+        public List<Contact> Contacts => GetAllContacts();
+
         private List<Firm> _firms = new List<Firm>();
 
         public FirmPool()

@@ -46,23 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFirmForm.cs">
+    <Compile Include="Forms\AddFirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFirmForm.Designer.cs">
+    <Compile Include="Forms\AddFirmForm.Designer.cs">
       <DependentUpon>AddFirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FieldSelectForm.cs">
+    <Compile Include="Forms\FieldSelectForms\FieldSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FieldSelectForm.Designer.cs">
+    <Compile Include="Forms\FieldSelectForms\FieldSelectForm.Designer.cs">
       <DependentUpon>FieldSelectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FilterForm.cs">
+    <Compile Include="Forms\FieldSelectForms\FirmFieldSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FilterForm.Designer.cs">
+    <Compile Include="Forms\FilterForms\FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FilterForms\FilterForm.Designer.cs">
       <DependentUpon>FilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FilterForms\FirmFilterForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
@@ -73,7 +79,8 @@
     <Compile Include="Main\Fields\ContactFields\InformationField.cs" />
     <Compile Include="Main\Fields\ContactFields\NameField.cs" />
     <Compile Include="Main\Fields\ContactFields\NoteField.cs" />
-    <Compile Include="Main\FirmFieldPool.cs" />
+    <Compile Include="Main\Pools\FieldPools\ContactFieldPool.cs" />
+    <Compile Include="Main\Pools\FieldPools\FirmFieldPool.cs" />
     <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IntFieldFilterView.cs" />
@@ -82,11 +89,11 @@
     <Compile Include="Main\FilterFieldVIew\StringFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\IFieldFilterViewBase.cs" />
     <Compile Include="Main\FilterSelector.cs" />
-    <Compile Include="Main\FirmPool.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Main\Pools\FirmPool.cs" />
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Expressions\ContainsExpression.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Main\InputFieldView\InputFieldView.cs" />
     <Compile Include="Main\InputFieldView\IntInputFieldView.cs" />
     <Compile Include="Main\InputFieldView\StringInputFieldView.cs" />
+    <Compile Include="Main\Pools\FieldPools\IFieldPool.cs" />
     <Compile Include="Main\Rules\ContactRules\BeginDateRule.cs" />
     <Compile Include="Main\Rules\ContactRules\ContactFilterRule.cs" />
     <Compile Include="Main\Rules\ContactRules\DescriptionRule.cs" />
@@ -128,7 +136,8 @@
     <Compile Include="Main\Rules\ContactRules\NameRule.cs" />
     <Compile Include="Main\Rules\ContactRules\NoteRule.cs" />
     <Compile Include="Main\Rules\FirmRules\IFirmFilterRule.cs" />
-    <Compile Include="Main\View\ContactViewElement.cs" />
+    <Compile Include="Main\View\ContactView.cs" />
+    <Compile Include="Main\View\Elements\ContactViewElement.cs" />
     <Compile Include="Main\View\FirmView.cs" />
     <Compile Include="Main\MainController.cs" />
     <Compile Include="Main\Rules\FirmRules\ContactsAmountRule.cs" />
@@ -143,20 +152,22 @@
     <Compile Include="Main\Rules\FirmRules\TownRule.cs" />
     <Compile Include="Main\Rules\FirmRules\UserFieldRule.cs" />
     <Compile Include="Main\Rules\FirmRules\WebsiteUrlRule.cs" />
-    <Compile Include="Main\View\FirmViewElement.cs" />
-    <Compile Include="Main\View\SubFirmViewElement.cs" />
+    <Compile Include="Main\View\Elements\FirmViewElement.cs" />
+    <Compile Include="Main\View\Elements\SubFirmViewElement.cs" />
+    <Compile Include="Main\View\IView.cs" />
+    <Compile Include="Main\View\ViewBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddFirmForm.resx">
+    <EmbeddedResource Include="Forms\AddFirmForm.resx">
       <DependentUpon>AddFirmForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FieldSelectForm.resx">
+    <EmbeddedResource Include="Forms\FieldSelectForms\FieldSelectForm.resx">
       <DependentUpon>FieldSelectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FilterForm.resx">
+    <EmbeddedResource Include="Forms\FilterForms\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
