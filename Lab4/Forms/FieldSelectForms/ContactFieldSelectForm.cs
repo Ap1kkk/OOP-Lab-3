@@ -1,4 +1,5 @@
-﻿using Lab4.Main;
+﻿using Lab4.Main.Fields;
+using Lab4.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +8,21 @@ using System.Threading.Tasks;
 
 namespace Lab4.Forms.FieldSelectForms
 {
-    public class FirmFieldSelectForm : FieldSelectForm
+    public class ContactFieldSelectForm : FieldSelectForm
     {
-        public FirmFieldSelectForm(MainController mainController, IFieldPool fieldPool) : base(mainController, fieldPool)
+        public ContactFieldSelectForm(MainController mainController, IFieldPool fieldPool) : base(mainController, fieldPool)
         {
         }
+
         protected override void Initialize()
         {
-            MainController.ApplyDisplayingFirmFields(Fields);
+            MainController.ApplyDisplayingContactFields(Fields);
         }
 
         protected override void ApplyButton_Click(object sender, EventArgs e)
         {
-            MainController.ApplyDisplayingFirmFields(Fields);
-            OnApplied();
+            MainController.ApplyDisplayingContactFields(Fields);
             Close();
         }
-
     }
 }

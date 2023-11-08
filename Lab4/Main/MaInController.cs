@@ -35,13 +35,18 @@ namespace Lab4.Main
             _contactView = new ContactView();
             _filterSelector = new FilterSelector(_firmPool, _firmView, _contactView);
         }
+        public void DisplayAllData()
+        {
+            _firmsLayout.DataSource = Converter.ConvertFirms(_firmPool.Firms);
+            _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_firmPool.Firms);
+            _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_firmPool.Firms);
+        }
+
+        #region Firms
         public void ApplyFirmFilter()
         {
             _firmsLayout.DataSource = Converter.ConvertFirms(_filterSelector.SelectedFirms);
-            _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_filterSelector.SelectedFirms);
-            _contactsLayout.DataSource = Converter.ConvertContacts(_filterSelector.SelectedContacts);
         }
-
         public void ApplyDisplayingFirmFields(List<IFieldBase> fields)
         {
             ClearFirmFields();
@@ -50,14 +55,6 @@ namespace Lab4.Main
                 AddFirmField(field);
             }
         }
-
-        public void DisplayAllData()
-        {
-            _firmsLayout.DataSource = Converter.ConvertFirms(_firmPool.Firms);
-            _subFirmsLayout.DataSource = Converter.ConvertFirmsToSubFirms(_firmPool.Firms);
-            _contactsLayout.DataSource = Converter.ConvertFirmsToContacts(_firmPool.Firms);
-        }
-
         public void DisplayFirmFilters(TableLayoutPanel layoutPanel)
         {
             _firmView.DisplayFilters(layoutPanel);
@@ -74,5 +71,37 @@ namespace Lab4.Main
         {
             _firmView.AddField(field);
         }
+        #endregion
+
+        #region Contacts
+        public void ApplyContactFilter()
+        {
+            _contactsLayout.DataSource = Converter.ConvertContacts(_filterSelector.SelectedContacts);
+        }
+        public void ApplyDisplayingContactFields(List<IFieldBase> fields)
+        {
+            ClearContactFields();
+            foreach (IFieldBase field in fields)
+            {
+                AddContactField(field);
+            }
+        }
+        public void DisplayContactFilters(TableLayoutPanel layoutPanel)
+        {
+            _contactView.DisplayFilters(layoutPanel);
+        }
+        public void DisplayContactColumns(DataGridView gridView)
+        {
+            _contactView.DisplayColumns(gridView);
+        }
+        private void ClearContactFields()
+        {
+            _contactView.ClearFields();
+        }
+        private void AddContactField(IFieldBase field)
+        {
+            _contactView.AddField(field);
+        }
+        #endregion
     }
 }

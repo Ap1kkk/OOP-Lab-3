@@ -52,6 +52,9 @@
     <Compile Include="Forms\AddFirmForm.Designer.cs">
       <DependentUpon>AddFirmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FieldSelectForms\ContactFieldSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FieldSelectForms\FieldSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>

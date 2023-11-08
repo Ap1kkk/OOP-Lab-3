@@ -16,6 +16,8 @@ namespace Lab4
 {
     public abstract partial class FieldSelectForm : Form
     {
+        public event Action OnFieldApplied;
+
         protected MainController MainController;
         protected IFieldPool FieldPool;
 
@@ -39,7 +41,7 @@ namespace Lab4
                 FieldSelectPanel.Controls.Add(fieldCheckBox.CheckBox);
                 _checkBoxes.Add(fieldCheckBox);
             }
-            MainController.ApplyDisplayingFirmFields(_fields);
+            Initialize();
         }
         ~FieldSelectForm()
         {
@@ -48,6 +50,8 @@ namespace Lab4
                 item.CheckChanged -= FieldCheckBox_CheckChanged;
             }
         }
+
+        protected abstract void Initialize();
 
         private void FieldCheckBox_CheckChanged(bool isChecked, IFieldBase field)
         {
@@ -62,10 +66,10 @@ namespace Lab4
         }
 
         protected abstract void ApplyButton_Click(object sender, EventArgs e);
-        //{
-        //    _mainController.ApplyDisplayingFields(_fields);
-        //    Close();
-        //}
 
+        protected void OnApplied()
+        {
+            OnFieldApplied?.Invoke();
+        }
     }
 }

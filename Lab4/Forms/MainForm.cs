@@ -3,6 +3,7 @@ using Lab4.Forms.FieldSelectForms;
 using Lab4.Forms.FilterForms;
 using Lab4.Main;
 using Lab4.Main.Fields;
+using Lab4.Main.Pools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,10 +19,15 @@ namespace Lab4
     public partial class MainForm : Form
     {
         private MainController _mainController;
-        private FilterForm _firmFilterForm;
-        private FieldSelectForm _firmFieldSelectForm;
+
+        private FirmFilterForm _firmFilterForm;
+        private FirmFieldSelectForm _firmFieldSelectForm;
         private AddFirmForm _addFirmForm;
-        private FirmFieldPool _fieldPool;
+        private FirmFieldPool _firmFieldPool;
+
+        private ContactFieldSelectForm _contactFieldSelectForm;
+        private ContactFieldPool _contactFieldPool;
+
         public MainForm()
         {
             InitializeComponent();
@@ -42,11 +48,16 @@ namespace Lab4
 
             _mainController = new MainController(firmBindingSource1, subFirmBindingSource, 
                 contactBindingSource);
-            _fieldPool = new FirmFieldPool();
+
+            _firmFieldPool = new FirmFieldPool();
+
             _firmFilterForm = new FirmFilterForm(_mainController);
-            _firmFieldSelectForm = new FirmFieldSelectForm(_mainController, _fieldPool);
-            _firmFieldSelectForm.FormClosed += _firmFieldSelectForm_FormClosed;
-            _addFirmForm = new AddFirmForm(_fieldPool);
+            _firmFieldSelectForm = new FirmFieldSelectForm(_mainController, _firmFieldPool);
+            //_firmFieldSelectForm.FormClosed += _firmFieldSelectForm_FormClosed;
+            _addFirmForm = new AddFirmForm(_firmFieldPool);
+
+            _contactFieldPool = new ContactFieldPool();
+            _contactFieldSelectForm = new ContactFieldSelectForm(_mainController, _contactFieldPool);
 
             _mainController.DisplayFirmColumns(FirmsGridView);
             _mainController.DisplayAllData();
@@ -57,19 +68,29 @@ namespace Lab4
             _mainController.DisplayFirmColumns(FirmsGridView);
         }
 
-        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addFirmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _firmFilterForm.ShowDialog();   
+            _addFirmForm.ShowDialog();
         }
 
-        private void selectFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void firmsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _firmFilterForm.ShowDialog();
+        }
+
+        private void contactsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void firmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _firmFieldSelectForm.ShowDialog();
         }
 
-        private void addFirmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void contactToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _addFirmForm.ShowDialog();
+            _contactFieldSelectForm.ShowDialog();
         }
     }
 }
