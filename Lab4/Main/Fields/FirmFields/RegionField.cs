@@ -16,16 +16,14 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class RegionField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.Region);
+
         private const string _name = "Region";
 
-        public RegionField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public RegionField()
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Region));
         }
 
         public override Field<string> Clone()
@@ -37,5 +35,6 @@ namespace Lab4.Main.Fields.FirmFields
         {
             return new RegionRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
         }
+
     }
 }

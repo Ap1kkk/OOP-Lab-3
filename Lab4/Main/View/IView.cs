@@ -13,11 +13,5 @@ namespace Lab4.Main.View
         List<IFieldBase> Fields { get; }
         void ClearFields();
         void AddField(IFieldBase field);
-
-        void DisplayFilters(TableLayoutPanel filterLayout);
-
-        void DisplayColumns(DataGridView fieldsView);
-
-        void DisplayInputs(TableLayoutPanel inputLayout);
     }
 }

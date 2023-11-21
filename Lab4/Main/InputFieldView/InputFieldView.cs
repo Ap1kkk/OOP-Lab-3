@@ -23,7 +23,7 @@ namespace Lab4.Main.InputFieldView
         public virtual void Display(TableLayoutPanel layoutPanel)
         {
             layoutPanel.RowCount++;
-            layoutPanel.RowStyles.Add(new RowStyle() { SizeType = SizeType.AutoSize});
+            layoutPanel.RowStyles.Add(new RowStyle() { SizeType = SizeType.AutoSize });
             layoutPanel.Controls.Add(Label);
         }
     }

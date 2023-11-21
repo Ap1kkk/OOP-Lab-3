@@ -1,4 +1,6 @@
-﻿using Lab4.Main.Rules;
+﻿using Lab4.Main.FilterFieldVIew;
+using Lab4.Main.InputFieldView;
+using Lab4.Main.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,9 @@ namespace Lab4.Main.Fields
 {
     public interface IFieldBase
     {
+        string DisplayingName { get; }
         string Name { get; }
-        void AddDisplayingColumn(DataGridView gridView);
-        void DisplayFilter(TableLayoutPanel layoutPanel);
-        void DisplayInput(TableLayoutPanel layoutPanel);
+        FieldViewType Type { get; }
         IFilterRule CreateRule();
     }
 }

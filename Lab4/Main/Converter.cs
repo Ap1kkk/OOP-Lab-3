@@ -1,4 +1,5 @@
 ﻿using Lab_3;
+using Lab4.Main.Fields;
 using Lab4.Main.View;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,14 @@ namespace Lab4.Main
                 converted.AddRange(ConvertContacts(firm.Contacts));
             }
             return converted;
+        }
+        public static List<string> ConvertFields(List<IFieldBase> fields) 
+        {
+            return fields.ConvertAll(new Converter<IFieldBase, string>(ConvertField));
+        }
+        public static string ConvertField(IFieldBase field)
+        {
+            return field.Name;
         }
     }
 }

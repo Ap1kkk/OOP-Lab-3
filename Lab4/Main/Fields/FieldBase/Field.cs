@@ -15,36 +15,20 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Lab4.Main.Fields
 {
-    public abstract class Field<T> : IFieldBase where T : IComparable
+    public abstract class Field<T> : IField<T> where T : IComparable
     {
         public abstract string Name { get; }
-        protected IFieldFilterView<T> FilterView { get; }
-        protected IInputFieldView<T> InputView { get; }
+        public abstract string DisplayingName { get; }
+        public FieldViewType Type { get; }
+        protected IFieldFilterView<T> FilterView { get; set; }
 
-        public Field(IFieldFilterView<T> filterView, IInputFieldView<T> inputView)
+        public Field(FieldViewType fieldViewType)
         {
-            FilterView = filterView;
-            InputView = inputView;
+            Type = fieldViewType;
         }
 
         public abstract Field<T> Clone();
 
         public abstract IFilterRule CreateRule();
-
-        public abstract void AddDisplayingColumn(DataGridView gridView);
-        public void DisplayFilter(TableLayoutPanel layoutPanel)
-        {
-            FilterView.Display(layoutPanel);
-        }
-        public void DisplayInput(TableLayoutPanel layoutPanel)
-        {
-            InputView.Display(layoutPanel);
-        }
-
-        protected void AddDisplayingColumn(DataGridView gridView, string name, string dataPropertyName)
-        {
-            gridView.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = name, DataPropertyName = dataPropertyName });
-        }
-
     }
 }

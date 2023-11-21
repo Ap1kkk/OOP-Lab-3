@@ -35,7 +35,7 @@ namespace Lab4
 
             foreach (var field in _fields)
             {
-                var fieldCheckBox = new FieldCheckBox(field.Name, field);
+                var fieldCheckBox = new FieldCheckBox(field.DisplayingName, field);
                 fieldCheckBox.CheckBox.Checked = true;
                 fieldCheckBox.CheckChanged += FieldCheckBox_CheckChanged;
                 FieldSelectPanel.Controls.Add(fieldCheckBox.CheckBox);

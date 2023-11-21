@@ -16,16 +16,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class StreetField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.Street);
         private const string _name = "Street";
 
-        public StreetField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public StreetField()
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Street));
         }
 
         public override Field<string> Clone()

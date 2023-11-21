@@ -17,36 +17,14 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class UserField : Field<string>
     {
+        public override string DisplayingName => _fieldName;
         public override string Name => _fieldName;
         private readonly string _fieldName;
 
-        public UserField(string fieldName) : base(new StringFieldFilterView(fieldName), new StringInputFieldView(fieldName))
+        public UserField(string fieldName) 
+            : base(FieldViewType.String)
         {
             _fieldName = fieldName;
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            switch (_fieldName)
-            {
-                case FirmFactory.FieldName1:
-                    AddDisplayingColumn(gridView, _fieldName, nameof(FirmViewElement.UserField1));
-                    break;
-                case FirmFactory.FieldName2:
-                    AddDisplayingColumn(gridView, _fieldName, nameof(FirmViewElement.UserField2));
-                    break;
-                case FirmFactory.FieldName3:
-                    AddDisplayingColumn(gridView, _fieldName, nameof(FirmViewElement.UserField3));
-                    break;
-                case FirmFactory.FieldName4:
-                    AddDisplayingColumn(gridView, _fieldName, nameof(FirmViewElement.UserField4));
-                    break;
-                case FirmFactory.FieldName5:
-                    AddDisplayingColumn(gridView, _fieldName, nameof(FirmViewElement.UserField5));
-                    break;
-                default:
-                    break;
-            }
         }
 
         public override Field<string> Clone()

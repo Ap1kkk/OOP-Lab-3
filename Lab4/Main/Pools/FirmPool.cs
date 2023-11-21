@@ -11,11 +11,11 @@ namespace Lab4.Main
     {
         public static FirmPool Instance { get; private set; } = null;
 
-        public List<Firm> Firms => _firms;
+        public List<Firm> Firms => _firms.Values.ToList();
         public List<SubFirm> SubFirms => GetAllSubFirms();
         public List<Contact> Contacts => GetAllContacts();
 
-        private List<Firm> _firms = new List<Firm>();
+        private Dictionary<string, Firm> _firms = new Dictionary<string, Firm>();
 
         public FirmPool()
         {
@@ -33,7 +33,7 @@ namespace Lab4.Main
 
         private void OnFirmCreated(Firm firm)
         {
-            _firms.Add(firm);
+            _firms.Add(firm.Name, firm);
         }
 
         private List<SubFirm> GetAllSubFirms()

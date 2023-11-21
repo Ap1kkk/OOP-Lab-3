@@ -21,7 +21,7 @@ namespace Lab4.Main.FilterFieldVIew
         private RadioButton _containsRadioButton = new RadioButton() { Text = "contains", AutoSize = true };
         private RadioButton _notContainsRadioButton = new RadioButton() { Text = "not contains", AutoSize = true };
 
-        public StringFieldFilterView(string label) : base(label)
+        public StringFieldFilterView(string label, TableLayoutPanel layoutPanel) : base(label, layoutPanel)
         {
             Initialize();
         }
@@ -45,17 +45,17 @@ namespace Lab4.Main.FilterFieldVIew
             _equalsRadioButton.Checked = true;
         }
 
-        public override void Display(TableLayoutPanel tableLayoutPanel)
+        public override void Display()
         {
-            base.Display(tableLayoutPanel);
+            base.Display();
 
-            tableLayoutPanel.Controls.Add(_textBox);
+            TableLayoutPanel.Controls.Add(_textBox);
             LayoutPanel.Controls.Add(_equalsRadioButton);
             LayoutPanel.Controls.Add(_notEqualsRadioButton);
             LayoutPanel.Controls.Add(_containsRadioButton);
             LayoutPanel.Controls.Add(_notContainsRadioButton);
 
-            tableLayoutPanel.Controls.Add(LayoutPanel);
+            TableLayoutPanel.Controls.Add(LayoutPanel);
         }
 
         public override void EnableControls()

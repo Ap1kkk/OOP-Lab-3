@@ -17,16 +17,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class NameField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.Name);
         private const string _name = "Name";
 
-        public NameField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public NameField()
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Name));
         }
 
         public override Field<string> Clone()

@@ -16,16 +16,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class ContactsAmountField : Field<int>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.ContactsAmount);
         private const string _name = "Contacts amount";
 
-        public ContactsAmountField() : base(new IntFieldFilterView(_name), new IntInputFieldView(_name))
+        public ContactsAmountField() 
+            :base(FieldViewType.Int)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.ContactsAmount));
         }
 
         public override Field<int> Clone()

@@ -7,8 +7,8 @@ using System.Windows.Forms;
 
 namespace Lab4.Main.InputFieldView
 {
-    public interface IInputFieldView<T> : IInputFieldViewBase where T : IComparable
+    public interface IInputFieldViewBase
     {
-        T Value { get; }
+        void Display(TableLayoutPanel layoutPanel);
     }
 }

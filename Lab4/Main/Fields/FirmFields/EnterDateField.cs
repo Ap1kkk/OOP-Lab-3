@@ -16,16 +16,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class EnterDateField : Field<DateTime>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.EnterDate);
         private const string _name = "Enter date";
 
-        public EnterDateField() : base(new DateFieldFilterView(_name), new DateInputFieldView(_name))
+        public EnterDateField()
+            : base(FieldViewType.DateTime)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.EnterDate));
         }
 
         public override Field<DateTime> Clone()

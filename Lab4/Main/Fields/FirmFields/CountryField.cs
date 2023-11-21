@@ -16,16 +16,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class CountryField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.Country);
         private const string _name = "Country";
 
-        public CountryField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public CountryField()
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.Country));
         }
 
         public override Field<string> Clone()

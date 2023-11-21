@@ -52,9 +52,6 @@
     <Compile Include="Forms\AddFirmForm.Designer.cs">
       <DependentUpon>AddFirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FieldSelectForms\ContactFieldSelectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\FieldSelectForms\FieldSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,13 +73,11 @@
     <Compile Include="Main\Converter.cs" />
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldCheckBox.cs" />
-    <Compile Include="Main\Fields\ContactFields\BeginDateField.cs" />
-    <Compile Include="Main\Fields\ContactFields\DescriptionField.cs" />
-    <Compile Include="Main\Fields\ContactFields\EndDateField.cs" />
-    <Compile Include="Main\Fields\ContactFields\InformationField.cs" />
-    <Compile Include="Main\Fields\ContactFields\NameField.cs" />
-    <Compile Include="Main\Fields\ContactFields\NoteField.cs" />
-    <Compile Include="Main\Pools\FieldPools\ContactFieldPool.cs" />
+    <Compile Include="Main\Fields\FieldBase\IField.cs" />
+    <Compile Include="Main\InputFieldView\InputFieldViewFactory.cs" />
+    <Compile Include="Main\View\FieldViewType.cs" />
+    <Compile Include="Main\FilterFieldVIew\FilterFieldViewFactory.cs" />
+    <Compile Include="Main\InputFieldView\IInputFieldViewBase.cs" />
     <Compile Include="Main\Pools\FieldPools\FirmFieldPool.cs" />
     <Compile Include="Main\FilterFieldVIew\DateFieldFilterView.cs" />
     <Compile Include="Main\FilterFieldVIew\FieldFilterView.cs" />

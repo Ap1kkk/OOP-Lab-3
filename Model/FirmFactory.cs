@@ -14,11 +14,11 @@ namespace Lab_3
 
         public event Action<Firm> OnFirmCreated;
 
-        public const string FieldName1 = "field1";
-        public const string FieldName2 = "field2";
-        public const string FieldName3 = "field3";
-        public const string FieldName4 = "field4";
-        public const string FieldName5 = "field5";
+        public const string FieldName1 = "UserField1";
+        public const string FieldName2 = "UserField2";
+        public const string FieldName3 = "UserField3";
+        public const string FieldName4 = "UserField4";
+        public const string FieldName5 = "UserField5";
         public readonly Dictionary<string, string> UserFields = new Dictionary<string, string>();
         private const string MainFirmName = "Main Firm";
 

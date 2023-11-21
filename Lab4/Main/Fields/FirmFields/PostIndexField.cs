@@ -16,16 +16,13 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class PostIndexField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.PostIndex);
         private const string _name = "Post index";
 
-        public PostIndexField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public PostIndexField()
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.PostIndex)); 
         }
 
         public override Field<string> Clone()

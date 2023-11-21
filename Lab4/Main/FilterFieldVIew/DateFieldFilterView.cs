@@ -23,7 +23,7 @@ namespace Lab4.Main.FilterFieldVIew
         private RadioButton _lessRadioButton = new RadioButton() { Text = "<", AutoSize = true };
         private RadioButton _greaterRadioButton = new RadioButton() { Text = ">", AutoSize = true };
 
-        public DateFieldFilterView(string label) : base(label)
+        public DateFieldFilterView(string label, TableLayoutPanel layoutPanel) : base(label, layoutPanel)
         {
             Initialize();
         }
@@ -46,17 +46,17 @@ namespace Lab4.Main.FilterFieldVIew
             _equalsRadioButton.Checked = true;
         }
 
-        public override void Display(TableLayoutPanel tableLayoutPanel)
+        public override void Display()
         {
-            base.Display(tableLayoutPanel);
+            base.Display();
 
-            tableLayoutPanel.Controls.Add(_dateTimePicker);
+            TableLayoutPanel.Controls.Add(_dateTimePicker);
             LayoutPanel.Controls.Add(_equalsRadioButton);
             LayoutPanel.Controls.Add(_notEqualsRadioButton);
             LayoutPanel.Controls.Add(_lessRadioButton);
             LayoutPanel.Controls.Add(_greaterRadioButton);
 
-            tableLayoutPanel.Controls.Add(LayoutPanel);
+            TableLayoutPanel.Controls.Add(LayoutPanel);
         }
 
         public override void EnableControls()

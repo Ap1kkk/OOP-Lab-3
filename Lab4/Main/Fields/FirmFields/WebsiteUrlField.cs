@@ -16,16 +16,14 @@ namespace Lab4.Main.Fields.FirmFields
 {
     public class WebsiteUrlField : Field<string>
     {
-        public override string Name => _name;
+        public override string DisplayingName => _name;
+        public override string Name => nameof(FirmViewElement.WebsiteUrl);
+
         private const string _name = "Website url";
 
-        public WebsiteUrlField() : base(new StringFieldFilterView(_name), new StringInputFieldView(_name))
+        public WebsiteUrlField() 
+            : base(FieldViewType.String)
         {
-        }
-
-        public override void AddDisplayingColumn(DataGridView gridView)
-        {
-            AddDisplayingColumn(gridView, _name, nameof(FirmViewElement.WebsiteUrl));
         }
 
         public override Field<string> Clone()

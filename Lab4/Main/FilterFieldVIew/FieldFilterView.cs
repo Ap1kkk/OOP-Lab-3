@@ -16,13 +16,16 @@ namespace Lab4.Main.FilterFieldVIew
         public abstract ILogicalExpression<T> LogicalExpression { get; }
 
         protected FlowLayoutPanel LayoutPanel = new FlowLayoutPanel() { Dock = DockStyle.Fill, Size = new System.Drawing.Size(300, 50) };
+        protected TableLayoutPanel TableLayoutPanel;
 
         private CheckBox _filterCheckBox { get; } = new CheckBox() { Text = "Filter", AutoSize = true };
         private Label _label { get; } = new Label() { TextAlign = System.Drawing.ContentAlignment.MiddleCenter };
 
-        public FieldFilterView(string label)
+
+        public FieldFilterView(string label, TableLayoutPanel tableLayoutPanel)
         {
             _label.Text = label;
+            TableLayoutPanel = tableLayoutPanel;
         }
         ~FieldFilterView()
         {
@@ -37,11 +40,11 @@ namespace Lab4.Main.FilterFieldVIew
             DisableControls();
         }
 
-        public virtual void Display(TableLayoutPanel tableLayoutPanel)
+        public virtual void Display()
         {
-            tableLayoutPanel.RowCount++;
-            tableLayoutPanel.Controls.Add(_filterCheckBox);
-            tableLayoutPanel.Controls.Add(_label);
+            TableLayoutPanel.RowCount++;
+            TableLayoutPanel.Controls.Add(_filterCheckBox);
+            TableLayoutPanel.Controls.Add(_label);
         }
 
         private void FilterCheckBox_CheckedChanged(object sender, EventArgs e)
