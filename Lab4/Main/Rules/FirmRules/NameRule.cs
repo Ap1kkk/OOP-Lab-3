@@ -11,10 +11,10 @@ namespace Lab4.Main.Rules.FirmRules
 {
     public class NameRule : FirmFilterRule<string>
     {
-        public NameRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
-            : base(isFilterActive, comparingValue, logicalExpression)
-        {
-        }
+        //public NameRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        //    : base(isFilterActive, comparingValue, logicalExpression)
+        //{
+        //}
         public override bool FirmRespond(Firm firm)
         {
             return LogicalExpression.Compare(ComparingValue, firm.Name);

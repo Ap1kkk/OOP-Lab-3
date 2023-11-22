@@ -32,7 +32,7 @@ namespace Lab4.Main.Fields.FirmFields
 
         public override IFilterRule CreateRule()
         {
-            return new StreetRule(FilterView.IsFilterActive, FilterView.FilteringValue, FilterView.LogicalExpression);
+            return new StreetRule();
         }
     }
 }

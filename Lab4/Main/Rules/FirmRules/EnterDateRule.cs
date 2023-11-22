@@ -11,10 +11,10 @@ namespace Lab4.Main.Rules
 {
     public class EnterDateRule : FirmFilterRule<DateTime>
     {
-        public EnterDateRule(bool isFilterActive, DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) 
-            : base(isFilterActive, comparingValue, logicalExpression)
-        {
-        }
+        //public EnterDateRule(bool isFilterActive, DateTime comparingValue, ILogicalExpression<DateTime> logicalExpression) 
+        //    : base(isFilterActive, comparingValue, logicalExpression)
+        //{
+        //}
         public override bool FirmRespond(Firm firm)
         {
             return LogicalExpression.Compare(ComparingValue, firm.EnterDate);

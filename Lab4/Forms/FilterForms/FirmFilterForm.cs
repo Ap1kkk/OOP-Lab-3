@@ -11,10 +11,21 @@ using System.Threading.Tasks;
 
 namespace Lab4.Forms.FilterForms
 {
+    struct FilterElement
+    {
+        public IFieldBase Field;
+        public IFieldFilterViewBase FilterView;
+
+        public FilterElement(IFieldBase field, IFieldFilterViewBase filterView)
+        {
+            Field = field;
+            FilterView = filterView;
+        }
+    }
+
     public class FirmFilterForm : FilterForm
     {
-        private List<IFieldBase> _fields = new List<IFieldBase>();
-        private List<IFieldFilterViewBase> _fieldViews = new List<IFieldFilterViewBase>();
+        private List<FilterElement> _filterElements = new List<FilterElement>();
 
         private FilterFieldViewFactory _filterFieldViewFactory;
 
@@ -30,8 +41,7 @@ namespace Lab4.Forms.FilterForms
 
         private void MainController_OnFieldsChanged(List<IFieldBase> fields)
         {
-            _fields = fields;
-            ApplyFields();
+            ConvertFields(fields);
         }
 
         protected override void Initialize()
@@ -45,36 +55,45 @@ namespace Lab4.Forms.FilterForms
             Close();
         }
 
-        private void ApplyFields()
+        private void ConvertFields(List<IFieldBase> fields)
         {
             ClearFields();
-            foreach (IFieldBase field in _fields)
+            foreach (IFieldBase field in fields)
             {
-                _fieldViews.Add(_filterFieldViewFactory.Create(field.Type, field.DisplayingName));
+                _filterElements.Add(
+                    new FilterElement(field, 
+                    _filterFieldViewFactory.Create(field.Type, field.DisplayingName))
+                    );
             }
             DisplayFields();
         }
 
         private void DisplayFields()
         {
-            foreach (var fieldView in _fieldViews)
+            foreach (var filterElement in _filterElements)
             {
-                fieldView.Display();
+                filterElement.FilterView.Display();
             }
         }
 
         private void ClearFields()
         {
-            _fieldViews.Clear();
+            _filterElements.Clear();
             FilterLayout.Controls.Clear();
         }
 
         private List<IFirmFilterRule> GetRules()
         {
-            foreach (var item in _fields)
+            List<IFirmFilterRule> filterRules = new List<IFirmFilterRule>();
+            foreach (var filterElement in _filterElements)
             {
-                
+                IFirmFilterRule rule = filterElement.Field.CreateRule() as IFirmFilterRule;
+                IFieldFilterViewBase filterView = filterElement.FilterView;
+                rule.BindFilterView(filterView);
+                filterRules.Add(rule);
             }
+
+            return filterRules;
         }
     }
 }

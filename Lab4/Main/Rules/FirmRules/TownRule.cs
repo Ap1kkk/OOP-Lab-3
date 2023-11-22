@@ -11,10 +11,10 @@ namespace Lab4.Main.Rules
 {
     public class TownRule : FirmFilterRule<string>
     {
-        public TownRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
-            : base(isFilterActive, comparingValue, logicalExpression)
-        {
-        }
+        //public TownRule(bool isFilterActive, string comparingValue, ILogicalExpression<string> logicalExpression) 
+        //    : base(isFilterActive, comparingValue, logicalExpression)
+        //{
+        //}
         public override bool FirmRespond(Firm firm)
         {
             return LogicalExpression.Compare(ComparingValue, firm.Town);

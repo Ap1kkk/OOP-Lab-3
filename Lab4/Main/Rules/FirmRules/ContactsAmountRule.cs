@@ -11,10 +11,10 @@ namespace Lab4.Main.Rules
 {
     public class ContactsAmountRule : FirmFilterRule<int>
     {
-        public ContactsAmountRule(bool isFilterActive, int comparingValue, ILogicalExpression<int> logicalExpression) 
-            : base(isFilterActive, comparingValue, logicalExpression)
-        {
-        }
+        //public ContactsAmountRule(bool isFilterActive, int comparingValue, ILogicalExpression<int> logicalExpression) 
+        //    : base(isFilterActive, comparingValue, logicalExpression)
+        //{
+        //}
 
         public override bool FirmRespond(Firm firm)
         {
