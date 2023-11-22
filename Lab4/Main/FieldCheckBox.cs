@@ -13,6 +13,7 @@ namespace Lab4.Main
         public event Action<bool, IFieldBase> CheckChanged;
 
         public CheckBox CheckBox { get; } = new CheckBox();
+        public IFieldBase RelatedField => _relatedField;
         private IFieldBase _relatedField;
         public FieldCheckBox(string label, IFieldBase field)
         {

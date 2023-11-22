@@ -23,5 +23,10 @@ namespace Lab4.Main.InputFieldView
             layoutPanel.Controls.Add(_datePicker);
             layoutPanel.Controls.Add(MessageTextBox);
         }
+
+        public override bool Validate()
+        {
+            return true;
+        }
     }
 }

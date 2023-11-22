@@ -18,7 +18,7 @@ namespace Lab4.Main.Rules
 
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.ContactsAmount);
+            return LogicalExpression.Compare(firm.ContactsAmount, ComparingValue);
         }
     }
 }

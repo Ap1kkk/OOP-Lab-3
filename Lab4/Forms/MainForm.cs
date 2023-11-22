@@ -32,9 +32,12 @@ namespace Lab4
             for (int i = 0; i < 10; i++)
             {
                 Firm firm = FirmFactory.Instance.Create($"name{i}", "country", "region", "town", "street",
-                "postIndex", "email", "websiteUrl", new DateTime(2000, 10, 10), "bossName", "officialBossName", "phoneNumber");
+                "postIndex", "email", "websiteUrl", new DateTime(2000 + i, 10, 10), "bossName", "officialBossName", "phoneNumber");
 
-                firm.AddContact(new Contact(new ContactType("name", "note"), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));
+                for (int j = 0; j < i; j++)
+                {
+                    firm.AddContact(new Contact(new ContactType("name", "note"), "description", "information", new DateTime(1990, 2, 2), new DateTime(2000, 2, 2)));
+                }
                 firm.SetField(FirmFactory.FieldName1, "vallues");
                 firm.SetField(FirmFactory.FieldName2, "vallues");
                 firm.SetField(FirmFactory.FieldName3, "vallues");
@@ -55,7 +58,7 @@ namespace Lab4
             _firmFilterForm = new FirmFilterForm(_mainController);
             _firmFieldSelectForm = new FirmFieldSelectForm(_mainController, _firmFieldPool);
             //_firmFieldSelectForm.FormClosed += _firmFieldSelectForm_FormClosed;
-            _addFirmForm = new AddFirmForm(_firmFieldPool);
+            _addFirmForm = new AddFirmForm();
 
             _mainController.DisplayAllData();
         }

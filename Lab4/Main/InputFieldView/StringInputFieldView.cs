@@ -10,6 +10,7 @@ namespace Lab4.Main.InputFieldView
     public class StringInputFieldView : InputFieldView<string>
     {
         public override string Value => _inputTextBox.Text;
+
         private TextBox _inputTextBox = new TextBox() { };
 
         public StringInputFieldView(string label) : base(label)
@@ -22,6 +23,16 @@ namespace Lab4.Main.InputFieldView
 
             layoutPanel.Controls.Add(_inputTextBox);
             layoutPanel.Controls.Add(MessageTextBox);
+        }
+
+        public override bool Validate()
+        {
+            bool result = Value != null && Value != string.Empty;
+            if(result == false)
+            {
+                ShowMessage("Input field cannot be empty");
+            }
+            return result;
         }
     }
 }

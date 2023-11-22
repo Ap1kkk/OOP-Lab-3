@@ -10,5 +10,7 @@ namespace Lab4.Main.InputFieldView
     public interface IInputFieldViewBase
     {
         void Display(TableLayoutPanel layoutPanel);
+        bool Validate();
+        void ResetMessage();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Lab_3;
 using Lab4.Main.Rules;
-using Lab4.Main.Rules.ContactRules;
 using Lab4.Main.Rules.FirmRules;
 using Lab4.Main.View;
 using System;

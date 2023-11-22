@@ -14,46 +14,41 @@ namespace Lab4
 {
     public partial class AddFirmForm : Form
     {
-        private FirmFieldPool _fieldPool;
-        private List<IInputFieldViewBase> _inputFields = new List<IInputFieldViewBase>();
         private InputFieldViewFactory _inputFieldViewFactory;
-
-        public AddFirmForm(FirmFieldPool fieldPool)
+        private InputFirmValidator _firmValidator;
+        public AddFirmForm()
         {
             InitializeComponent();
-            _fieldPool = fieldPool;
             _inputFieldViewFactory = new InputFieldViewFactory();
-
-            CreateInputFields();
+            _firmValidator = new InputFirmValidator(_inputFieldViewFactory);
             DisplayInputFields();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            ResetMessages();
+            if(ValidateInputFirm())
+            {
+                var firm = _firmValidator.CreateFirm();
+                Close();
+                return;
+            }
 
-            Close();
         }
 
         private bool ValidateInputFirm()
         {
-            return false;
+            return _firmValidator.Validate();
         }
 
-        private void CreateInputFields()
+        private void ResetMessages()
         {
-            _inputFields.Clear();
-            foreach (var field in _fieldPool.Fields)
-            {
-                _inputFields.Add(_inputFieldViewFactory.Create(field.Type, field.DisplayingName));
-            }
+            _firmValidator.Reset();
         }
 
         private void DisplayInputFields()
         {
-            foreach (var inputField in _inputFields)
-            {
-                inputField.Display(InputLayoutPanel);
-            }
+            _firmValidator.Display(InputLayoutPanel);
         }
     }
 }

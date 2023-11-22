@@ -57,7 +57,7 @@ namespace Lab4
         {
             if(isChecked)
             {
-                _fields.Add(field);
+                PutInOrder();
             }
             else
             {
@@ -70,6 +70,18 @@ namespace Lab4
         protected void OnApplied()
         {
             OnFieldApplied?.Invoke();
+        }
+
+        private void PutInOrder()
+        {
+            _fields.Clear();
+            foreach (var checkBox in _checkBoxes)
+            {
+                if(checkBox.CheckBox.Checked)
+                {
+                    _fields.Add(checkBox.RelatedField);
+                }
+            }
         }
     }
 }

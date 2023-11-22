@@ -74,7 +74,10 @@
     <Compile Include="Main\Expressions\ILogicalExpressionBase.cs" />
     <Compile Include="Main\FieldCheckBox.cs" />
     <Compile Include="Main\Fields\FieldBase\IField.cs" />
+    <Compile Include="Main\Fields\FirmFields\XField.cs" />
     <Compile Include="Main\InputFieldView\InputFieldViewFactory.cs" />
+    <Compile Include="Main\InputFirmValidator.cs" />
+    <Compile Include="Main\Rules\FirmRules\XFieldRule.cs" />
     <Compile Include="Main\View\FieldViewType.cs" />
     <Compile Include="Main\FilterFieldVIew\FilterFieldViewFactory.cs" />
     <Compile Include="Main\InputFieldView\IInputFieldViewBase.cs" />
@@ -125,14 +128,6 @@
     <Compile Include="Main\InputFieldView\IntInputFieldView.cs" />
     <Compile Include="Main\InputFieldView\StringInputFieldView.cs" />
     <Compile Include="Main\Pools\FieldPools\IFieldPool.cs" />
-    <Compile Include="Main\Rules\ContactRules\BeginDateRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\ContactFilterRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\DescriptionRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\EndDateRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\IContactFilterRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\InformationRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\NameRule.cs" />
-    <Compile Include="Main\Rules\ContactRules\NoteRule.cs" />
     <Compile Include="Main\Rules\FirmRules\IFirmFilterRule.cs" />
     <Compile Include="Main\View\ContactView.cs" />
     <Compile Include="Main\View\Elements\ContactViewElement.cs" />

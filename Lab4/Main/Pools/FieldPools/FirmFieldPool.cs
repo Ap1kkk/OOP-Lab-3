@@ -28,9 +28,12 @@ namespace Lab4.Main
         private UserField _userField3 = new UserField(FirmFactory.FieldName3);
         private UserField _userField4 = new UserField(FirmFactory.FieldName4);
         private UserField _userField5 = new UserField(FirmFactory.FieldName5);
+        private XField _xField = new XField();
 
         public FirmFieldPool()
         {
+            _fields.Add(_xField);
+            _fields.Add(_userField1);
             _fields.Add(_nameField);
             _fields.Add(_countryField);
             _fields.Add(_regionField);
@@ -40,7 +43,6 @@ namespace Lab4.Main
             _fields.Add(_websiteField);
             _fields.Add(_enterDateField);
             _fields.Add(_contactsAmountField);
-            _fields.Add(_userField1);
             _fields.Add(_userField2);
             _fields.Add(_userField3);
             _fields.Add(_userField4);

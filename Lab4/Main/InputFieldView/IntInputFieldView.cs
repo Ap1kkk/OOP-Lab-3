@@ -24,5 +24,15 @@ namespace Lab4.Main.InputFieldView
             layoutPanel.Controls.Add(_numericUpDown);
             layoutPanel.Controls.Add(MessageTextBox);
         }
+
+        public override bool Validate()
+        {
+            bool result = Value >= 0;
+            if(result == false)
+            {
+                ShowMessage("Number cannot be less than zero");
+            }
+            return result;
+        }
     }
 }

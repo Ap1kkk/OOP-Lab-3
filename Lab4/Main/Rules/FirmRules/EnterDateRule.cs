@@ -17,7 +17,7 @@ namespace Lab4.Main.Rules
         //}
         public override bool FirmRespond(Firm firm)
         {
-            return LogicalExpression.Compare(ComparingValue, firm.EnterDate);
+            return LogicalExpression.Compare(firm.EnterDate, ComparingValue);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Lab4.Main.View
         public string UserField3 => _firm.UserFields[FirmFactory.FieldName3];
         public string UserField4 => _firm.UserFields[FirmFactory.FieldName4];
         public string UserField5 => _firm.UserFields[FirmFactory.FieldName5];
+        public string X => $"{Country} | {EnterDate}";
 
         private Firm _firm;
         public FirmViewElement(Firm relatedFirm)

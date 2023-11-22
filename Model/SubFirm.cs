@@ -105,12 +105,13 @@ namespace Lab_3
 
         public Contact AddContact(Contact contact)
         {
-            Contact addedContact = contact;
-            if (!IsContactExists(contact))
-            {
-                addedContact = contact.Clone();
-                _contacts.Add(addedContact);
-            }
+            Contact addedContact = contact.Clone();
+            _contacts.Add(addedContact);
+            //if (!IsContactExists(contact))
+            //{
+            //    _contacts.Add(addedContact);
+            //    addedContact = contact.Clone();
+            //}
             return addedContact;
         }
         public Contact GetContact(Contact contact)

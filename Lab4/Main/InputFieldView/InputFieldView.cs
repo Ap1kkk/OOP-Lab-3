@@ -26,5 +26,17 @@ namespace Lab4.Main.InputFieldView
             layoutPanel.RowStyles.Add(new RowStyle() { SizeType = SizeType.AutoSize });
             layoutPanel.Controls.Add(Label);
         }
+
+        public abstract bool Validate();
+
+        public void ResetMessage()
+        {
+            MessageTextBox.Text = "";
+        }
+
+        protected void ShowMessage(string message)
+        {
+            MessageTextBox.Text = message;
+        }
     }
 }
